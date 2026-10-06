@@ -6,7 +6,7 @@
 <meta name="description" content="JR東海の最新ニュースを新幹線・在来線・リニアなど項目別にまとめる非公式サイト">
 <title>東海にゅ〜す</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500&family=DotGothic16&display=swap">
 <style>
 /* Layout: 駅の発車標のような見出し帯 → 路線色のカテゴリタブ → 日付順のニュース一覧 */
 :root{
@@ -68,6 +68,44 @@ ol.news{list-style:none;margin:0;padding:0;background:var(--surface);border:1px 
 .empty{padding:28px 16px;text-align:center;color:var(--muted)}
 footer{border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
 footer .wrap{padding-block:16px}
+/* ===== 動き ===== */
+.ticker{background:var(--board);padding-block:0 14px}
+header.board .ticker .wrap{padding-block:0;display:block}
+.led{--led-on:#ffa21f;--led-red:#ff4b3a;--led-green:#5dff7a;background:#0b0b0b;border:3px solid #2b2f33;border-radius:6px;box-shadow:inset 0 0 0 1px #000,0 2px 0 #000;display:flex;align-items:stretch;overflow:hidden;position:relative}
+.led::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 50%,transparent 46%,rgba(0,0,0,.55) 72%);background-size:3px 3px}
+.led .label{flex:none;display:flex;align-items:center;gap:6px;font-family:"DotGothic16",var(--f-mono);font-size:17px;color:var(--led-red);text-shadow:0 0 6px rgba(255,75,58,.75);padding:6px 12px;border-right:2px solid #2b2f33;letter-spacing:.08em}
+.led .label i{font-style:normal;color:var(--led-green);text-shadow:0 0 6px rgba(93,255,122,.7);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.led .lane{flex:1;min-width:0;overflow:hidden;display:flex;align-items:center}
+.led .run{display:inline-flex;gap:56px;white-space:nowrap;font-family:"DotGothic16",var(--f-mono);font-size:19px;line-height:1;padding-block:8px;color:var(--led-on);text-shadow:0 0 4px rgba(255,162,31,.9),0 0 12px rgba(255,140,0,.45);animation:tick var(--dur,40s) linear infinite;padding-left:100%}
+.led .run span b{font-weight:400;color:var(--led-green);text-shadow:0 0 6px rgba(93,255,122,.7);margin-right:10px}
+.ticker:hover .run{animation-play-state:paused}
+@keyframes tick{to{transform:translateX(-100%)}}
+
+.loader{overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:10px;padding:28px 16px;color:var(--muted);font-size:13px}
+.loader svg{width:min(320px,100%);height:auto;overflow:visible}
+.loader .rail{stroke:var(--line);stroke-width:2}
+.loader .tie{stroke:var(--line);stroke-width:3}
+.loader .train{animation:run 1.6s cubic-bezier(.55,0,.45,1) infinite}
+.loader .body-fill{fill:var(--surface);stroke:var(--fg);stroke-width:1.5}
+.loader .stripe{fill:var(--c-shinkansen)}
+.loader .win{fill:var(--fg);opacity:.75}
+@keyframes run{0%{transform:translateX(-140px)}100%{transform:translateX(340px)}}
+
+.statusbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px}
+.reload{font:inherit;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:5px 14px;cursor:pointer}
+.reload:hover{border-color:var(--accent);color:var(--accent)}
+.reload:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.reload:disabled{opacity:.55;cursor:default}
+.reload svg{width:15px;height:15px}
+.reload.spin svg{animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){
+  .led .run{animation:none;padding-left:0}
+  .led .label i{animation:none}
+  .loader .train{animation:none;transform:translateX(100px)}
+  .reload.spin svg{animation:none}
+}
 </style>
 </head>
 <body>
@@ -76,6 +114,7 @@ footer .wrap{padding-block:16px}
     <h1 class="brand"><small>JR東海の最新ニュースまとめ</small>東海にゅ〜す</h1>
     <div class="clock" id="clock"></div>
   </div>
+  <div class="ticker" id="ticker" aria-label="最新ニュース速報"><div class="wrap"><div class="led"><span class="label"><i>●</i>速報</span><div class="lane"><div class="run" id="run"></div></div></div></div></div>
 </header>
 
 <nav class="tabs" aria-label="カテゴリ"><div class="wrap" id="tabs"></div></nav>
@@ -86,7 +125,10 @@ footer .wrap{padding-block:16px}
     <input class="search" id="q" type="search" placeholder="キーワードで絞り込み" aria-label="キーワード検索">
   </div>
   <p class="note">JR東海の公式発表と、新聞・ニュースサイトの関連記事を1時間ごとに自動で取り込みます。詳しい内容は各記事の出典リンクから確認してください。</p>
-  <p class="status" id="status">ニュースを読み込み中…</p>
+  <div class="statusbar">
+    <p class="status" id="status">ニュースを読み込み中…</p>
+    <button type="button" class="reload" id="reload"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg>最新に更新</button>
+  </div>
   <ol class="news" id="list"></ol>
 </div></main>
 
@@ -114,6 +156,17 @@ let UPDATED = "";
 const $ = s => document.querySelector(s);
 const catOf = id => CATS.find(c => c.id === id) || CATS[0];
 let current = "all";
+let LOADING = true;
+const LOADER = `<div class="loader" role="status"><svg viewBox="0 0 300 50" aria-hidden="true">
+  <g>${Array.from({length:16},(_,i)=>`<line class="tie" x1="${i*20+4}" y1="44" x2="${i*20+12}" y2="44"/>`).join("")}</g>
+  <line class="rail" x1="0" y1="41" x2="300" y2="41"/>
+  <g class="train">
+    <path class="body-fill" d="M0 18 H70 C96 18 112 26 124 36 Q126 39 122 39 H0 Z"/>
+    <rect class="stripe" x="0" y="31" width="121" height="3"/>
+    <rect class="win" x="8" y="23" width="9" height="5" rx="1"/><rect class="win" x="22" y="23" width="9" height="5" rx="1"/>
+    <rect class="win" x="36" y="23" width="9" height="5" rx="1"/><rect class="win" x="50" y="23" width="9" height="5" rx="1"/>
+    <path class="win" d="M84 21 C96 22 104 25 110 29 H86 Z"/>
+  </g></svg>ニュースを読み込み中…</div>`;
 try { const h = location.hash.slice(1); if (CATS.some(c=>c.id===h)) current = h; } catch(e){}
 
 function renderTabs(){
@@ -137,7 +190,9 @@ function renderList(){
     .filter(x => !q || (x.title+(x.summary||"")).toLowerCase().includes(q))
     .sort((a,b) => b.date.localeCompare(a.date));
   $("#heading").textContent = current==="all" ? "すべてのニュース" : catOf(current).name + "のニュース";
-  $("#list").innerHTML = items.length ? items.map(x => {
+  const list = $("#list");
+  if (LOADING){ list.innerHTML = `<li>${LOADER}</li>`; return; }
+  list.innerHTML = items.length ? items.map(x => {
     const c = catOf(x.cat);
     return `<li class="item" style="--c:${c.color}"><span class="bar"></span><div class="body">
       <div class="meta"><time datetime="${x.date}">${fmt(x.date)}</time><span class="cat">${c.name}</span><span class="srcname${x.src==="JR東海"?" official":""}">${x.src==="JR東海"?"公式発表":esc(x.src||"")}</span>${isNew(x.date)?'<span class="new">NEW</span>':''}</div>
@@ -146,6 +201,14 @@ function renderList(){
     </div></li>`;
   }).join("") : `<li class="empty">${NEWS.length?"該当するニュースはありません":"読み込み中…"}</li>`;
 }
+function renderTicker(){
+  $("#ticker").hidden = !NEWS.length;
+  const top = [...NEWS].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,6);
+  $("#run").innerHTML = top.map(x => `<span><b>${fmt(x.date).slice(5).replace(".","/")}</b>${esc(x.title)}</span>`).join("");
+  const chars = top.reduce((n,x)=>n+x.title.length,0);
+  $("#run").style.setProperty("--dur", Math.max(25, chars*0.28) + "s");
+}
+
 $("#q").addEventListener("input", renderList);
 
 function tick(){
@@ -156,6 +219,9 @@ tick(); setInterval(tick, 30000);
 renderTabs(); renderList();
 
 async function load(){
+  LOADING = true; renderList();
+  const btn = $("#reload"); btn.disabled = true; btn.classList.add("spin");
+  const wait = new Promise(r => setTimeout(r, 1500));
   try{
     const r = await fetch("news.json?t=" + Date.now(), {cache:"no-store"});
     if(!r.ok) throw new Error(r.status);
@@ -167,8 +233,13 @@ async function load(){
   }catch(e){
     $("#status").textContent = "ニュースを読み込めませんでした。時間をおいて再読み込みしてください。";
   }
-  renderTabs(); renderList();
+  await wait;
+  LOADING = false;
+  btn.disabled = false; btn.classList.remove("spin");
+  renderTabs(); renderList(); renderTicker();
 }
+$("#reload").addEventListener("click", load);
+renderTicker();
 load();
 </script>
 </body>
