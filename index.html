@@ -100,6 +100,43 @@ header.board .ticker .wrap{padding-block:0;display:block}
 .reload svg{width:15px;height:15px}
 .reload.spin svg{animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+/* ===== リニア工事の進捗 ===== */
+.lpanel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 16px;display:flex;flex-direction:column;gap:16px}
+.lpanel h3{font-family:var(--f-display);font-size:18px;margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.lpanel h3 small{font-family:var(--f-body);font-weight:400;font-size:12px;color:var(--muted)}
+.lsum{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.lsum div{border:1px solid var(--line);border-radius:8px;padding:10px 12px;min-width:0}
+.lsum dt{font-size:11.5px;color:var(--muted);letter-spacing:.04em}
+.lsum dd{margin:2px 0 0;font-family:var(--f-display);font-weight:700;font-size:17px;line-height:1.35}
+.lsum dd span{font-family:var(--f-body);font-weight:400;font-size:12px;color:var(--muted);display:block}
+.lsec{font-family:var(--f-display);font-size:14px;margin:0;color:var(--muted);letter-spacing:.06em}
+ol.route{list-style:none;margin:0;padding:0;position:relative}
+ol.route::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;width:4px;border-radius:2px;background:var(--c-linear);opacity:.35}
+.st{position:relative;padding:0 0 14px 34px}
+.st:last-child{padding-bottom:0}
+.st::before{content:"";position:absolute;left:3px;top:5px;width:16px;height:16px;border-radius:50%;background:var(--surface);border:4px solid var(--c-linear);box-sizing:border-box}
+.st.term::before{width:20px;height:20px;left:1px;top:3px;background:var(--c-linear)}
+.st-head{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px}
+.st-name{font-family:var(--f-display);font-weight:700;font-size:16px}
+.st-place{font-size:12px;color:var(--muted)}
+.pill{font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;border:1.5px solid currentColor}
+.pill.build{color:var(--accent)}
+.pill.start{color:var(--c-eki)}
+.pill.wait{color:var(--c-unko)}
+.pill.done{color:var(--c-shinkansen)}
+.st p,.wk p{margin:3px 0 0;font-size:13.5px;line-height:1.6;max-width:62ch}
+.st-foot{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:4px;font-size:12.5px}
+.st-foot a{color:var(--accent);font-weight:700;text-decoration:none}
+.st-foot button{font:inherit;font-size:12.5px;font-weight:700;color:var(--c-linear);background:none;border:0;padding:0;cursor:pointer}
+.st-foot button[aria-pressed="true"]{text-decoration:underline;text-underline-offset:3px}
+.st-foot button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wks{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.wk{border:1px solid var(--line);border-left:4px solid var(--c-linear);border-radius:8px;padding:10px 12px;min-width:0}
+.wk .st-head{gap:4px 8px}
+.wk b{font-family:var(--f-display);font-size:15px}
+.lnote{font-size:12px;color:var(--muted);margin:0}
+.filterbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13px}
+.filterbar button{font:inherit;font-size:12px;font-weight:700;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:6px;padding:2px 10px;cursor:pointer}
 @media (prefers-reduced-motion: reduce){
   .led .run{animation:none;padding-left:0}
   .led .label i{animation:none}
@@ -129,6 +166,8 @@ header.board .ticker .wrap{padding-block:0;display:block}
     <p class="status" id="status">ニュースを読み込み中…</p>
     <button type="button" class="reload" id="reload"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg>最新に更新</button>
   </div>
+  <section class="lpanel" id="lpanel" hidden aria-labelledby="lp-title"></section>
+  <div class="filterbar" id="filterbar" hidden></div>
   <ol class="news" id="list"></ol>
 </div></main>
 
@@ -169,6 +208,81 @@ const LOADER = `<div class="loader" role="status"><svg viewBox="0 0 300 50" aria
   </g></svg>ニュースを読み込み中…</div>`;
 try { const h = location.hash.slice(1); if (CATS.some(c=>c.id===h)) current = h; } catch(e){}
 
+
+/* ===== リニア工事の進捗データ（2026年10月6日時点。手で更新します） ===== */
+const LINEAR = {
+  asof: "2026年10月6日時点",
+  summary: [
+    {k:"開業の見通し", v:"2036年以降", sub:"品川〜名古屋（2027年開業は断念）"},
+    {k:"静岡工区", v:"着工容認", sub:"2026年7月7日 静岡県知事が表明"},
+    {k:"契約済みの工区", v:"約9割", sub:"品川〜名古屋の延長比（2026年3月末）"},
+    {k:"区間", v:"約286km", sub:"品川〜名古屋 最速約40分"}
+  ],
+  stations: [
+    {name:"品川", place:"東京都港区", term:true, status:"build", label:"建設中", kw:["品川"],
+     note:"東海道新幹線の品川駅の真下に地下駅をつくる工事。営業中の線路の下を掘るため、地中に壁を造ってから掘り下げる難しい工事が続いている。",
+     src:"https://linear-chuo-shinkansen.jr-central.co.jp/sp/plan/eki/"},
+    {name:"神奈川県駅（仮称）", place:"相模原市（橋本）", status:"build", label:"建設中", kw:["神奈川県駅","相模原","橋本"],
+     note:"地下約30mに2面4線のホームを持つ地下駅を建設中。名古屋方面へは大型シールドマシンでトンネルを掘り進めている。",
+     src:"https://toyokeizai.net/articles/-/937928"},
+    {name:"山梨県駅（仮称）", place:"甲府市", status:"start", label:"2026年3月着工", kw:["山梨県駅","甲府"],
+     note:"2026年3月に起工式を行い、駅舎の工事が始まった。在来線の甲府駅から離れているため、アクセス手段が地元の課題になっている。",
+     src:"https://hirogoro.com/linear-chuo-shinkansen-opening-route-fare/3717/"},
+    {name:"長野県駅（仮称）", place:"飯田市", status:"build", label:"建設中", kw:["長野県駅","飯田"],
+     note:"高架橋とトンネルの工事が進行中。完成すれば品川まで約45分。県内52.9kmのうち48.5kmがトンネル。",
+     src:"https://newswitch.jp/p/49438"},
+    {name:"岐阜県駅（仮称）", place:"中津川市", status:"build", label:"建設中", kw:["岐阜県駅","中津川"],
+     note:"中津川市千旦林で建設中。工期は2031年12月末までの予定。",
+     src:"https://www.pref.gifu.lg.jp/page/16609.html"},
+    {name:"名古屋", place:"名古屋市中村区", term:true, status:"build", label:"建設中", kw:["名古屋駅","名古屋"],
+     note:"名古屋駅の地下に長さ約1km・幅最大60mの駅をつくる工事。品川と同じく、営業中の駅の下での工事になる。",
+     src:"https://linear-chuo-shinkansen.jr-central.co.jp/sp/plan/eki/"}
+  ],
+  works: [
+    {name:"南アルプストンネル 静岡工区", status:"wait", label:"着工へ", kw:["静岡工区","南アルプス","大井川"],
+     note:"大井川の水への影響をめぐり9年止まっていた区間。2026年7月に知事が着工を容認し、JR東海と環境保全の協定を結んだ。掘るのに10年以上かかる見込みで、ここが開業時期を左右する。",
+     src:"https://www.nagoyatv.com/news/?id=036212"},
+    {name:"南アルプストンネル 山梨工区", status:"done", label:"山梨側の掘削到達", kw:["山梨工区"],
+     note:"山梨県側から掘り進めたトンネルが工区の端まで到達した。",
+     src:"https://news.yahoo.co.jp/articles/1ca86075c29935477dfb7a6b22f090237674a406"},
+    {name:"中央アルプストンネル", status:"build", label:"掘削中", kw:["中央アルプス"],
+     note:"長野〜岐阜を結ぶ約23.3kmのトンネル。長野県内で最も長い区間。",
+     src:"https://newswitch.jp/p/49438"},
+    {name:"岐阜県内のトンネル群", status:"build", label:"掘削中", kw:["瀬戸トンネル","日吉トンネル","長島トンネル","瑞浪"],
+     note:"瀬戸トンネル（約4.4km、2031年3月完成予定）、長島トンネル、日吉トンネルを施工中。瑞浪市では井戸やため池の水位低下が確認され、対策が続いている。",
+     src:"https://www.pref.gifu.lg.jp/page/16609.html"}
+  ]
+};
+let LFILTER = null;
+function linearNews(kw){ return NEWS.filter(x => x.cat==="linear" && kw.some(k => x.title.includes(k))); }
+function renderLinear(){
+  const show = current === "linear";
+  $("#lpanel").hidden = !show;
+  if (!show){ LFILTER = null; return; }
+  const btn = o => { const n = linearNews(o.kw).length; if (!n) return "";
+    return `<button type="button" data-f="${esc(o.name)}" aria-pressed="${LFILTER&&LFILTER.name===o.name}">関連ニュース ${n}件</button>`; };
+  $("#lpanel").innerHTML = `
+    <h3 id="lp-title">リニア工事の進捗<small>${LINEAR.asof}・各項目の出典リンクで最新情報を確認できます</small></h3>
+    <dl class="lsum">${LINEAR.summary.map(x=>`<div><dt>${x.k}</dt><dd>${x.v}<span>${x.sub}</span></dd></div>`).join("")}</dl>
+    <h4 class="lsec">駅の工事（品川 → 名古屋）</h4>
+    <ol class="route">${LINEAR.stations.map(x=>`<li class="st${x.term?" term":""}">
+      <div class="st-head"><span class="st-name">${x.name}</span><span class="st-place">${x.place}</span><span class="pill ${x.status}">${x.label}</span></div>
+      <p>${x.note}</p><div class="st-foot">${btn(x)}<a href="${x.src}" target="_blank" rel="noopener">出典 →</a></div></li>`).join("")}</ol>
+    <h4 class="lsec">主なトンネル・工区</h4>
+    <div class="wks">${LINEAR.works.map(x=>`<div class="wk">
+      <div class="st-head"><b>${x.name}</b><span class="pill ${x.status}">${x.label}</span></div>
+      <p>${x.note}</p><div class="st-foot">${btn(x)}<a href="${x.src}" target="_blank" rel="noopener">出典 →</a></div></div>`).join("")}</div>
+    <p class="lnote">駅名・工区名のニュースは1時間ごとに自動で集めています。進捗の説明は報道と公式資料をもとに手でまとめたものです。</p>`;
+}
+$("#lpanel").addEventListener("click", e => {
+  const b = e.target.closest("button[data-f]"); if (!b) return;
+  const all = [...LINEAR.stations, ...LINEAR.works];
+  const o = all.find(x => x.name === b.dataset.f);
+  LFILTER = (LFILTER && LFILTER.name === o.name) ? null : o;
+  renderLinear(); renderList();
+  if (LFILTER) $("#filterbar").scrollIntoView({behavior:"smooth", block:"start"});
+});
+
 function renderTabs(){
   $("#tabs").innerHTML = CATS.map(c => {
     const n = c.id==="all" ? NEWS.length : NEWS.filter(x=>x.cat===c.id).length;
@@ -176,7 +290,7 @@ function renderTabs(){
       ${c.id==="all"?"":'<span class="dot"></span>'}${c.name}<span class="n">${n}</span></button>`;
   }).join("");
   $("#tabs").querySelectorAll(".tab").forEach(b => b.onclick = () => {
-    current = b.dataset.id; renderTabs(); renderList();
+    current = b.dataset.id; LFILTER = null; renderTabs(); renderLinear(); renderList();
   });
 }
 const esc = s => String(s).replace(/[&<>"]/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
@@ -188,8 +302,13 @@ function renderList(){
   const items = NEWS
     .filter(x => current==="all" || x.cat===current)
     .filter(x => !q || (x.title+(x.summary||"")).toLowerCase().includes(q))
+    .filter(x => !LFILTER || LFILTER.kw.some(k => x.title.includes(k)))
     .sort((a,b) => b.date.localeCompare(a.date));
   $("#heading").textContent = current==="all" ? "すべてのニュース" : catOf(current).name + "のニュース";
+  const fb = $("#filterbar");
+  fb.hidden = !LFILTER;
+  if (LFILTER){ fb.innerHTML = `<span>「${esc(LFILTER.name)}」のニュース ${items.length}件</span><button type="button" id="clearf">絞り込みを解除</button>`;
+    $("#clearf").onclick = () => { LFILTER = null; renderLinear(); renderList(); }; }
   const list = $("#list");
   if (LOADING){ list.innerHTML = `<li>${LOADER}</li>`; return; }
   list.innerHTML = items.length ? items.map(x => {
@@ -236,9 +355,10 @@ async function load(){
   await wait;
   LOADING = false;
   btn.disabled = false; btn.classList.remove("spin");
-  renderTabs(); renderList(); renderTicker();
+  renderTabs(); renderLinear(); renderList(); renderTicker();
 }
 $("#reload").addEventListener("click", load);
+renderLinear();
 renderTicker();
 load();
 </script>
