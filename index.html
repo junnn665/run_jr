@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="JR東海の最新ニュースを新幹線・在来線・リニアなど項目別にまとめるサイト">
+<title>run7online</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: 駅の発車標のような見出し帯 → 路線色のカテゴリタブ → 日付順のニュース一覧 */
+:root{
+  --bg:#f6f5f2; --surface:#ffffff; --fg:#1d2126; --muted:#626a73; --line:#dcdcd6;
+  --accent:#e8780c; --accent-ink:#ffffff; --board:#1f2a33; --board-fg:#f3f1ea;
+  --c-shinkansen:#1f63b8; --c-zairai:#e8780c; --c-linear:#7a4bc4; --c-eki:#2e8b57; --c-unko:#c8372d; --c-kaisha:#55606b; --c-event:#c2468a;
+  --f-display:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;
+  --f-body:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#14181c; --surface:#1c2228; --fg:#e9e7e1; --muted:#9aa3ad; --line:#2e363e;
+  --accent:#f39a3d; --accent-ink:#1a1206; --board:#0c1014; --board-fg:#f3f1ea;
+  --c-shinkansen:#5c9be6; --c-zairai:#f39a3d; --c-linear:#a684e0; --c-eki:#5bbd85; --c-unko:#ea6a5f; --c-kaisha:#9aa6b2; --c-event:#e07ab3;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#14181c; --surface:#1c2228; --fg:#e9e7e1; --muted:#9aa3ad; --line:#2e363e;
+  --accent:#f39a3d; --accent-ink:#1a1206; --board:#0c1014; --board-fg:#f3f1ea;
+  --c-shinkansen:#5c9be6; --c-zairai:#f39a3d; --c-linear:#a684e0; --c-eki:#5bbd85; --c-unko:#ea6a5f; --c-kaisha:#9aa6b2; --c-event:#e07ab3;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.7}
+.wrap{max-width:880px;margin:0 auto;padding-inline:16px}
+header.board{background:var(--board);color:var(--board-fg);border-bottom:4px solid var(--accent)}
+header.board .wrap{padding-block:20px 18px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 16px}
+.brand{font-family:var(--f-display);font-weight:900;font-size:clamp(26px,6vw,36px);letter-spacing:.02em;line-height:1.1;margin:0}
+.brand small{display:block;font-weight:500;font-size:13px;letter-spacing:.12em;color:var(--accent);margin-bottom:4px}
+.clock{font-family:var(--f-mono);font-size:13px;opacity:.8;font-variant-numeric:tabular-nums}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:6px;overflow-x:auto;padding-block:10px;scrollbar-width:none}
+nav.tabs .wrap::-webkit-scrollbar{display:none}
+.tab{flex:none;font:inherit;font-size:13px;font-weight:700;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:5px 13px;cursor:pointer;display:flex;align-items:center;gap:6px}
+.tab .dot{width:8px;height:8px;border-radius:50%;background:var(--c)}
+.tab .n{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.tab[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.tab[aria-pressed="true"] .n{color:var(--bg);opacity:.7}
+.tab:focus-visible,.search:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+main .wrap{padding-block:20px 48px;display:flex;flex-direction:column;gap:16px}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.toolbar h2{font-family:var(--f-display);font-size:20px;margin:0;text-wrap:balance}
+.search{font:inherit;font-size:14px;padding:7px 12px;border:1.5px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg);width:min(260px,100%)}
+.note{font-size:12.5px;color:var(--muted);background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:8px 12px;margin:0}
+ol.news{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.item{display:grid;grid-template-columns:6px 1fr;border-top:1px solid var(--line)}
+.item:first-child{border-top:0}
+.item .bar{background:var(--c)}
+.item .body{padding:14px 16px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center;font-size:12px;color:var(--muted)}
+.meta time{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.cat{font-weight:700;color:var(--c);letter-spacing:.04em}
+.ex{font-size:11px;border:1px solid var(--line);border-radius:4px;padding:0 5px}
+.item h3{font-family:var(--f-display);font-weight:700;font-size:17px;line-height:1.45;margin:4px 0 4px;text-wrap:balance}
+.item p{margin:0;color:var(--fg);opacity:.88;max-width:62ch}
+.src{display:inline-block;margin-top:6px;font-size:13px;color:var(--accent);font-weight:700;text-decoration:none}
+.src:hover{text-decoration:underline}
+.empty{padding:28px 16px;text-align:center;color:var(--muted)}
+footer{border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+footer .wrap{padding-block:16px}
+</style>
+</head>
+<body>
+<header class="board">
+  <div class="wrap">
+    <h1 class="brand"><small>JR東海 ニュースまとめ</small>run7online</h1>
+    <div class="clock" id="clock"></div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="カテゴリ"><div class="wrap" id="tabs"></div></nav>
+
+<main><div class="wrap">
+  <div class="toolbar">
+    <h2 id="heading">すべてのニュース</h2>
+    <input class="search" id="q" type="search" placeholder="キーワードで絞り込み" aria-label="キーワード検索">
+  </div>
+  <p class="note">出典：JR東海 ニュースリリース。見出しをもとにした要約です。詳しい内容は各記事の出典リンクから確認してください。</p>
+  <ol class="news" id="list"></ol>
+</div></main>
+
+<footer><div class="wrap">各記事は要約です。詳細は出典元のページをご確認ください。 © run7online</div></footer>
+
+<script>
+/* ===== カテゴリ設定 ===== */
+const CATS = [
+  {id:"all",        name:"すべて",          color:"var(--fg)"},
+  {id:"shinkansen", name:"新幹線",          color:"var(--c-shinkansen)"},
+  {id:"zairai",     name:"在来線",          color:"var(--c-zairai)"},
+  {id:"linear",     name:"リニア",          color:"var(--c-linear)"},
+  {id:"eki",        name:"駅・施設",        color:"var(--c-eki)"},
+  {id:"unko",       name:"安全・運行",        color:"var(--c-unko)"},
+  {id:"kaisha",     name:"会社・決算",      color:"var(--c-kaisha)"},
+  {id:"event",      name:"イベント・きっぷ", color:"var(--c-event)"}
+];
+
+/* ===== ニュース一覧（ここを書き換えて記事を追加） =====
+   date: 日付 / cat: 上のカテゴリid / title: 見出し / summary: 自分の言葉で2〜3行の要約
+   url: 出典のリンク */
+const NEWS = [
+  {date:"2026-10-02", cat:"event", title:"年末年始におトク！「EX早特☆期間限定セール！」発売", summary:"年末年始の利用向けに、EXサービスの早特商品を期間限定のセール価格で発売。対象列車や発売期間は出典で確認を。", url:"https://jr-central.co.jp/news/release/nws000001_00614.html"},
+  {date:"2026-10-01", cat:"kaisha", title:"JR発足40周年の記念ロゴマークが決定", summary:"国鉄分割民営化によるJR発足から40周年を迎えるにあたり、記念ロゴマークが決まった。", url:"https://jr-central.co.jp/news/release/nws000001_00613.html"},
+  {date:"2026-10-01", cat:"zairai", title:"「フクロイサイクルトレイン」「ハマイチサイクルトレイン」の詳細決定", summary:"自転車をそのまま持ち込めるサイクルトレインのうち、袋井方面と浜名湖一周の2企画の運行内容が固まった。", url:"https://jr-central.co.jp/news/release/nws000001_00612.html"},
+  {date:"2026-09-30", cat:"shinkansen", title:"貸切車両パッケージ「新幹線スナック JR」を運行", summary:"東海道新幹線の車両を貸し切り、車内をスナックに見立てて楽しむ企画型パッケージが登場。", url:"https://jr-central.co.jp/news/release/nws000001_00610.html"},
+  {date:"2026-09-30", cat:"event", title:"「もれなく富士山」キャンペーン第4弾を展開", summary:"富士山エリアへの旅行を後押しするキャンペーンが第4弾に入る。", url:"https://jr-central.co.jp/news/release/nws000001_00611.html"},
+  {date:"2026-09-28", cat:"eki", title:"小田原駅を拠点に観光の利便性向上策を実施", summary:"小田原駅を起点とした観光をしやすくするための施策が始まる。", url:"https://jr-central.co.jp/news/release/nws000001_00609.html"},
+  {date:"2026-09-28", cat:"linear", title:"「さがみはらリニアフェスタ2026」事前申込スタート", summary:"相模原市で開かれるリニア関連イベントの参加申込の受付が始まった。", url:"https://jr-central.co.jp/news/release/nws000001_00608.html"},
+  {date:"2026-09-25", cat:"shinkansen", title:"【社長会見】EXサービスのサービス向上", summary:"東海道・山陽新幹線のネット予約「EXサービス」の使い勝手を高める取り組みを社長会見で発表。", url:"https://jr-central.co.jp/news/release/nws000001_00606.html"},
+  {date:"2026-09-25", cat:"event", title:"【社長会見】「そうだ 京都、行こう。」2026年秋キャンペーン", summary:"おなじみの京都キャンペーンの秋版の展開内容を発表。", url:"https://jr-central.co.jp/news/release/nws000001_00607.html"},
+  {date:"2026-09-17", cat:"event", title:"【社長会見】EXサービス25周年記念キャンペーン", summary:"EXサービスの25周年を記念したキャンペーンを実施。", url:"https://jr-central.co.jp/news/release/nws000001_00604.html"},
+  {date:"2026-09-15", cat:"event", title:"「いざいざ奈良」キャンペーン 東大寺編", summary:"奈良への旅行キャンペーンで、東大寺を取り上げた企画を展開。", url:"https://jr-central.co.jp/news/release/nws000001_00601.html"},
+  {date:"2026-09-14", cat:"zairai", title:"在来線の駅・車内で多言語放送を試行", summary:"訪日客などに向けて、在来線の駅や車内で複数の言語による案内放送を試験的に始める。", url:"https://jr-central.co.jp/news/release/nws000001_00602.html"},
+  {date:"2026-09-14", cat:"kaisha", title:"焼津市と連携し「ふるさと住民登録制度モデル事業」を実施", summary:"焼津市とJR東海が組み、地域との関わりを持つ人を増やすモデル事業に取り組む。", url:"https://jr-central.co.jp/news/release/nws000001_00600.html"},
+  {date:"2026-09-11", cat:"unko", title:"2026年秋の踏切事故防止キャンペーン", summary:"踏切での事故を防ぐための秋の啓発キャンペーンを実施。", url:"https://jr-central.co.jp/news/release/nws000001_00599.html"},
+  {date:"2026-09-11", cat:"zairai", title:"富士山・袋井・浜名湖へ「秋のサイクルトレイン2026」", summary:"自転車ごと乗れるサイクルトレインを秋に3方面で運行。", url:"https://jr-central.co.jp/news/release/nws000001_00598.html"},
+  {date:"2026-09-07", cat:"unko", title:"「Japan Travel by NAVITIME」で新幹線のリアルタイム運行情報を提供開始", summary:"訪日客向け旅行アプリで、東海道新幹線の運行状況がリアルタイムで見られるようになった。", url:"https://jr-central.co.jp/news/release/nws000001_00597.html"},
+  {date:"2026-09-07", cat:"event", title:"「岐阜県アウトドア観光キャンペーン」と連携", summary:"岐阜県のアウトドア観光キャンペーンと組んだ取り組みを行う。", url:"https://jr-central.co.jp/news/release/nws000001_00596.html"},
+  {date:"2026-09-04", cat:"event", title:"2026「JR東海 浜松工場へGO」ツアー開催", summary:"新幹線車両の検査を担う浜松工場を見学できるツアーを開催。", url:"https://jr-central.co.jp/news/release/nws000001_00595.html"},
+  {date:"2026-09-04", cat:"unko", title:"新幹線車内での防犯カメラ活用検証を追加実施", summary:"東海道新幹線の車内防犯カメラを使った安全対策の検証を、追加で行う。", url:"https://jr-central.co.jp/news/release/nws000001_00594.html"},
+  {date:"2026-09-04", cat:"shinkansen", title:"2026年シルバーウィーク期間の指定席予約状況", summary:"シルバーウィーク期間の新幹線などの指定席の予約状況を公表。", url:"https://jr-central.co.jp/news/release/nws000001_00593.html"},
+  {date:"2026-09-03", cat:"linear", title:"「さがみはらリニアフェスタ2026」を開催", summary:"相模原市でリニア中央新幹線をテーマにしたイベントを開く。", url:"https://jr-central.co.jp/news/release/nws000001_00592.html"}
+];
+
+/* ===== 表示処理 ===== */
+const $ = s => document.querySelector(s);
+const catOf = id => CATS.find(c => c.id === id) || CATS[0];
+let current = "all";
+try { const h = location.hash.slice(1); if (CATS.some(c=>c.id===h)) current = h; } catch(e){}
+
+function renderTabs(){
+  $("#tabs").innerHTML = CATS.map(c => {
+    const n = c.id==="all" ? NEWS.length : NEWS.filter(x=>x.cat===c.id).length;
+    return `<button class="tab" style="--c:${c.color}" data-id="${c.id}" aria-pressed="${c.id===current}">
+      ${c.id==="all"?"":'<span class="dot"></span>'}${c.name}<span class="n">${n}</span></button>`;
+  }).join("");
+  $("#tabs").querySelectorAll(".tab").forEach(b => b.onclick = () => {
+    current = b.dataset.id; renderTabs(); renderList();
+  });
+}
+const esc = s => String(s).replace(/[&<>"]/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+function fmt(d){ const [y,m,day]=d.split("-"); return `${y}.${m}.${day}`; }
+
+function renderList(){
+  const q = $("#q").value.trim().toLowerCase();
+  const items = NEWS
+    .filter(x => current==="all" || x.cat===current)
+    .filter(x => !q || (x.title+x.summary).toLowerCase().includes(q))
+    .sort((a,b) => b.date.localeCompare(a.date));
+  $("#heading").textContent = current==="all" ? "すべてのニュース" : catOf(current).name + "のニュース";
+  $("#list").innerHTML = items.length ? items.map(x => {
+    const c = catOf(x.cat);
+    return `<li class="item" style="--c:${c.color}"><span class="bar"></span><div class="body">
+      <div class="meta"><time datetime="${x.date}">${fmt(x.date)}</time><span class="cat">${c.name}</span>${x.example?'<span class="ex">例</span>':''}</div>
+      <h3>${esc(x.title)}</h3><p>${esc(x.summary)}</p>
+      <a class="src" href="${esc(x.url)}" target="_blank" rel="noopener">出典を見る →</a>
+    </div></li>`;
+  }).join("") : `<li class="empty">該当するニュースはまだありません</li>`;
+}
+$("#q").addEventListener("input", renderList);
+
+function tick(){
+  const d = new Date(), p = n => String(n).padStart(2,"0");
+  $("#clock").textContent = `${d.getFullYear()}.${p(d.getMonth()+1)}.${p(d.getDate())}  ${p(d.getHours())}:${p(d.getMinutes())}`;
+}
+tick(); setInterval(tick, 30000);
+renderTabs(); renderList();
+</script>
+</body>
+</html>
