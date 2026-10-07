@@ -28,8 +28,8 @@
   --c-shinkansen:#5c9be6; --c-zairai:#f39a3d; --c-linear:#a684e0; --c-eki:#5bbd85; --c-unko:#ea6a5f; --c-kaisha:#9aa6b2; --c-event:#e07ab3;
   color-scheme:dark}
 *{box-sizing:border-box}
-[hidden]{display:none!important}
 body{margin:0}
+[hidden]{display:none!important}
 body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.7}
 .wrap{max-width:880px;margin:0 auto;padding-inline:16px}
 header.board{background:var(--board);color:var(--board-fg);border-bottom:4px solid var(--accent)}
@@ -136,6 +136,18 @@ ol.route::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;widt
 .wk .st-head{gap:4px 8px}
 .wk b{font-family:var(--f-display);font-size:15px}
 .lnote{font-size:12px;color:var(--muted);margin:0}
+.fin{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-numeric:tabular-nums}
+.fin-wrap{overflow-x:auto}
+.fin th,.fin td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+.fin th:first-child,.fin td:first-child{text-align:left}
+.fin thead th{font-size:11.5px;font-weight:700;color:var(--muted);line-height:1.4}
+.fin td b{font-family:var(--f-display);font-size:15px}
+.fin .up,.fin .down{display:block;font-size:11.5px}
+.fin .up{color:var(--c-eki)}
+.fin .down{color:var(--c-unko)}
+.kpanel .lsum dd{font-size:16px}
+.links{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px}
+.links a{color:var(--accent);font-weight:700;text-decoration:none}
 .filterbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13px}
 .filterbar button{font:inherit;font-size:12px;font-weight:700;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:6px;padding:2px 10px;cursor:pointer}
 @media (prefers-reduced-motion: reduce){
@@ -168,6 +180,7 @@ ol.route::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;widt
     <button type="button" class="reload" id="reload"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg>最新に更新</button>
   </div>
   <section class="lpanel" id="lpanel" hidden aria-labelledby="lp-title"></section>
+  <section class="lpanel kpanel" id="kpanel" hidden aria-labelledby="kp-title"></section>
   <div class="filterbar" id="filterbar" hidden></div>
   <ol class="news" id="list"></ol>
 </div></main>
@@ -254,6 +267,46 @@ const LINEAR = {
      src:"https://www.pref.gifu.lg.jp/page/16609.html"}
   ]
 };
+
+/* ===== 業績のまとめ（決算発表のたびに手で更新します） ===== */
+const FIN = {
+  asof: "2026年10月7日時点（最新は2027年3月期 第1四半期決算）",
+  unit: "億円",
+  cols: ["2026年3月期<br>実績", "2027年3月期<br>会社予想", "2027年3月期<br>1Q（4〜6月）"],
+  rows: [
+    {k:"営業収益", v:[[20062, 9.5], [19930, -0.7], [4927, 3.0]]},
+    {k:"営業利益", v:[[8301, 18.1], [7020, -15.4], [2191, -0.9]]},
+    {k:"経常利益", v:[[7809, 20.3], [6530, -16.4], null]},
+    {k:"純利益",   v:[[5528, 20.6], [4470, -19.1], [1426, -1.8]]}
+  ],
+  points: [
+    {k:"次の決算発表", v:"中間決算", sub:"例年10月下旬。日程はIRカレンダーで確認"},
+    {k:"年間配当", v:"32円", sub:"2026年3月期（中間16円・期末16円）"},
+    {k:"インバウンド収入", v:"推計490億円", sub:"2027年3月期 第1四半期・前年同期比7%増"},
+    {k:"今期の見通し", v:"減収減益", sub:"万博特需の反動と人件費の増加"}
+  ],
+  links: [
+    {t:"2026年3月期 決算短信（PDF）", u:"https://jr-central.co.jp/news/release/_pdf/000045546.pdf"},
+    {t:"IR資料室・決算短信", u:"https://company.jr-central.co.jp/ir/"},
+    {t:"IRカレンダー", u:"https://company.jr-central.co.jp/ir/calendar/"}
+  ]
+};
+function renderFin(){
+  const show = current === "kaisha";
+  $("#kpanel").hidden = !show;
+  if (!show) return;
+  $("#kpanel").innerHTML = `
+    <h3 id="kp-title">JR東海の業績<small>${FIN.asof}</small></h3>
+    <div class="fin-wrap"><table class="fin">
+      <thead><tr><th>連結（${FIN.unit}）</th>${FIN.cols.map(c=>`<th>${c}</th>`).join("")}</tr></thead>
+      <tbody>${FIN.rows.map(r=>`<tr><td>${r.k}</td>${r.v.map(v=> v
+        ? `<td><b>${v[0].toLocaleString("ja-JP")}</b><span class="${v[1]>=0?"up":"down"}">${v[1]>=0?"+":""}${v[1].toFixed(1)}%</span></td>`
+        : `<td>—</td>`).join("")}</tr>`).join("")}</tbody>
+    </table></div>
+    <dl class="lsum">${FIN.points.map(x=>`<div><dt>${x.k}</dt><dd>${x.v}<span>${x.sub}</span></dd></div>`).join("")}</dl>
+    <div class="links">${FIN.links.map(l=>`<a href="${l.u}" target="_blank" rel="noopener">${l.t} →</a>`).join("")}</div>
+    <p class="lnote">％は前年同期（前期）比。数字は決算短信と報道をもとに手でまとめたものです。決算・株価・人事のニュースは1時間ごとに自動で集めています。</p>`;
+}
 let LFILTER = null;
 function linearNews(kw){ return NEWS.filter(x => x.cat==="linear" && kw.some(k => x.title.includes(k))); }
 function renderLinear(){
@@ -291,7 +344,7 @@ function renderTabs(){
       ${c.id==="all"?"":'<span class="dot"></span>'}${c.name}<span class="n">${n}</span></button>`;
   }).join("");
   $("#tabs").querySelectorAll(".tab").forEach(b => b.onclick = () => {
-    current = b.dataset.id; LFILTER = null; renderTabs(); renderLinear(); renderList();
+    current = b.dataset.id; LFILTER = null; renderTabs(); renderLinear(); renderFin(); renderList();
   });
 }
 const esc = s => String(s).replace(/[&<>"]/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
@@ -356,10 +409,11 @@ async function load(){
   await wait;
   LOADING = false;
   btn.disabled = false; btn.classList.remove("spin");
-  renderTabs(); renderLinear(); renderList(); renderTicker();
+  renderTabs(); renderLinear(); renderFin(); renderList(); renderTicker();
 }
 $("#reload").addEventListener("click", load);
 renderLinear();
+renderFin();
 renderTicker();
 load();
 </script>
