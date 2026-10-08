@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-09T05:39+09:00",
- "checked": "2026-10-09T05:39+09:00",
+ "updated": "2026-10-09T06:38+09:00",
+ "checked": "2026-10-09T06:38+09:00",
  "items": [
   {
    "date": "2026-10-09",
@@ -36,6 +36,33 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE0zTHFaNXFaQWFjOGo4aEpuOGxFZGtuaUp2R1VDbzc5V0xOWkFJaTRZMjAtWWI4RVE1N0plWnotUEQtMGFaR1FWdW41NUVfWkwzcnFSZ2pJSGRPaEQtUHV0aG80WThDQQ?oc=5",
    "src": "Unisba Media",
+   "auto": true
+  },
+  {
+   "date": "2026-10-09",
+   "cat": "event",
+   "title": "TOICA導入20周年とぴよりん誕生15周年を記念し、JR東海リテイリング・プラスが「ぴよりんTOICA」デザインのグッズを発売",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTFA4OHh3M09jSTZIMEZ5X2k1QmFvNzdReDJScHRPZFhDWWF1RXhiVmlFbFJjWjVOaFNPWDR0WmVqQ0gwNDlW?oc=5",
+   "src": "@DIME アットダイム",
+   "auto": true
+  },
+  {
+   "date": "2026-10-09",
+   "cat": "shinkansen",
+   "title": "3連休は新幹線「のぞみ」自由席なし。指定席の予約必須につき要注意",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9Gc2t6OXFybi13akV5dVNjbE9uZXY3clRsbThzMnRFQnU2b3NoYVZDTjVwV2kwckxnd1JwWk44R0xqR3g2V29rNHpxeUVfbXd3dFY2RTVLb1ROcHVFaEE2SFB5aVhGZzVF?oc=5",
+   "src": "トラベル Watch",
+   "auto": true
+  },
+  {
+   "date": "2026-10-09",
+   "cat": "shinkansen",
+   "title": "大阪市中心部に世にも珍しいホテル＆有名学校＆オフィス「大規模複合施設」完成 東海道新幹線にも関係が",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5SbE50XzRqWHZPMDN0S3VqU1VxZEM4cmhuWU02Y2JBTUtGRnF5N01SQmlyZUZUZTNoelotVlI2b3lSaVJmQkhvR2RRUFlxdHRWZlFFdDNuUlI?oc=5",
+   "src": "京都新聞デジタル",
    "auto": true
   },
   {
@@ -252,6 +279,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9peEExU3ZlN2Q4elM1WHV5TElyaFZVc3drNUJLaTFJT2hMTDRmUUZFZkxuY0E5eHlCWTNfNUwyWVR1c0NyVk41ejRNTERlY0FGeEFMSnBTTjkzMmxMTUIyeFZfN0x2VzVUeHR3OW92Mi1VWlgtWTBTQVNXQUNVSGs?oc=5",
    "src": "Yahoo!ニュース",
+   "auto": true
+  },
+  {
+   "date": "2026-10-08",
+   "cat": "kaisha",
+   "title": "「アンジュルム」が伊勢初公演 JR東海コラボ曲「おいないさ、伊勢」で熱気",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9OY3BrV1M5V0p6MzVmcGdVZ05feU5Wd19VRkNpZllVV0kyeGMxdDFqcEgwVnhqanhrUjFzd2E5RVkzdlQzTWNkZUlER0RJQklpNTFTNUtBZUxBeVM4SktTZ1hOY0txWXNvblRsVkNmTmNIRE9pb0JMUDd4NlhMd9IBgwFBVV95cUxPeGxFOGtSREJnQUNrT05RVHIyQ3ZnWWlFQVNjR2g2MW84VWFmcmEwLXJjZmIxY0dSaTVLU1VkblJoemNoNG45SjVHNFliWnp4LUNDSEdVbjRNYkh1cGtMTTVaakFManA3VUJCenRfLTlSQ0cwQTN1U1Zuc01QUElneHZsNA?oc=5",
+   "src": "ｄメニューニュース",
    "auto": true
   },
   {
@@ -855,6 +891,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1OblFXZWRlN3BNalNWWG9hd0FsVGd5b1N0aTBJODB0VXdVaTNfUEljQ1VVYXhDVzNPeE5fbGRRSlNSdW5RSE5sTXhhd2R1bUZfaVR2ZndaalZ4cDBLbTlv?oc=5",
    "src": "千葉テレビ放送株式会社",
+   "auto": true
+  },
+  {
+   "date": "2026-10-07",
+   "cat": "unko",
+   "title": "東海道新幹線で一時運転見合わせ 下りが東京～新大阪駅の全線 上りは米原～掛川駅",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFAyMzdQYmJYZHV0dzE1dHlHdWlXcl9OQWc5X2ZIdTRtellkSGFubl9kUzRHSW94bldPdlFpUjVLQzdyU3JPam8zS3prSXo0cTFlbGFmRG1UamU?oc=5",
+   "src": "京都新聞デジタル",
    "auto": true
   },
   {
