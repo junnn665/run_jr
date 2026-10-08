@@ -148,6 +148,13 @@ ol.route::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;widt
 .kpanel .lsum dd{font-size:16px}
 .links{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px}
 .links a{color:var(--accent);font-weight:700;text-decoration:none}
+.latest{display:flex;gap:8px;align-items:baseline;font-size:12.5px;margin:5px 0 0}
+.latest span{flex:none;font-size:11px;font-weight:700;color:var(--accent-ink);background:var(--c-linear);border-radius:3px;padding:0 5px}
+.latest a{color:var(--fg);text-decoration:none;min-width:0}
+.latest a:hover{text-decoration:underline}
+.fin-notice{margin:0;font-size:13px;background:var(--bg);border:1.5px solid var(--accent);border-radius:8px;padding:8px 12px}
+.fin-notice a{color:var(--accent);font-weight:700}
+.status.stale{color:var(--c-unko);font-weight:700}
 .filterbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13px}
 .filterbar button{font:inherit;font-size:12px;font-weight:700;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:6px;padding:2px 10px;cursor:pointer}
 @media (prefers-reduced-motion: reduce){
@@ -223,80 +230,18 @@ const LOADER = `<div class="loader" role="status"><svg viewBox="0 0 300 50" aria
 try { const h = location.hash.slice(1); if (CATS.some(c=>c.id===h)) current = h; } catch(e){}
 
 
-/* ===== リニア工事の進捗データ（2026年10月6日時点。手で更新します） ===== */
-const LINEAR = {
-  asof: "2026年10月6日時点",
-  summary: [
-    {k:"開業の見通し", v:"2036年以降", sub:"品川〜名古屋（2027年開業は断念）"},
-    {k:"静岡工区", v:"着工容認", sub:"2026年7月7日 静岡県知事が表明"},
-    {k:"契約済みの工区", v:"約9割", sub:"品川〜名古屋の延長比（2026年3月末）"},
-    {k:"区間", v:"約286km", sub:"品川〜名古屋 最速約40分"}
-  ],
-  stations: [
-    {name:"品川", place:"東京都港区", term:true, status:"build", label:"建設中", kw:["品川"],
-     note:"東海道新幹線の品川駅の真下に地下駅をつくる工事。営業中の線路の下を掘るため、地中に壁を造ってから掘り下げる難しい工事が続いている。",
-     src:"https://linear-chuo-shinkansen.jr-central.co.jp/sp/plan/eki/"},
-    {name:"神奈川県駅（仮称）", place:"相模原市（橋本）", status:"build", label:"建設中", kw:["神奈川県駅","相模原","橋本"],
-     note:"地下約30mに2面4線のホームを持つ地下駅を建設中。名古屋方面へは大型シールドマシンでトンネルを掘り進めている。",
-     src:"https://toyokeizai.net/articles/-/937928"},
-    {name:"山梨県駅（仮称）", place:"甲府市", status:"start", label:"2026年3月着工", kw:["山梨県駅","甲府"],
-     note:"2026年3月に起工式を行い、駅舎の工事が始まった。在来線の甲府駅から離れているため、アクセス手段が地元の課題になっている。",
-     src:"https://hirogoro.com/linear-chuo-shinkansen-opening-route-fare/3717/"},
-    {name:"長野県駅（仮称）", place:"飯田市", status:"build", label:"建設中", kw:["長野県駅","飯田"],
-     note:"高架橋とトンネルの工事が進行中。完成すれば品川まで約45分。県内52.9kmのうち48.5kmがトンネル。",
-     src:"https://newswitch.jp/p/49438"},
-    {name:"岐阜県駅（仮称）", place:"中津川市", status:"build", label:"建設中", kw:["岐阜県駅","中津川"],
-     note:"中津川市千旦林で建設中。工期は2031年12月末までの予定。",
-     src:"https://www.pref.gifu.lg.jp/page/16609.html"},
-    {name:"名古屋", place:"名古屋市中村区", term:true, status:"build", label:"建設中", kw:["名古屋駅","名古屋"],
-     note:"名古屋駅の地下に長さ約1km・幅最大60mの駅をつくる工事。品川と同じく、営業中の駅の下での工事になる。",
-     src:"https://linear-chuo-shinkansen.jr-central.co.jp/sp/plan/eki/"}
-  ],
-  works: [
-    {name:"南アルプストンネル 静岡工区", status:"wait", label:"着工へ", kw:["静岡工区","南アルプス","大井川"],
-     note:"大井川の水への影響をめぐり9年止まっていた区間。2026年7月に知事が着工を容認し、JR東海と環境保全の協定を結んだ。掘るのに10年以上かかる見込みで、ここが開業時期を左右する。",
-     src:"https://www.nagoyatv.com/news/?id=036212"},
-    {name:"南アルプストンネル 山梨工区", status:"done", label:"山梨側の掘削到達", kw:["山梨工区"],
-     note:"山梨県側から掘り進めたトンネルが工区の端まで到達した。",
-     src:"https://news.yahoo.co.jp/articles/1ca86075c29935477dfb7a6b22f090237674a406"},
-    {name:"中央アルプストンネル", status:"build", label:"掘削中", kw:["中央アルプス"],
-     note:"長野〜岐阜を結ぶ約23.3kmのトンネル。長野県内で最も長い区間。",
-     src:"https://newswitch.jp/p/49438"},
-    {name:"岐阜県内のトンネル群", status:"build", label:"掘削中", kw:["瀬戸トンネル","日吉トンネル","長島トンネル","瑞浪"],
-     note:"瀬戸トンネル（約4.4km、2031年3月完成予定）、長島トンネル、日吉トンネルを施工中。瑞浪市では井戸やため池の水位低下が確認され、対策が続いている。",
-     src:"https://www.pref.gifu.lg.jp/page/16609.html"}
-  ]
-};
+/* ===== リニア工事の進捗（linear.json を読み込み。GitHubが1時間ごとに自動更新） ===== */
+let LINEAR = {"asof": "2026年10月6日時点", "summary": [{"k": "開業の見通し", "v": "2036年以降", "sub": "品川〜名古屋（2027年開業は断念）"}, {"k": "静岡工区", "v": "着工容認", "sub": "2026年7月7日 静岡県知事が表明"}, {"k": "契約済みの工区", "v": "約9割", "sub": "品川〜名古屋の延長比（2026年3月末）"}, {"k": "区間", "v": "約286km", "sub": "品川〜名古屋 最速約40分"}], "stations": [{"name": "品川", "place": "東京都港区", "term": true, "status": "build", "label": "建設中", "kw": ["品川駅", "リニア品川"], "note": "東海道新幹線の品川駅の真下に地下駅をつくる工事。営業中の線路の下を掘るため、地中に壁を造ってから掘り下げる難しい工事が続いている。", "src": "https://linear-chuo-shinkansen.jr-central.co.jp/sp/plan/eki/", "status_date": "2026-10-06", "latest": null}, {"name": "神奈川県駅（仮称）", "place": "相模原市（橋本）", "status": "build", "label": "建設中", "kw": ["神奈川県駅", "相模原", "橋本"], "note": "地下約30mに2面4線のホームを持つ地下駅を建設中。名古屋方面へは大型シールドマシンでトンネルを掘り進めている。", "src": "https://toyokeizai.net/articles/-/937928", "status_date": "2026-03-16", "latest": null}, {"name": "山梨県駅（仮称）", "place": "甲府市", "status": "start", "label": "2026年3月着工", "kw": ["山梨県駅", "甲府"], "note": "2026年3月に起工式を行い、駅舎の工事が始まった。在来線の甲府駅から離れているため、アクセス手段が地元の課題になっている。", "src": "https://hirogoro.com/linear-chuo-shinkansen-opening-route-fare/3717/", "status_date": "2026-03-31", "latest": null}, {"name": "長野県駅（仮称）", "place": "飯田市", "status": "build", "label": "建設中", "kw": ["長野県駅", "飯田"], "note": "高架橋とトンネルの工事が進行中。完成すれば品川まで約45分。県内52.9kmのうち48.5kmがトンネル。", "src": "https://newswitch.jp/p/49438", "status_date": "2026-06-14", "latest": null}, {"name": "岐阜県駅（仮称）", "place": "中津川市", "status": "build", "label": "建設中", "kw": ["岐阜県駅", "中津川"], "note": "中津川市千旦林で建設中。工期は2031年12月末までの予定。", "src": "https://www.pref.gifu.lg.jp/page/16609.html", "status_date": "2026-08-27", "latest": null}, {"name": "名古屋", "place": "名古屋市中村区", "term": true, "status": "build", "label": "建設中", "kw": ["名古屋駅", "リニア名古屋"], "note": "名古屋駅の地下に長さ約1km・幅最大60mの駅をつくる工事。品川と同じく、営業中の駅の下での工事になる。", "src": "https://linear-chuo-shinkansen.jr-central.co.jp/sp/plan/eki/", "status_date": "2026-10-06", "latest": null}], "works": [{"name": "南アルプストンネル 静岡工区", "status": "wait", "label": "着工へ", "kw": ["静岡工区", "南アルプス", "大井川"], "note": "大井川の水への影響をめぐり9年止まっていた区間。2026年7月に知事が着工を容認し、JR東海と環境保全の協定を結んだ。掘るのに10年以上かかる見込みで、ここが開業時期を左右する。", "src": "https://www.nagoyatv.com/news/?id=036212", "status_date": "2026-07-07", "latest": null}, {"name": "南アルプストンネル 山梨工区", "status": "done", "label": "山梨側の掘削到達", "kw": ["山梨工区"], "note": "山梨県側から掘り進めたトンネルが工区の端まで到達した。", "src": "https://news.yahoo.co.jp/articles/1ca86075c29935477dfb7a6b22f090237674a406", "status_date": "2026-10-06", "latest": null}, {"name": "中央アルプストンネル", "status": "build", "label": "掘削中", "kw": ["中央アルプス"], "note": "長野〜岐阜を結ぶ約23.3kmのトンネル。長野県内で最も長い区間。", "src": "https://newswitch.jp/p/49438", "status_date": "2026-06-14", "latest": null}, {"name": "岐阜県内のトンネル群", "status": "build", "label": "掘削中", "kw": ["瀬戸トンネル", "日吉トンネル", "長島トンネル", "瑞浪"], "note": "瀬戸トンネル（約4.4km、2031年3月完成予定）、長島トンネル、日吉トンネルを施工中。瑞浪市では井戸やため池の水位低下が確認され、対策が続いている。", "src": "https://www.pref.gifu.lg.jp/page/16609.html", "status_date": "2026-08-27", "latest": null}], "checked": ""};
 
-/* ===== 業績のまとめ（決算発表のたびに手で更新します） ===== */
-const FIN = {
-  asof: "2026年10月7日時点（最新は2027年3月期 第1四半期決算）",
-  unit: "億円",
-  cols: ["2026年3月期<br>実績", "2027年3月期<br>会社予想", "2027年3月期<br>1Q（4〜6月）"],
-  rows: [
-    {k:"営業収益", v:[[20062, 9.5], [19930, -0.7], [4927, 3.0]]},
-    {k:"営業利益", v:[[8301, 18.1], [7020, -15.4], [2191, -0.9]]},
-    {k:"経常利益", v:[[7809, 20.3], [6530, -16.4], null]},
-    {k:"純利益",   v:[[5528, 20.6], [4470, -19.1], [1426, -1.8]]}
-  ],
-  points: [
-    {k:"次の決算発表", v:"中間決算", sub:"例年10月下旬。日程はIRカレンダーで確認"},
-    {k:"年間配当", v:"32円", sub:"2026年3月期（中間16円・期末16円）"},
-    {k:"インバウンド収入", v:"推計490億円", sub:"2027年3月期 第1四半期・前年同期比7%増"},
-    {k:"今期の見通し", v:"減収減益", sub:"万博特需の反動と人件費の増加"}
-  ],
-  links: [
-    {t:"2026年3月期 決算短信（PDF）", u:"https://jr-central.co.jp/news/release/_pdf/000045546.pdf"},
-    {t:"IR資料室・決算短信", u:"https://company.jr-central.co.jp/ir/"},
-    {t:"IRカレンダー", u:"https://company.jr-central.co.jp/ir/calendar/"}
-  ]
-};
+/* ===== 業績のまとめ（finance.json を読み込み。決算短信が出ると自動更新） ===== */
+let FIN = {"asof": "2026年10月7日時点（最新は2027年3月期 第1四半期決算）", "unit": "億円", "cols": ["2026年3月期<br>実績", "2027年3月期<br>会社予想", "2027年3月期<br>1Q（4〜6月）"], "rows": [{"k": "営業収益", "v": [[20062, 9.5], [19930, -0.7], [4927, 3]]}, {"k": "営業利益", "v": [[8301, 18.1], [7020, -15.4], [2191, -0.9]]}, {"k": "経常利益", "v": [[7809, 20.3], [6530, -16.4], null]}, {"k": "純利益", "v": [[5528, 20.6], [4470, -19.1], [1426, -1.8]]}], "points": [{"k": "次の決算発表", "v": "中間決算", "sub": "例年10月下旬。日程はIRカレンダーで確認"}, {"k": "年間配当", "v": "32円", "sub": "2026年3月期（中間16円・期末16円）"}, {"k": "インバウンド収入", "v": "推計490億円", "sub": "2027年3月期 第1四半期・前年同期比7%増"}, {"k": "今期の見通し", "v": "減収減益", "sub": "万博特需の反動と人件費の増加"}], "links": [{"t": "2026年3月期 決算短信（PDF）", "u": "https://jr-central.co.jp/news/release/_pdf/000045546.pdf"}, {"t": "IR資料室・決算短信", "u": "https://company.jr-central.co.jp/ir/"}, {"t": "IRカレンダー", "u": "https://company.jr-central.co.jp/ir/calendar/"}], "processed": ["https://jr-central.co.jp/news/release/_pdf/000045546.pdf"], "notice": null, "checked": ""};
 function renderFin(){
   const show = current === "kaisha";
   $("#kpanel").hidden = !show;
   if (!show) return;
   $("#kpanel").innerHTML = `
-    <h3 id="kp-title">JR東海の業績<small>${FIN.asof}</small></h3>
+    <h3 id="kp-title">JR東海の業績<small>${FIN.asof}・決算短信が出ると自動で反映${FIN.checked?`（${hm(FIN.checked)}確認）`:""}</small></h3>
+    ${FIN.notice?`<p class="fin-notice">新しい決算が発表されました：<a href="${esc(FIN.notice.url)}" target="_blank" rel="noopener">${esc(FIN.notice.title)}</a>（表の数字は自動で読み取れなかったため、前回のままです）</p>`:""}
     <div class="fin-wrap"><table class="fin">
       <thead><tr><th>連結（${FIN.unit}）</th>${FIN.cols.map(c=>`<th>${c}</th>`).join("")}</tr></thead>
       <tbody>${FIN.rows.map(r=>`<tr><td>${r.k}</td>${r.v.map(v=> v
@@ -305,8 +250,10 @@ function renderFin(){
     </table></div>
     <dl class="lsum">${FIN.points.map(x=>`<div><dt>${x.k}</dt><dd>${x.v}<span>${x.sub}</span></dd></div>`).join("")}</dl>
     <div class="links">${FIN.links.map(l=>`<a href="${l.u}" target="_blank" rel="noopener">${l.t} →</a>`).join("")}</div>
-    <p class="lnote">％は前年同期（前期）比。数字は決算短信と報道をもとに手でまとめたものです。決算・株価・人事のニュースは1時間ごとに自動で集めています。</p>`;
+    <p class="lnote">％は前年同期（前期）比、億円未満は切り捨て。JR東海が決算短信を発表すると、1時間以内にPDFから数字を読み取って表を書き換えます。決算・株価・人事のニュースも1時間ごとに集めています。</p>`;
 }
+function hm(iso){ const d=new Date(iso), p=n=>String(n).padStart(2,"0"); return `${d.getMonth()+1}/${d.getDate()} ${p(d.getHours())}:${p(d.getMinutes())}`; }
+function latestLine(x){ return x.latest ? `<p class="latest"><span>最新</span><a href="${esc(x.latest.url)}" target="_blank" rel="noopener">${fmt(x.latest.date).slice(5).replace(".","/")} ${esc(x.latest.title)}</a></p>` : ""; }
 let LFILTER = null;
 function linearNews(kw){ return NEWS.filter(x => x.cat==="linear" && kw.some(k => x.title.includes(k))); }
 function renderLinear(){
@@ -316,17 +263,17 @@ function renderLinear(){
   const btn = o => { const n = linearNews(o.kw).length; if (!n) return "";
     return `<button type="button" data-f="${esc(o.name)}" aria-pressed="${LFILTER&&LFILTER.name===o.name}">関連ニュース ${n}件</button>`; };
   $("#lpanel").innerHTML = `
-    <h3 id="lp-title">リニア工事の進捗<small>${LINEAR.asof}・各項目の出典リンクで最新情報を確認できます</small></h3>
+    <h3 id="lp-title">リニア工事の進捗<small>説明は${LINEAR.asof}・状況と最新ニュースは自動更新${LINEAR.checked?`（${hm(LINEAR.checked)}確認）`:""}</small></h3>
     <dl class="lsum">${LINEAR.summary.map(x=>`<div><dt>${x.k}</dt><dd>${x.v}<span>${x.sub}</span></dd></div>`).join("")}</dl>
     <h4 class="lsec">駅の工事（品川 → 名古屋）</h4>
     <ol class="route">${LINEAR.stations.map(x=>`<li class="st${x.term?" term":""}">
       <div class="st-head"><span class="st-name">${x.name}</span><span class="st-place">${x.place}</span><span class="pill ${x.status}">${x.label}</span></div>
-      <p>${x.note}</p><div class="st-foot">${btn(x)}<a href="${x.src}" target="_blank" rel="noopener">出典 →</a></div></li>`).join("")}</ol>
+      <p>${x.note}</p>${latestLine(x)}<div class="st-foot">${btn(x)}<a href="${x.status_src||x.src}" target="_blank" rel="noopener">出典 →</a></div></li>`).join("")}</ol>
     <h4 class="lsec">主なトンネル・工区</h4>
     <div class="wks">${LINEAR.works.map(x=>`<div class="wk">
       <div class="st-head"><b>${x.name}</b><span class="pill ${x.status}">${x.label}</span></div>
-      <p>${x.note}</p><div class="st-foot">${btn(x)}<a href="${x.src}" target="_blank" rel="noopener">出典 →</a></div></div>`).join("")}</div>
-    <p class="lnote">駅名・工区名のニュースは1時間ごとに自動で集めています。進捗の説明は報道と公式資料をもとに手でまとめたものです。</p>`;
+      <p>${x.note}</p>${latestLine(x)}<div class="st-foot">${btn(x)}<a href="${x.status_src||x.src}" target="_blank" rel="noopener">出典 →</a></div></div>`).join("")}</div>
+    <p class="lnote">1時間ごとに駅名・工区名のニュースを集め、見出しに「貫通」「着工」「完成」などが出ると状況の表示が自動で切り替わります。説明文は報道と公式資料をもとにまとめたものです。</p>`;
 }
 $("#lpanel").addEventListener("click", e => {
   const b = e.target.closest("button[data-f]"); if (!b) return;
@@ -396,13 +343,21 @@ async function load(){
   const btn = $("#reload"); btn.disabled = true; btn.classList.add("spin");
   const wait = new Promise(r => setTimeout(r, 1500));
   try{
+    const get = async (f) => { const r = await fetch(f + "?t=" + Date.now(), {cache:"no-store"}); if (!r.ok) throw new Error(f); return r.json(); };
+    try { LINEAR = await get("linear.json"); } catch(e){}
+    try { FIN = await get("finance.json"); } catch(e){}
     const r = await fetch("news.json?t=" + Date.now(), {cache:"no-store"});
     if(!r.ok) throw new Error(r.status);
     const data = await r.json();
     NEWS = data.items || [];
     UPDATED = data.updated || "";
-    const u = UPDATED ? new Date(UPDATED) : null;
-    $("#status").textContent = u ? `最終更新：${u.getFullYear()}.${String(u.getMonth()+1).padStart(2,"0")}.${String(u.getDate()).padStart(2,"0")} ${String(u.getHours()).padStart(2,"0")}:${String(u.getMinutes()).padStart(2,"0")}・${NEWS.length}件` : `${NEWS.length}件`;
+    const checked = data.checked || UPDATED;
+    const st = $("#status");
+    const hours = checked ? (Date.now() - new Date(checked)) / 36e5 : 99;
+    st.classList.toggle("stale", hours > 3);
+    st.textContent = (checked ? `最終チェック：${hm(checked)}` : "") +
+      (UPDATED ? `・最新記事の追加：${hm(UPDATED)}` : "") + `・${NEWS.length}件` +
+      (hours > 3 ? "　※自動更新が止まっている可能性があります" : "");
   }catch(e){
     $("#status").textContent = "ニュースを読み込めませんでした。時間をおいて再読み込みしてください。";
   }
