@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-09T04:37+09:00",
- "checked": "2026-10-09T04:37+09:00",
+ "updated": "2026-10-09T05:39+09:00",
+ "checked": "2026-10-09T05:39+09:00",
  "items": [
   {
    "date": "2026-10-09",
@@ -27,6 +27,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5wUUZQVGpXbVAxUkVjZHFTZ3JKbU1ZQnA0R3cxb0QzbTVEUFRnVUlBVU9yWUtzbDV6cWFpeXA1OUZvLXc4VkZwSjRFR2lGaHV1Wl9oc1Blb3JlMmllbWlLOTZjSzYyUkt0cWo4cy04VjRZOG1mLUVsWWd2SlhfRmc?oc=5",
    "src": "Yahoo!ニュース",
+   "auto": true
+  },
+  {
+   "date": "2026-10-09",
+   "cat": "zairai",
+   "title": "JR東海が名古屋と長野を結ぶ特急「しなの」新型車両を公開 Bubba Chandler (xfDZBirHBL)",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE0zTHFaNXFaQWFjOGo4aEpuOGxFZGtuaUp2R1VDbzc5V0xOWkFJaTRZMjAtWWI4RVE1N0plWnotUEQtMGFaR1FWdW41NUVfWkwzcnFSZ2pJSGRPaEQtUHV0aG80WThDQQ?oc=5",
+   "src": "Unisba Media",
    "auto": true
   },
   {
@@ -837,6 +846,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE02U0V6cVJwY2lmVjkweFpGUlRsRlhDQmRnalJNN0UwRHdEMXJlUGVJU2dQc1NHY3RPTFRzc1ZYbTlWV3VyMUN1Q0R4V1NGZlMzTTQ5QTd2YnlBOEQwTFp6eDE4OE82djJBUEwwcEV5b3JzclQ2VGk5eEt3dnZPRDg?oc=5",
    "src": "日テレNEWS NNN",
+   "auto": true
+  },
+  {
+   "date": "2026-10-07",
+   "cat": "unko",
+   "title": "【東海道/山陽新幹線】岐阜/滋賀県境区間で信号確認 最大80分程度の遅れ〈7日18:40現在〉本日2回目",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1OblFXZWRlN3BNalNWWG9hd0FsVGd5b1N0aTBJODB0VXdVaTNfUEljQ1VVYXhDVzNPeE5fbGRRSlNSdW5RSE5sTXhhd2R1bUZfaVR2ZndaalZ4cDBLbTlv?oc=5",
+   "src": "千葉テレビ放送株式会社",
    "auto": true
   },
   {
