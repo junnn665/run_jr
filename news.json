@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-09T06:38+09:00",
- "checked": "2026-10-09T06:38+09:00",
+ "updated": "2026-10-09T07:37+09:00",
+ "checked": "2026-10-09T07:37+09:00",
  "items": [
   {
    "date": "2026-10-09",
@@ -63,6 +63,24 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5SbE50XzRqWHZPMDN0S3VqU1VxZEM4cmhuWU02Y2JBTUtGRnF5N01SQmlyZUZUZTNoelotVlI2b3lSaVJmQkhvR2RRUFlxdHRWZlFFdDNuUlI?oc=5",
    "src": "京都新聞デジタル",
+   "auto": true
+  },
+  {
+   "date": "2026-10-09",
+   "cat": "zairai",
+   "title": "特急「しらさぎ」「ひだ」をデザインしたJR公式アイテム",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5aUnZ2d21DT1ZYanp4ejNiUDhrSkxOMFhPV0hUMEdVMzR0cUQyUEpvVjFkYmRNUTI4d2NBVTFYU0RyZ2NKbXlDc3U5Sk14U0RMSmxhbVV4dUEyNlJtRGJHTVRUVQ?oc=5",
+   "src": "デジカメ Watch",
+   "auto": true
+  },
+  {
+   "date": "2026-10-09",
+   "cat": "shinkansen",
+   "title": "3連休は新幹線「のぞみ」自由席なし。指定席の予約必須につき要注意（トラベル Watch）",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBSMnJxR0daNHpEeUhabldGcVVrbTdocm1yVGhGeWJIV25xcl9RWVRXVko4Y0hPSTJBLUFxdUJ6SGNYUkUzT1NxZC1uUU14TW01SnVaNjVTbWNIVWEtU2JHeWE5MDhaU1ZuNzZrbU1lTEhSTGprVlY0aUpFVXFZSlU?oc=5",
+   "src": "Yahoo!ニュース",
    "auto": true
   },
   {
@@ -288,6 +306,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9OY3BrV1M5V0p6MzVmcGdVZ05feU5Wd19VRkNpZllVV0kyeGMxdDFqcEgwVnhqanhrUjFzd2E5RVkzdlQzTWNkZUlER0RJQklpNTFTNUtBZUxBeVM4SktTZ1hOY0txWXNvblRsVkNmTmNIRE9pb0JMUDd4NlhMd9IBgwFBVV95cUxPeGxFOGtSREJnQUNrT05RVHIyQ3ZnWWlFQVNjR2g2MW84VWFmcmEwLXJjZmIxY0dSaTVLU1VkblJoemNoNG45SjVHNFliWnp4LUNDSEdVbjRNYkh1cGtMTTVaakFManA3VUJCenRfLTlSQ0cwQTN1U1Zuc01QUElneHZsNA?oc=5",
    "src": "ｄメニューニュース",
+   "auto": true
+  },
+  {
+   "date": "2026-10-08",
+   "cat": "linear",
+   "title": "リニア中央新幹線 開業はいつに？静岡工区の“着工容認”で大きく前進も… ｢南アルプストンネル｣の難工事は10年以上かかる見込み 開通すると何が変わる？",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFA4bnh6aWZkMU11TkVyV3dDSDRRSUFvXzB4aGNvQjFIVDBuNnMxV1RLMXk0ZC03ajc0YjMzbzN2RzBIZHM1Y2hMX2J6elVuNDJfNGNvLVRuODRmQkI5T2tn?oc=5",
+   "src": "TBS NEWS DIG",
    "auto": true
   },
   {
