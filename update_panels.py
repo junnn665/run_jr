@@ -23,6 +23,8 @@ def save(path, data):
 # ------------------------------------------------------------------ リニア
 # 見出しにこの言葉があれば状況を切り替える（上ほど優先）
 MILESTONES = [
+    (re.compile(r"再開"),               "build", "工事再開"),
+    (re.compile(r"停止|中断|中止|止まる|ストップ"), "wait", "工事停止"),
     (re.compile(r"開業"),               None,    None),          # 開業の話題は予定の話が多いので無視
     (re.compile(r"貫通"),               "done",  "貫通"),
     (re.compile(r"完成|竣工|完了"),      "done",  "完成"),
@@ -33,7 +35,9 @@ NOT_YET = re.compile(r"へ$|へ[ 　、。]|容認|予定|見通し|目指|方�
 
 def update_linear(news):
     L = load("linear.json")
-    items = [x for x in news if x.get("cat") == "linear" or "リニア" in x["title"]]
+    # イベントや見学会の記事は工事の進捗とは関係ないので除く
+    noise = re.compile(r"フェス|見学|寄せ書き|ツアー|イベント|グッズ|展示|体験|記念")
+    items = [x for x in news if (x.get("cat") == "linear" or "リニア" in x["title"]) and not noise.search(x["title"])]
     changed = []
     for o in L["stations"] + L["works"]:
         hits = sorted([x for x in items if any(k in x["title"] for k in o["kw"])],
@@ -43,7 +47,8 @@ def update_linear(news):
         for x in hits:
             if x["date"] <= o.get("status_date", ""):
                 break
-            if NOT_YET.search(x["title"]):
+            # 「停止へ」のように、止まる・再開する話は「へ」が付いても反映する
+            if NOT_YET.search(x["title"]) and not re.search(r"再開|停止|中断|中止", x["title"]):
                 continue
             for pat, status, label in MILESTONES:
                 if pat.search(x["title"]):

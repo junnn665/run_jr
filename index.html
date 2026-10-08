@@ -257,16 +257,9 @@ function renderFin(){
 function hm(iso){ const d=new Date(iso), p=n=>String(n).padStart(2,"0"); return `${d.getMonth()+1}/${d.getDate()} ${p(d.getHours())}:${p(d.getMinutes())}`; }
 function latestLine(x){ return x.latest ? `<p class="latest"><span>最新</span><a href="${esc(x.latest.url)}" target="_blank" rel="noopener">${fmt(x.latest.date).slice(5).replace(".","/")} ${esc(x.latest.title)}</a></p>` : ""; }
 let LFILTER = null;
-function linearNews(kw){ return NEWS.filter(x => x.cat==="linear" && kw.some(k => x.title.includes(k))); }
-/* 「リニア工事進捗」タブに出すニュース：駅・工区の名前か、工事に関する言葉が入ったリニアの記事 */
-const WORKWORDS = ["工事","トンネル","掘削","掘進","着工","起工","貫通","シールド","工区","駅舎","高架","残土","水位","大井川","ボーリング","変状","停止","再開"];
-function progressNews(){
-  // 駅は「○○駅」の形だけ使う（「飯田」「甲府」など地名だけだと、まちづくりの話まで入るため）
-  const kws = LINEAR.works.flatMap(o => o.kw)
-    .concat(LINEAR.stations.flatMap(o => o.kw).filter(k => k.includes("駅")))
-    .concat(WORKWORDS);
-  return NEWS.filter(x => x.cat==="linear" && kws.some(k => x.title.includes(k)));
-}
+function linearNews(kw){ return NEWS.filter(x => x.cat==="linear" && !NOISE.test(x.title) && kw.some(k => x.title.includes(k))); }
+/* イベントや見学会など、工事の進み具合と関係ない記事は「関連ニュース」に入れない */
+const NOISE = /フェス|見学|寄せ書き|ツアー|イベント|グッズ|展示|体験|記念/;
 function renderLinear(){
   const show = current === "lprog";
   $("#lpanel").hidden = !show;
@@ -297,7 +290,7 @@ $("#lpanel").addEventListener("click", e => {
 
 function renderTabs(){
   $("#tabs").innerHTML = CATS.map(c => {
-    const n = c.id==="all" ? NEWS.length : c.id==="lprog" ? progressNews().length : NEWS.filter(x=>x.cat===c.id).length;
+    const n = c.id==="all" ? NEWS.length : c.id==="lprog" ? "" : NEWS.filter(x=>x.cat===c.id).length;
     return `<button class="tab" style="--c:${c.color}" data-id="${c.id}" aria-pressed="${c.id===current}">
       ${c.id==="all"?"":'<span class="dot"></span>'}${c.name}<span class="n">${n}</span></button>`;
   }).join("");
@@ -312,9 +305,9 @@ function fmt(d){ const [y,m,day]=d.split("-"); return `${y}.${m}.${day}`; }
 function renderList(){
   const q = $("#q").value.trim().toLowerCase();
   const items = NEWS
-    .filter(x => current==="all" || (current==="lprog" ? progressNews().includes(x) : x.cat===current))
+    .filter(x => current==="all" || (current==="lprog" ? x.cat==="linear" : x.cat===current))
     .filter(x => !q || (x.title+(x.summary||"")).toLowerCase().includes(q))
-    .filter(x => !LFILTER || LFILTER.kw.some(k => x.title.includes(k)))
+    .filter(x => !LFILTER || (!NOISE.test(x.title) && LFILTER.kw.some(k => x.title.includes(k))))
     .sort((a,b) => b.date.localeCompare(a.date));
   $("#heading").textContent = current==="all" ? "すべてのニュース" : current==="lprog" ? "リニア工事進捗" : catOf(current).name + "のニュース";
   const fb = $("#filterbar");
@@ -322,6 +315,12 @@ function renderList(){
   if (LFILTER){ fb.innerHTML = `<span>「${esc(LFILTER.name)}」のニュース ${items.length}件</span><button type="button" id="clearf">絞り込みを解除</button>`;
     $("#clearf").onclick = () => { LFILTER = null; renderLinear(); renderList(); }; }
   const list = $("#list");
+  // 工事進捗タブは進捗の欄だけ。「関連ニュース」ボタンを押したときだけ一覧を出す
+  const panelOnly = current === "lprog" && !LFILTER;
+  list.hidden = panelOnly;
+  $("#q").hidden = current === "lprog";
+  document.querySelector(".note").hidden = current === "lprog";
+  if (panelOnly) return;
   if (LOADING){ list.innerHTML = `<li>${LOADER}</li>`; return; }
   list.innerHTML = items.length ? items.map(x => {
     const c = catOf(x.cat);
