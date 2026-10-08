@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-08T21:56+09:00",
- "checked": "2026-10-08T22:41+09:00",
+ "updated": "2026-10-08T23:41+09:00",
+ "checked": "2026-10-08T23:41+09:00",
  "items": [
   {
    "date": "2026-10-08",
@@ -801,6 +801,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBTOHFBQ21nTWw2aUs1cGlMSE1Ea1BReDVkWmhaMlJMenlRNHgyXzY3MnBxb1cwNFFFZEsxcDlXVlBFV1hCVnA2dmhrSUZhbWJVZmFVT29wc2xYMFdW?oc=5",
    "src": "YouTube",
+   "auto": true
+  },
+  {
+   "date": "2026-10-07",
+   "cat": "unko",
+   "title": "【速報】東海道新幹線の下り一部区間で運転見合わせ 信号設備点検の影響で（7日・午後6時5分現在）（2026年10月7日掲載）",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE02U0V6cVJwY2lmVjkweFpGUlRsRlhDQmRnalJNN0UwRHdEMXJlUGVJU2dQc1NHY3RPTFRzc1ZYbTlWV3VyMUN1Q0R4V1NGZlMzTTQ5QTd2YnlBOEQwTFp6eDE4OE82djJBUEwwcEV5b3JzclQ2VGk5eEt3dnZPRDg?oc=5",
+   "src": "日テレNEWS NNN",
    "auto": true
   },
   {
