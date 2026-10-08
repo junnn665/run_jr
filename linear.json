@@ -51,7 +51,11 @@
    "note": "地下約30mに2面4線のホームを持つ地下駅を建設中。名古屋方面へは大型シールドマシンでトンネルを掘り進めている。",
    "src": "https://toyokeizai.net/articles/-/937928",
    "status_date": "2026-03-16",
-   "latest": null
+   "latest": {
+    "date": "2026-10-08",
+    "title": "橋本のリニア工事現場を一般公開！「さがみはらリニアフェスタ2026」10/24(土)・25(日)開催。地下3階の軌道階も初公開",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBJOXRROUZTcGwyS3VTZ0NtOEFQVEpibzZ5THZ1bmVqcDI4UjdFS1RlOW8wcHBzMjVXTFdlRWhtcURtdzVlY2hIZ3JWZURsbk1ncEEyRkxFSWxhcnFKa3NpbnJNekJzVzhqYVE?oc=5"
+   }
   },
   {
    "name": "山梨県駅（仮称）",
@@ -65,7 +69,11 @@
    "note": "2026年3月に起工式を行い、駅舎の工事が始まった。在来線の甲府駅から離れているため、アクセス手段が地元の課題になっている。",
    "src": "https://hirogoro.com/linear-chuo-shinkansen-opening-route-fare/3717/",
    "status_date": "2026-03-31",
-   "latest": null
+   "latest": {
+    "date": "2026-10-05",
+    "title": "リニア山梨県駅予定地徒歩8分 甲府RC 利回り10.75％",
+    "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOM2xVQ0FmR2pPU0JHX3NjOTRDSmU4WUlMSzdsLWdLZUlNODBpclZGQXZGUlRUclI3bzlTck5XSDJ0WlNfa3pSSnNWNE5YeHlXWXNxYW1TYmQzWXRfaC02RlhaWHB6Y0FsY1Rfa1hoLVZHZVAwOGI4LWE3N1dON1FVaXhnazFKcFl6ejNSRld3?oc=5"
+   }
   },
   {
    "name": "長野県駅（仮称）",
@@ -79,7 +87,11 @@
    "note": "高架橋とトンネルの工事が進行中。完成すれば品川まで約45分。県内52.9kmのうち48.5kmがトンネル。",
    "src": "https://newswitch.jp/p/49438",
    "status_date": "2026-06-14",
-   "latest": null
+   "latest": {
+    "date": "2026-10-08",
+    "title": "「長野県全体の玄関口に」リニア駅予定地を木曽地域の首長らが初視察 地域活性化へ連携期待【長野・飯田市】",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE95U1F6bjdKNW9qUEI0cXVYbGZaLTJBczNrOE5EZDdNbVRpMXdvWl9LRFhjd0RWQlFKUGxIcm9SX0hlS0h3bENuSVVXTXFoSk1qRGpFS2xOY1p1Sm1vamdMRzhRcUdDcUY0eVZ0UVd3?oc=5"
+   }
   },
   {
    "name": "岐阜県駅（仮称）",
@@ -93,7 +105,11 @@
    "note": "中津川市千旦林で建設中。工期は2031年12月末までの予定。",
    "src": "https://www.pref.gifu.lg.jp/page/16609.html",
    "status_date": "2026-08-27",
-   "latest": null
+   "latest": {
+    "date": "2026-10-07",
+    "title": "夢書いたシート、リニアトンネルに 来春閉校の中津川・山口小の児童が寄せ書き制作",
+    "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE1qeTlVSGVOci00QXN0cG5QWXgtbHJ6TXptOTByTHNqVnpaRzRiSExUWXE1cDFSS1JKSF9UVmhWcjhuWnFwWUVPRjJsOA?oc=5"
+   }
   },
   {
    "name": "名古屋",
@@ -114,8 +130,8 @@
  "works": [
   {
    "name": "南アルプストンネル 静岡工区",
-   "status": "wait",
-   "label": "着工へ",
+   "status": "start",
+   "label": "着工（10/5報道）",
    "kw": [
     "静岡工区",
     "南アルプス",
@@ -123,8 +139,13 @@
    ],
    "note": "大井川の水への影響をめぐり9年止まっていた区間。2026年7月に知事が着工を容認し、JR東海と環境保全の協定を結んだ。掘るのに10年以上かかる見込みで、ここが開業時期を左右する。",
    "src": "https://www.nagoyatv.com/news/?id=036212",
-   "status_date": "2026-07-07",
-   "latest": null
+   "status_date": "2026-10-05",
+   "latest": {
+    "date": "2026-10-05",
+    "title": "静岡市長、行政判断を重視 リニア静岡工区着工「政治判断の瞬間は…」：ニュース",
+    "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBTeHFiRFBtVnpMWllwdF8zYjlFal91YzdzNkVhQXdObmZIQ0lTWGVzdzVkNDdIRVZHdnhOejJVVk9BdDI2d0c3c0dCZmJTdHhHaU1pYVlwMFY0NlN5V3ZLclkxMzc?oc=5"
+   },
+   "status_src": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBTeHFiRFBtVnpMWllwdF8zYjlFal91YzdzNkVhQXdObmZIQ0lTWGVzdzVkNDdIRVZHdnhOejJVVk9BdDI2d0c3c0dCZmJTdHhHaU1pYVlwMFY0NlN5V3ZLclkxMzc?oc=5"
   },
   {
    "name": "南アルプストンネル 山梨工区",
@@ -163,8 +184,12 @@
    "note": "瀬戸トンネル（約4.4km、2031年3月完成予定）、長島トンネル、日吉トンネルを施工中。瑞浪市では井戸やため池の水位低下が確認され、対策が続いている。",
    "src": "https://www.pref.gifu.lg.jp/page/16609.html",
    "status_date": "2026-08-27",
-   "latest": null
+   "latest": {
+    "date": "2026-10-04",
+    "title": "リニア工事で“水位低下” 新しく設置した井戸など追加費用30年間補償へ JR東海が住民らに説明 岐阜･瑞浪市",
+    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5KeW04aENKZGhGS2pwTTVmeFhDVHlfbzZpc3lHNUx2Tms0Zi1PWkNUbTdlVWZqSWdfanpEMXU2aXgzMFBkN3REZUVSMmMwNW55LWNnN05na0FYOHE0Zzdn?oc=5"
+   }
   }
  ],
- "checked": ""
+ "checked": "2026-10-08T21:38+09:00"
 }
