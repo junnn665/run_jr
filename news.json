@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-08T21:50+09:00",
- "checked": "2026-10-08T21:50+09:00",
+ "updated": "2026-10-08T21:56+09:00",
+ "checked": "2026-10-08T21:56+09:00",
  "items": [
   {
    "date": "2026-10-08",
@@ -207,6 +207,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5HVUJaWFc4b1g5Y3BOc1B0SUlmd0Rsekp6MXI3dVJBVTExNFc3NXplSER5TEo0TEZNUVNsbjhGem4zNjJJbmU3SGJBbnU5QQ?oc=5",
    "src": "レイルラボ",
+   "auto": true
+  },
+  {
+   "date": "2026-10-08",
+   "cat": "linear",
+   "title": "品川区地下のリニアトンネル掘削工事でシールドマシン部品に損傷確認 点検完了に半年以上 工事再開はさらに先の見通し JR東海（TBS NEWS DIG Powered by JNN）",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9peEExU3ZlN2Q4elM1WHV5TElyaFZVc3drNUJLaTFJT2hMTDRmUUZFZkxuY0E5eHlCWTNfNUwyWVR1c0NyVk41ejRNTERlY0FGeEFMSnBTTjkzMmxMTUIyeFZfN0x2VzVUeHR3OW92Mi1VWlgtWTBTQVNXQUNVSGs?oc=5",
+   "src": "Yahoo!ニュース",
    "auto": true
   },
   {
@@ -1503,6 +1512,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFA3T1FpZlNXcDZEUkh2cFRXNGpZZ0dEQ0pUVC1uWXVGUGRRMy1rTmdsUWstRDBqcTFyOTdCTDlYV1FjMzZwV3FrM1BCeldHM0RGelo3Q212WHE4WFRtbW5SaVgyczM?oc=5",
    "src": "中日BIZナビ",
+   "auto": true
+  },
+  {
+   "date": "2026-10-05",
+   "cat": "shinkansen",
+   "title": "話題の「夜行新幹線」の乗客は鉄道ファンばかり…ではなかった納得の理由 JR東海が見出した“いまの時代だからこそのニーズ”とは（2ページ目）",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE90OF9kRnZqMkViS0cyVFR5cms4M0psMWxqQ29DbktXN2hBRTlMbHNuVTFjYjJlbnVXWEtPOVk2amFPZGdCeUpmQzRVWEFJSWJCaVJnVDN2ajdWZlFmWmVwcnFTTWVob1NueU5COGl0NU8?oc=5",
+   "src": "デイリー新潮",
    "auto": true
   },
   {
