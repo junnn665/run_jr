@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-10T06:37+09:00",
- "checked": "2026-10-10T06:37+09:00",
+ "updated": "2026-10-10T07:37+09:00",
+ "checked": "2026-10-10T07:37+09:00",
  "items": [
   {
    "date": "2026-10-10",
@@ -27,6 +27,33 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1JbFdGck4wNjlRVHBObmJRc251U1ljWDhPdHV6bTJZemZLbTRHSmNYWTJKeFNmWlkxU1hZN2F4UUJsWk9Ga0luMk1Pc0Q4QmtaQmN1YWJhZUpRNHZnY0Uw?oc=5",
    "src": "奈良新聞",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "eki",
+   "title": "JR東海 小田原駅で周遊観光促進の取り組み開始 シェアサイクル事業や手荷物預かり実証実験",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5PWENWSnJ1a1d5Qm1ybGRQUmJVc3Bzd18yOVUxVktieHl4TWloZnZaM2JhMnRHSlgwb1NOZlhSNHNnVlBkNmhrZGFwck5LYjJjLU5FYg?oc=5",
+   "src": "観光経済新聞",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "event",
+   "title": "小田原市とJR東海ら 駅西口構内に臨時案内所 荷物預かり併設で外国人旅行者などに回遊促進",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1RZnpxZGtpLXdWY3pQTjVIY1Q4RjlEVFA2U0NmamI0Rkx5Unp6RlF2eFVuRDJHYnB0Uy1sMnN4cXJ2c3BvbC1PMmxHZldvVHdscnN2SGwzbzgydTdTU0JvMHJFb2w?oc=5",
+   "src": "タウンニュース",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "kaisha",
+   "title": "今秋の「そうだ",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9Ta3NLckRzQ1dHRUhPYl84UFJGTi1zcmJQeUVWcS1mTGdBU1pQLUZCbzFhbG15dDVORmJnQW53NzlxQVFGWXJOSDMxWlhjQ05QbzFrOUhCcFViU2Y5cDYxbXU4NFhiN3IwcTJjd1hmNmNlckRhS21ZY3lzRQ?oc=5",
+   "src": "ニコニコニュース",
    "auto": true
   },
   {
@@ -2654,30 +2681,6 @@
    "title": "2026「JR東海 浜松工場へGO」ツアー開催",
    "summary": "新幹線車両の検査を担う浜松工場を見学できるツアーを開催。",
    "url": "https://jr-central.co.jp/news/release/nws000001_00595.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-04",
-   "cat": "unko",
-   "title": "新幹線車内での防犯カメラ活用検証を追加実施",
-   "summary": "東海道新幹線の車内防犯カメラを使った安全対策の検証を、追加で行う。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00594.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-04",
-   "cat": "shinkansen",
-   "title": "2026年シルバーウィーク期間の指定席予約状況",
-   "summary": "シルバーウィーク期間の新幹線などの指定席の予約状況を公表。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00593.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-03",
-   "cat": "linear",
-   "title": "「さがみはらリニアフェスタ2026」を開催",
-   "summary": "相模原市でリニア中央新幹線をテーマにしたイベントを開く。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00592.html",
    "src": "JR東海"
   }
  ]
