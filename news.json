@@ -1,7 +1,34 @@
 {
- "updated": "2026-10-10T05:37+09:00",
- "checked": "2026-10-10T05:37+09:00",
+ "updated": "2026-10-10T06:37+09:00",
+ "checked": "2026-10-10T06:37+09:00",
  "items": [
+  {
+   "date": "2026-10-10",
+   "cat": "linear",
+   "title": "「鉄道の日」だからこそ、振り返りたい“鉄道の栄枯盛衰” 東海道新幹線誕生秘話からリニア中央新幹線へ（Wedge（ウェッジ））",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5SUFI2V0FMVC1LQXRjanJEcWpVeFJhZnhmZGZqZ0pxdjE1M0FkVlRMbHRnTG5SWFdvSEtINm1IeGRUNTJKX2JzV3YtamthdDJEcDV6dDJScTgzYlJEMW9VUTl6cTY1VnJlS1p6dFdqT1p3c0ZHbmpUNlBGNUQ1MFE?oc=5",
+   "src": "Yahoo!ニュース",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "linear",
+   "title": "掘削再開は年明けに リニア中央新幹線青木川工区 換気設備の部品調達に遅れ【長野県大鹿村】（南信州新聞）",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE82RXZvRm53WWlHYnA4bkJETGlmWmtHU0wyRVh3bi1McHVWWGhCbzBRa3NZdVQ5R2VzTF9wLUZ2clhJOGh0cE5vTHR2UnhmNjBwaURKakswT2xhUXRMOUFmcWJTQmZnd0VrMXg5ZFluVFNzVnd2U2tGZVR0clhXcDQ?oc=5",
+   "src": "Yahoo!ニュース",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "linear",
+   "title": "リニア効果を奈良県全域に 奈良県内市町村首長ら、中間駅立地など提言",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1JbFdGck4wNjlRVHBObmJRc251U1ljWDhPdHV6bTJZemZLbTRHSmNYWTJKeFNmWlkxU1hZN2F4UUJsWk9Ga0luMk1Pc0Q4QmtaQmN1YWJhZUpRNHZnY0Uw?oc=5",
+   "src": "奈良新聞",
+   "auto": true
+  },
   {
    "date": "2026-10-09",
    "cat": "kaisha",
@@ -2651,22 +2678,6 @@
    "title": "「さがみはらリニアフェスタ2026」を開催",
    "summary": "相模原市でリニア中央新幹線をテーマにしたイベントを開く。",
    "url": "https://jr-central.co.jp/news/release/nws000001_00592.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-07-31",
-   "cat": "kaisha",
-   "title": "2027年3月期 第1四半期決算：増収減益、インバウンド収入は推計490億円",
-   "summary": "4〜6月の営業収益は4,927億円（前年同期比3.0%増）、営業利益は2,191億円（0.9%減）、純利益は1,426億円（1.8%減）。万博の増収効果はなくなったが、欧米豪を中心とした訪日客と国内観光で運輸収入は1.2%増えた。",
-   "url": "https://honichi.com/news/2026/08/06/jr-tokai-settlement-of-accounts-2027q1/",
-   "src": "訪日ラボ"
-  },
-  {
-   "date": "2026-04-28",
-   "cat": "kaisha",
-   "title": "2026年3月期決算：営業収益が初の2兆円超え、各利益とも過去最高",
-   "summary": "営業収益2兆62億円（9.5%増）、営業利益8,301億円（18.1%増）、純利益5,528億円（20.6%増）。万博と訪日客で運輸収入が伸びた。2027年3月期は万博の反動と人件費の増加で、純利益4,470億円（19.1%減）を見込む。年間配当は32円。",
-   "url": "https://jr-central.co.jp/news/release/_pdf/000045546.pdf",
    "src": "JR東海"
   }
  ]
