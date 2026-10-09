@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-10T07:37+09:00",
- "checked": "2026-10-10T07:37+09:00",
+ "updated": "2026-10-10T08:35+09:00",
+ "checked": "2026-10-10T08:35+09:00",
  "items": [
   {
    "date": "2026-10-10",
@@ -54,6 +54,24 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9Ta3NLckRzQ1dHRUhPYl84UFJGTi1zcmJQeUVWcS1mTGdBU1pQLUZCbzFhbG15dDVORmJnQW53NzlxQVFGWXJOSDMxWlhjQ05QbzFrOUhCcFViU2Y5cDYxbXU4NFhiN3IwcTJjd1hmNmNlckRhS21ZY3lzRQ?oc=5",
    "src": "ニコニコニュース",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "unko",
+   "title": "【速報】東海道新幹線 上り豊橋～東京 下り東京～名古屋 運転見合わせ 山梨で発生した地震の影響",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFB1Q0lISG9YeTlXMXlTYjdBa3VydlVIeE9RWHZOeWY0ajZNWlhvdkkwVFNoRmJ3QWRuTkdfMm1feGFQZ3d3YlZ5ZTFVYlgxRkFuUTlSSGlzc0dpaGNLSDF3?oc=5",
+   "src": "TBS NEWS DIG",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "zairai",
+   "title": "画像3 / 50＞飛騨牛や白川郷、温泉からの絶景も！大阪から「特急ひだ」に乗って飛騨高山を満喫してみた",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9HbzlGaUpaMkVWSGp5RFpGalI1QlI5cnhuUFlaODZIS1lIOWRfQnRkUlA5R3diSmRfdnpXTjczVWFQZ0p1eFkySE9NUWIxMTZraEJLTWVVZ25UTXd6QW5NX2h1SXk2Y1dwakhvdENn?oc=5",
+   "src": "ウォーカープラス",
    "auto": true
   },
   {
@@ -2665,22 +2683,6 @@
    "title": "「Japan Travel by NAVITIME」で新幹線のリアルタイム運行情報を提供開始",
    "summary": "訪日客向け旅行アプリで、東海道新幹線の運行状況がリアルタイムで見られるようになった。",
    "url": "https://jr-central.co.jp/news/release/nws000001_00597.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-07",
-   "cat": "event",
-   "title": "「岐阜県アウトドア観光キャンペーン」と連携",
-   "summary": "岐阜県のアウトドア観光キャンペーンと組んだ取り組みを行う。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00596.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-04",
-   "cat": "event",
-   "title": "2026「JR東海 浜松工場へGO」ツアー開催",
-   "summary": "新幹線車両の検査を担う浜松工場を見学できるツアーを開催。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00595.html",
    "src": "JR東海"
   }
  ]
