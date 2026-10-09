@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-09T10:39+09:00",
- "checked": "2026-10-09T12:39+09:00",
+ "updated": "2026-10-09T13:39+09:00",
+ "checked": "2026-10-09T13:39+09:00",
  "items": [
   {
    "date": "2026-10-09",
@@ -144,6 +144,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBVZWFTWlRWZDV6T2g0TDJTeUU3NWRTNVcwU0RGbkRuV2V5MkxZVlpUN1NHZHhRc3ZRVjgwRVQ4bU53bjlCZm5wYk5fMnpmNXNSX01jOTZkM0lTRHZ6OE4wQnRBWG9PZw?oc=5",
    "src": "Unisba Media",
+   "auto": true
+  },
+  {
+   "date": "2026-10-09",
+   "cat": "event",
+   "title": "JR東海バス×名鉄バス、共同採用企画 運転体験会＆職場見学ツアーを開催",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBCeWdJclEtSDdkSUJmTmlqRXBKY1U0VFR5OWU1dWVvY2VmaF92LTI2aEUwMllGbFkyWUh4RE5tWjBLWWxJQkoyTnVpWEFzQQ?oc=5",
+   "src": "旅行新聞",
    "auto": true
   },
   {
@@ -1830,6 +1839,15 @@
    "auto": true
   },
   {
+   "date": "2026-10-04",
+   "cat": "eki",
+   "title": "JR東海385系電車 クロ385-1 名古屋駅 (JR) 鉄道フォト・写真 by 中部の呉さん",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBmZDZmckNRUks2WXZaeTMweWJkMzFLd1pDa1F6ZEhNZmRGRHpJY2JOaG9pal92MHhabklPZko1ckhjVXdoQ2c?oc=5",
+   "src": "レイルラボ",
+   "auto": true
+  },
+  {
    "date": "2026-10-03",
    "cat": "shinkansen",
    "title": "東海道新幹線で「走るスナック」10月運行へ 20歳以上限定 (乗りものニュース)",
@@ -1926,6 +1944,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMi3gJBVV95cUxQT3FEczZDakR0R2lpblJqZGZuSE00ckllSEkxSVQ1SnExTUl5Qk9SMHBENGhGTEpIQ2o5cVVjZkxBMElMTUxBOURnenp5bHRHd0hMcGtHMFdKNU94eHFZUVg4ZWVRU0lfUzRvc1Z5Rl9pNnVzOE1TMXRkU1BaMDNnd2wwdDFnSVJwWGhHVnR0WFdPczZrY1IyVG5TazBpSUZVTEltWGNhNjdad0ZueGJibW1WbHp2b2FYRlFSY3F3Slh1eUZ0Slpfcjc5UkNfemszV2w4UVhqUG9RTU9ncDduQWJlMmhJUkxIWjFNWXpjOHNYcVUzUmhSVTloaEZERFFhVUZCOTdPaUwwZUtIT05EeXlIRWw4TmNILWFnX1RVMHJKUnF1SDloS1RNYl9BUFpWWGNwM2V5U0ctVk5xMGVSSFNfUDNmd3hlYl9rMWl2aXgtMVQyR3BlNk9tWThBZw?oc=5",
    "src": "伊勢新聞",
+   "auto": true
+  },
+  {
+   "date": "2026-10-03",
+   "cat": "eki",
+   "title": "JR東海313系電車 クハ312-10 名古屋駅 (JR) 鉄道フォト・写真 by Sたっきーさん | レイルラボ",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFB6YV83OEp3UUU2NmQ2T0RsRlJjQXY3NWczWjRkODJMUU45UkpLSks5eXdhdFJnS0E3VWR6ZHlZall4N0p2VHc?oc=5",
+   "src": "レイルラボ",
    "auto": true
   },
   {
