@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-09T17:40+09:00",
- "checked": "2026-10-09T17:40+09:00",
+ "updated": "2026-10-09T18:39+09:00",
+ "checked": "2026-10-09T18:39+09:00",
  "items": [
   {
    "date": "2026-10-09",
@@ -306,6 +306,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1rYUozWXM4ZGFHd2FIWWtMdUdoamFEWUlGdW9vQnIyeEZQc1hSWnAxMzJaQUhZdU9LUGwzRnVtRERQc2VtbkVJTTVBdk1KRHU2N3BWbGtMRQ?oc=5",
    "src": "鉄道ファン・railf.jp",
+   "auto": true
+  },
+  {
+   "date": "2026-10-09",
+   "cat": "linear",
+   "title": "長野のリニア工事は年明け再開へ JR東海発表、ガス検出で9月に中断：ニュース",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE5paGt3eXNQZFRFcndfZzR0WVJ2QWNZWG9PYXZTekdzRHlqWGRobnhCWEYzQUJUbTZDU3BKbTYzWXpwaXpNZjVsbjBIbG5XbTl3YnJsd1Qxa054RnE2ektR?oc=5",
+   "src": "中日BIZナビ",
    "auto": true
   },
   {
@@ -1152,6 +1161,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFAyMzdQYmJYZHV0dzE1dHlHdWlXcl9OQWc5X2ZIdTRtellkSGFubl9kUzRHSW94bldPdlFpUjVLQzdyU3JPam8zS3prSXo0cTFlbGFmRG1UamU?oc=5",
    "src": "京都新聞デジタル",
+   "auto": true
+  },
+  {
+   "date": "2026-10-07",
+   "cat": "unko",
+   "title": "東海道新幹線 新富士駅ー静岡駅間運転見合わせ 停電のため",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1PRkNoV2lxS2c3NTVwTm5nLW1qVFJaUmRCSXZqUlVxVkJKV19vNUs0UzJiYjNsQkZnU0tsY2xIY0Z4bTRYU1pFbExzM0ZVbXp6LTE0MVVMMA?oc=5",
+   "src": "TBS NEWS DIG",
    "auto": true
   },
   {
