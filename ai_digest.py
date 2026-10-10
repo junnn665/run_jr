@@ -4,7 +4,27 @@
 import json, os, re, sys
 from collections import defaultdict
 from datetime import datetime, timezone, timedelta
-from urllib.request import Request, urlopen
+from urllib.request import Request, urlopen, build_opener, HTTPRedirectHandler
+from urllib.error import HTTPError
+
+class _NoRedirect(HTTPRedirectHandler):
+    """転送（リダイレクト）を自動で追わない。追うとPOSTの中身が落ちてしまうため、自分で送り直す"""
+    def redirect_request(self, *a, **k):
+        return None
+
+def post_json(url, payload, headers, hops=3):
+    opener = build_opener(_NoRedirect)
+    for _ in range(hops):
+        req = Request(url, data=payload, method="POST", headers=headers)
+        try:
+            return opener.open(req, timeout=60).read().decode("utf-8", "replace")
+        except HTTPError as e:
+            if e.code in (301, 302, 303, 307, 308) and e.headers.get("Location"):
+                from urllib.parse import urljoin
+                url = urljoin(url, e.headers["Location"])
+                continue
+            raise
+    raise RuntimeError("転送が多すぎます")
 
 JST = timezone(timedelta(hours=9))
 NOW = datetime.now(JST)
@@ -12,7 +32,7 @@ OUT = "digest.json"
 # 使うAIの窓口。1つ目がだめなら2つ目を試す（どちらも GitHub の無料のAI）
 ENDPOINTS = [
     ("https://models.github.ai/inference/chat/completions", "openai/gpt-4.1-mini"),
-    ("https://models.inference.ai.azure.com/chat/completions", "gpt-4o-mini"),
+    ("https://models.github.ai/inference/chat/completions", "openai/gpt-4o-mini"),
 ]
 MODEL = ENDPOINTS[0][1]
 MIN_INTERVAL_HOURS = 3      # 同じ日のまとめを作り直す間隔（AIの利用回数を節約）
@@ -54,12 +74,12 @@ def ask_ai(topics, token):
         body = json.dumps({"model": model, "temperature": 0.2,
                            "messages": [{"role": "system", "content": system},
                                         {"role": "user", "content": user}]}).encode()
-        req = Request(endpoint, data=body, method="POST", headers={
-            "Authorization": f"Bearer {token}", "Content-Type": "application/json",
-            "Accept": "application/json", "User-Agent": "tokai-news-digest"})
+        headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json",
+                   "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28",
+                   "User-Agent": "tokai-news-digest"}
         raw = ""
         try:
-            raw = urlopen(req, timeout=60).read().decode("utf-8", "replace")
+            raw = post_json(endpoint, body, headers)
             text = json.loads(raw)["choices"][0]["message"]["content"]
             MODEL = model
             break
@@ -68,7 +88,7 @@ def ask_ai(topics, token):
             if hasattr(e, "read"):
                 try: detail = e.read().decode("utf-8", "replace")[:160]
                 except Exception: pass
-            errors.append(f"{endpoint.split('/')[2]}: {e} {detail}".strip())
+            errors.append(f"{model}: {e} {detail}".strip())
     if text is None:
         raise RuntimeError(" / ".join(errors))
     m = re.search(r"\{.*\}", text, re.S)
