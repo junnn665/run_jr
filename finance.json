@@ -113,5 +113,51 @@
   "https://jr-central.co.jp/news/release/_pdf/000045546.pdf"
  ],
  "notice": null,
- "checked": "2026-10-10T21:43+09:00"
+ "checked": "2026-10-10T21:43+09:00",
+ "history": [
+  {
+   "fy": 2021,
+   "rev": 8235,
+   "op": -1847,
+   "net": -2015
+  },
+  {
+   "fy": 2022,
+   "rev": 9351,
+   "op": 17,
+   "net": -519
+  },
+  {
+   "fy": 2023,
+   "rev": 14002,
+   "op": 3745,
+   "net": 2194
+  },
+  {
+   "fy": 2024,
+   "rev": 17104,
+   "op": 6073,
+   "net": 3844
+  },
+  {
+   "fy": 2025,
+   "rev": 18318,
+   "op": 7027,
+   "net": 4584
+  },
+  {
+   "fy": 2026,
+   "rev": 20062,
+   "op": 8301,
+   "net": 5528
+  },
+  {
+   "fy": 2027,
+   "rev": 19930,
+   "op": 7020,
+   "net": 4470,
+   "forecast": true
+  }
+ ],
+ "history_src": "https://company.jr-central.co.jp/ir/economic/highlight/"
 }

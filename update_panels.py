@@ -129,6 +129,16 @@ def apply_tanshin(F, r, url):
                 row["v"][1] = r["forecast"][i]
         F["asof"] = f"{fy}年3月期 {QLABEL[r['q']].split('（')[0]}決算を自動反映"
     F["links"][0] = {"t": "最新の決算短信（PDF）", "u": url}
+    # グラフ用の年度ごとの数字も更新（本決算は実績を確定、予想は「forecast」として1本）
+    hist = {h["fy"]: h for h in F.get("history", [])}
+    if r["q"] is None:
+        a = r["actual"]
+        hist[fy] = {"fy": fy, "rev": a[0][0], "op": a[1][0], "net": a[3][0]}
+    if r["forecast"]:
+        f = r["forecast"]
+        nfy = fy + 1 if r["q"] is None else fy
+        hist[nfy] = {"fy": nfy, "rev": f[0][0], "op": f[1][0], "net": f[3][0], "forecast": True}
+    F["history"] = [hist[k] for k in sorted(hist)][-8:]
 
 def update_finance(news):
     F = load("finance.json")

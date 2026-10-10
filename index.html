@@ -20,7 +20,7 @@
 :root{
   --bg:#f6f5f2; --surface:#ffffff; --fg:#1d2126; --muted:#626a73; --line:#dcdcd6;
   --accent:#e8780c; --accent-ink:#ffffff; --board:#1f2a33; --board-fg:#f3f1ea;
-  --c-shinkansen:#1f63b8; --c-zairai:#e8780c; --c-linear:#7a4bc4; --c-eki:#2e8b57; --c-unko:#c8372d; --c-kaisha:#55606b; --c-event:#c2468a;--on-c:#ffffff;
+  --c-shinkansen:#1f63b8; --c-zairai:#e8780c; --c-linear:#7a4bc4; --c-eki:#2e8b57; --c-unko:#c8372d; --c-kaisha:#55606b; --c-event:#c2468a;--ch-rev:#1f63b8;--ch-net:#e8780c;--on-c:#ffffff;
   --f-display:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;
   --f-body:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
@@ -28,12 +28,12 @@
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#14181c; --surface:#1c2228; --fg:#e9e7e1; --muted:#9aa3ad; --line:#2e363e;
   --accent:#f39a3d; --accent-ink:#1a1206; --board:#0c1014; --board-fg:#f3f1ea;
-  --c-shinkansen:#5c9be6; --c-zairai:#f39a3d; --c-linear:#a684e0; --c-eki:#5bbd85; --c-unko:#ea6a5f; --c-kaisha:#9aa6b2; --c-event:#e07ab3;--on-c:#10151a;
+  --c-shinkansen:#5c9be6; --c-zairai:#f39a3d; --c-linear:#a684e0; --c-eki:#5bbd85; --c-unko:#ea6a5f; --c-kaisha:#9aa6b2; --c-event:#e07ab3;--ch-rev:#4a86d4;--ch-net:#d47a28;--on-c:#10151a;
   color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#14181c; --surface:#1c2228; --fg:#e9e7e1; --muted:#9aa3ad; --line:#2e363e;
   --accent:#f39a3d; --accent-ink:#1a1206; --board:#0c1014; --board-fg:#f3f1ea;
-  --c-shinkansen:#5c9be6; --c-zairai:#f39a3d; --c-linear:#a684e0; --c-eki:#5bbd85; --c-unko:#ea6a5f; --c-kaisha:#9aa6b2; --c-event:#e07ab3;--on-c:#10151a;
+  --c-shinkansen:#5c9be6; --c-zairai:#f39a3d; --c-linear:#a684e0; --c-eki:#5bbd85; --c-unko:#ea6a5f; --c-kaisha:#9aa6b2; --c-event:#e07ab3;--ch-rev:#4a86d4;--ch-net:#d47a28;--on-c:#10151a;
   color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0}
@@ -164,6 +164,53 @@ ol.route::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;widt
 .fin-notice{margin:0;font-size:13px;background:var(--bg);border:1.5px solid var(--accent);border-radius:8px;padding:8px 12px}
 .fin-notice a{color:var(--accent);font-weight:700}
 .status.stale{color:var(--c-unko);font-weight:700}
+
+/* ===== 新着・まとめ・保存 ===== */
+.toolbar .tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.savedbtn{font:inherit;font-size:13px;font-weight:700;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;padding:7px 12px;cursor:pointer}
+.savedbtn[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.savedbtn:focus-visible,.star:focus-visible,.newbar button:focus-visible,.others summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.newbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;background:var(--surface);border:1.5px solid var(--accent);border-radius:10px;padding:10px 14px;font-size:14px;font-weight:700}
+.newbar b{color:var(--accent);font-size:18px;font-family:var(--f-display)}
+.newbar button{font:inherit;font-size:13px;font-weight:700;border:0;background:var(--accent);color:var(--accent-ink);border-radius:6px;padding:6px 12px;cursor:pointer}
+.unseen{font-size:11px;font-weight:700;color:var(--accent-ink);background:var(--accent);border-radius:4px;padding:0 6px}
+.item.is-unseen .body{background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 9%,transparent),transparent 60%)}
+.item .body{position:relative;padding-right:46px}
+.star{position:absolute;top:6px;right:4px;font:inherit;font-size:20px;line-height:1;border:0;background:none;color:var(--muted);cursor:pointer;padding:8px;min-width:40px;min-height:40px}
+.star[aria-pressed="true"]{color:#e0a200}
+.others{margin-top:8px;font-size:13px}
+.others summary{cursor:pointer;color:var(--muted);font-weight:700;list-style:none;display:inline-flex;align-items:center;gap:4px}
+.others summary::-webkit-details-marker{display:none}
+.others summary::before{content:"＋";font-size:12px}
+.others[open] summary::before{content:"－"}
+.others ul{margin:6px 0 0;padding:0 0 0 2px;list-style:none;display:flex;flex-direction:column;gap:6px;border-left:2px solid var(--line);padding-left:10px}
+.others a{color:var(--fg);text-decoration:none}
+.others a:hover{text-decoration:underline}
+.others .os{font-weight:700;color:var(--muted);margin-right:6px}
+/* ===== 今日のJR東海（AIまとめ） ===== */
+.digest{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.digest h3{margin:0;font-family:var(--f-display);font-size:17px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.digest h3 small{font-family:var(--f-body);font-weight:700;font-size:11px;color:var(--accent-ink);background:var(--c-linear);border-radius:4px;padding:1px 6px}
+.digest h3 time{font-family:var(--f-mono);font-size:11px;font-weight:400;color:var(--muted)}
+.digest ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.digest li{display:grid;grid-template-columns:14px 1fr;gap:6px;font-size:14.5px;line-height:1.55}
+.digest li::before{content:"";width:8px;height:8px;margin-top:8px;border-radius:2px;background:var(--accent)}
+.digest a{color:var(--fg);text-decoration:none}
+.digest a:hover{text-decoration:underline}
+.digest .dnote{margin:0;font-size:11.5px;color:var(--muted)}
+/* ===== リニア工事マップ ===== */
+.lmap{display:flex;flex-direction:column;gap:8px}
+.lmap svg{width:100%;max-width:420px;height:auto;align-self:center}
+.legend{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:12px;color:var(--muted);justify-content:center}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:14px;height:6px;border-radius:3px;display:inline-block}
+/* ===== 業績グラフ ===== */
+.chart{display:flex;flex-direction:column;gap:6px}
+.chart svg{width:100%;height:auto;max-width:520px;align-self:center;touch-action:manipulation}
+.chart .bar-hit{cursor:pointer}
+.chart svg text,.chart svg rect:not(.bar-hit){pointer-events:none}
+.chart .readout{margin:0;font-size:13px;min-height:1.6em;text-align:center;font-variant-numeric:tabular-nums}
+.chart .readout b{font-family:var(--f-display)}
 .filterbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13px}
 .filterbar button{font:inherit;font-size:12px;font-weight:700;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:6px;padding:2px 10px;cursor:pointer}
 @media (prefers-reduced-motion: reduce){
@@ -188,13 +235,18 @@ ol.route::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;widt
 <main><div class="wrap">
   <div class="toolbar">
     <h2 id="heading">すべてのニュース</h2>
-    <input class="search" id="q" type="search" placeholder="キーワードで絞り込み" aria-label="キーワード検索">
+    <div class="tools">
+      <input class="search" id="q" type="search" placeholder="キーワードで絞り込み" aria-label="キーワード検索">
+      <button type="button" class="savedbtn" id="savedbtn" aria-pressed="false">★ 保存した記事 <span id="savedn">0</span></button>
+    </div>
   </div>
   <p class="note">JR東海の公式発表と、新聞・ニュースサイトの関連記事を1時間ごとに自動で取り込みます。詳しい内容は各記事の出典リンクから確認してください。</p>
   <div class="statusbar">
     <p class="status" id="status">ニュースを読み込み中…</p>
     <button type="button" class="reload" id="reload"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg>最新に更新</button>
   </div>
+  <div class="newbar" id="newbar" hidden></div>
+  <section class="digest" id="digest" hidden aria-labelledby="dg-title"></section>
   <section class="lpanel" id="lpanel" hidden aria-labelledby="lp-title"></section>
   <section class="lpanel kpanel" id="kpanel" hidden aria-labelledby="kp-title"></section>
   <div class="filterbar" id="filterbar" hidden></div>
@@ -247,7 +299,7 @@ let LINEAR = {"asof": "2026年10月6日時点", "summary": [{"k": "開業の見�
 /* ===== 業績のまとめ（finance.json を読み込み。決算短信が出ると自動更新） ===== */
 let FIN = {"asof": "2026年10月7日時点（最新は2027年3月期 第1四半期決算）", "unit": "億円", "cols": ["2026年3月期<br>実績", "2027年3月期<br>会社予想", "2027年3月期<br>1Q（4〜6月）"], "rows": [{"k": "営業収益", "v": [[20062, 9.5], [19930, -0.7], [4927, 3]]}, {"k": "営業利益", "v": [[8301, 18.1], [7020, -15.4], [2191, -0.9]]}, {"k": "経常利益", "v": [[7809, 20.3], [6530, -16.4], null]}, {"k": "純利益", "v": [[5528, 20.6], [4470, -19.1], [1426, -1.8]]}], "points": [{"k": "次の決算発表", "v": "中間決算", "sub": "例年10月下旬。日程はIRカレンダーで確認"}, {"k": "年間配当", "v": "32円", "sub": "2026年3月期（中間16円・期末16円）"}, {"k": "インバウンド収入", "v": "推計490億円", "sub": "2027年3月期 第1四半期・前年同期比7%増"}, {"k": "今期の見通し", "v": "減収減益", "sub": "万博特需の反動と人件費の増加"}], "links": [{"t": "2026年3月期 決算短信（PDF）", "u": "https://jr-central.co.jp/news/release/_pdf/000045546.pdf"}, {"t": "IR資料室・決算短信", "u": "https://company.jr-central.co.jp/ir/"}, {"t": "IRカレンダー", "u": "https://company.jr-central.co.jp/ir/calendar/"}], "processed": ["https://jr-central.co.jp/news/release/_pdf/000045546.pdf"], "notice": null, "checked": ""};
 function renderFin(){
-  const show = current === "kaisha";
+  const show = current === "kaisha" && !SAVEDVIEW;
   $("#kpanel").hidden = !show;
   if (!show) return;
   $("#kpanel").innerHTML = `
@@ -259,10 +311,89 @@ function renderFin(){
         ? `<td><b>${v[0].toLocaleString("ja-JP")}</b><span class="${v[1]>=0?"up":"down"}">${v[1]>=0?"+":""}${v[1].toFixed(1)}%</span></td>`
         : `<td>—</td>`).join("")}</tr>`).join("")}</tbody>
     </table></div>
+    ${finChart()}
     <dl class="lsum">${FIN.points.map(x=>`<div><dt>${x.k}</dt><dd>${x.v}<span>${x.sub}</span></dd></div>`).join("")}</dl>
     <div class="links">${FIN.links.map(l=>`<a href="${l.u}" target="_blank" rel="noopener">${l.t} →</a>`).join("")}</div>
     <p class="lnote">％は前年同期（前期）比、億円未満は切り捨て。JR東海が決算短信を発表すると、1時間以内にPDFから数字を読み取って表を書き換えます。決算・株価・人事のニュースも1時間ごとに集めています。</p>`;
 }
+
+/* ===== リニア工事マップ（縦の路線図。状況の色は linear.json と連動） ===== */
+// 品川からのおおよその距離（km）。地図の位置合わせ用で、正確な距離ではありません
+const LKM = {"品川":0,"神奈川県駅（仮称）":37,"山梨県駅（仮称）":92,"長野県駅（仮称）":178,"岐阜県駅（仮称）":223,"名古屋":286,
+  "第一首都圏トンネル（品川〜神奈川）":[2,36],"南アルプストンネル 山梨工区":[113,121],"南アルプストンネル 静岡工区":[121,132],
+  "伊那山地トンネル（長野）":[147,162],"中央アルプストンネル":[184,206],"岐阜県内のトンネル群":[212,262]};
+const LSHORT = {"第一首都圏トンネル（品川〜神奈川）":"第一首都圏トンネル","南アルプストンネル 山梨工区":"南アルプスT（山梨）",
+  "南アルプストンネル 静岡工区":"南アルプスT（静岡）","伊那山地トンネル（長野）":"伊那山地トンネル","中央アルプストンネル":"中央アルプスT",
+  "岐阜県内のトンネル群":"岐阜のトンネル群"};
+const STC = {build:"var(--accent)", start:"var(--c-eki)", wait:"var(--c-unko)", done:"var(--c-shinkansen)"};
+function linearMap(){
+  const H = 470, top = 22, X = 64, y = km => top + km / 286 * (H - top * 2);
+  const short = o => (LSHORT[o.name] || o.name).replace(/（仮称）/, "");
+  const lab = o => o.label.replace(/（.*?報道）/, m => m.replace("報道", ""));
+  let svg = `<line x1="${X}" y1="${y(0)}" x2="${X}" y2="${y(286)}" stroke="var(--line)" stroke-width="9" stroke-linecap="round"/>`;
+  // トンネル・工区（線の上に太い色の帯）と、右の列のラベル
+  const works = LINEAR.works.filter(w => Array.isArray(LKM[w.name])).sort((p, q) => LKM[p.name][0] - LKM[q.name][0]);
+  let lastLabelY = -99;
+  for (const w of works){
+    const [a, b] = LKM[w.name], c = STC[w.status] || "var(--muted)";
+    svg += `<line x1="${X}" y1="${y(a)}" x2="${X}" y2="${y(b)}" stroke="${c}" stroke-width="9"/>`;
+    let ly = Math.max((y(a) + y(b)) / 2, lastLabelY + 34); lastLabelY = ly;
+    svg += `<path d="M${X + 7} ${(y(a) + y(b)) / 2} H${X + 92} L${X + 102} ${ly}" fill="none" stroke="${c}" stroke-width="1.5"/>`;
+    svg += `<text x="${X + 108}" y="${ly - 2}" font-size="14" font-weight="700" fill="var(--fg)">${esc(short(w))}</text>`;
+    svg += `<text x="${X + 108}" y="${ly + 14}" font-size="12" fill="${c}" font-weight="700">● ${esc(lab(w))}</text>`;
+  }
+  // 駅（線の上の丸）と、左側の駅名
+  for (const st of LINEAR.stations){
+    const km = LKM[st.name]; if (typeof km !== "number") continue;
+    const c = STC[st.status] || "var(--muted)", r = st.term ? 11 : 8;
+    svg += `<circle cx="${X}" cy="${y(km)}" r="${r}" fill="var(--surface)" stroke="${c}" stroke-width="4"/>`;
+    svg += `<text x="${X - 18}" y="${y(km) + 5}" font-size="14" font-weight="900" text-anchor="end" fill="var(--fg)">${esc(short(st).replace("県駅",""))}</text>`;
+  }
+  const legend = [["build","建設中・掘削中"],["start","着工"],["wait","停止・着工前"],["done","貫通・完成"]]
+    .map(([k,t]) => `<span><i style="background:${STC[k]}"></i>${t}</span>`).join("");
+  return `<div class="lmap"><div class="legend">${legend}<span><i style="background:var(--line)"></i>その他の区間</span></div>
+    <svg viewBox="0 0 330 ${H}" role="img" aria-label="品川から名古屋までのリニア工事の状況を示す路線図">${svg}</svg>
+    <p class="lnote">位置はおおよそです。色は下の各駅・各工区の状況と同じで、自動で切り替わります。</p></div>`;
+}
+
+/* ===== 業績グラフ（営業収益と純利益の推移。決算短信を読むたびに自動で1年分増える） ===== */
+function finChart(){
+  const hs = (FIN.history || []); if (!hs.length) return "";
+  const W = 340, H = 230, L = 46, R = 8, T = 14, B = 34;
+  const vals = hs.flatMap(h => [h.rev, h.net]);
+  const max = Math.ceil(Math.max(...vals) / 5000) * 5000, min = Math.min(0, Math.floor(Math.min(...vals) / 5000) * 5000);
+  const yv = v => T + (max - v) / (max - min) * (H - T - B);
+  const gw = (W - L - R) / hs.length, bw = Math.min(14, gw / 2 - 3);
+  const fmtY = v => v === 0 ? "0" : (Math.abs(v) >= 10000 ? (v / 10000) + "兆" : (v / 1000) + "千億");
+  let g = "";
+  for (let v = min; v <= max; v += 5000)
+    g += `<line x1="${L}" x2="${W - R}" y1="${yv(v)}" y2="${yv(v)}" stroke="var(--line)" stroke-width="${v === 0 ? 1.5 : 1}"/>
+          <text x="${L - 6}" y="${yv(v) + 4}" font-size="11" text-anchor="end" fill="var(--muted)">${fmtY(v)}</text>`;
+  const bar = (x, v, col, fc) => {
+    const y0 = yv(0), y1 = yv(v), top = Math.min(y0, y1), h = Math.max(1.5, Math.abs(y1 - y0));
+    return `<rect x="${x}" y="${top}" width="${bw}" height="${h}" rx="2" fill="${fc ? "url(#hatch-" + col + ")" : "var(--ch-" + col + ")"}" ${fc ? `stroke="var(--ch-${col})" stroke-width="1.2"` : ""}/>`;
+  };
+  hs.forEach((h, i) => {
+    const cx = L + gw * i + gw / 2;
+    g += bar(cx - bw - 1, h.rev, "rev", h.forecast) + bar(cx + 1, h.net, "net", h.forecast);
+    g += `<text x="${cx}" y="${H - B + 15}" font-size="11.5" text-anchor="middle" fill="var(--fg)" font-weight="${h.forecast ? 400 : 700}">${String(h.fy).slice(2)}</text>`;
+    if (h.forecast) g += `<text x="${cx}" y="${H - B + 28}" font-size="10" text-anchor="middle" fill="var(--muted)">予想</text>`;
+    g += `<rect class="bar-hit" data-i="${i}" x="${L + gw * i}" y="${T}" width="${gw}" height="${H - T - B + 30}" fill="transparent"><title>${h.fy}年3月期${h.forecast ? "（会社予想）" : ""}：営業収益 ${h.rev.toLocaleString("ja-JP")}億円／純利益 ${h.net.toLocaleString("ja-JP")}億円</title></rect>`;
+  });
+  const hatch = c => `<pattern id="hatch-${c}" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="5" height="5" fill="var(--surface)"/><line x1="0" y1="0" x2="0" y2="5" stroke="var(--ch-${c})" stroke-width="2"/></pattern>`;
+  return `<div class="chart">
+    <div class="legend"><span><i style="background:var(--ch-rev)"></i>営業収益</span><span><i style="background:var(--ch-net)"></i>純利益（親会社株主に帰属）</span><span>斜線＝会社予想</span></div>
+    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="JR東海の営業収益と純利益の推移（3月期、億円）" id="finsvg"><defs>${hatch("rev")}${hatch("net")}</defs>${g}</svg>
+    <p class="readout" id="finread">${finRead(hs[hs.map(h => !h.forecast).lastIndexOf(true)] || hs[0])}</p>
+    <p class="lnote">棒をタップすると、その年の数字に切り替わります（「26」＝2026年3月期）。</p></div>`;
+}
+document.addEventListener("click", e => {
+  const r = e.target.closest && e.target.closest(".bar-hit"); if (!r) return;
+  const h = (FIN.history || [])[+r.dataset.i]; if (!h) return;
+  $("#finread").innerHTML = finRead(h);
+});
+function finRead(h){ return h ? `<b>${h.fy}年3月期${h.forecast ? "（会社予想）" : ""}</b>　営業収益 <b>${h.rev.toLocaleString("ja-JP")}</b>億円／純利益 <b>${h.net.toLocaleString("ja-JP")}</b>億円` : ""; }
+
 function hm(iso){ const d=new Date(iso), p=n=>String(n).padStart(2,"0"); return `${d.getMonth()+1}/${d.getDate()} ${p(d.getHours())}:${p(d.getMinutes())}`; }
 function latestLine(x){ return x.latest ? `<p class="latest"><span>最新</span><a href="${esc(x.latest.url)}" target="_blank" rel="noopener">${fmt(x.latest.date).slice(5).replace(".","/")} ${esc(x.latest.title)}</a></p>` : ""; }
 let LFILTER = null;
@@ -270,7 +401,7 @@ function linearNews(kw){ return NEWS.filter(x => x.cat==="linear" && !NOISE.test
 /* イベントや見学会など、工事の進み具合と関係ない記事は「関連ニュース」に入れない */
 const NOISE = /フェス|見学|寄せ書き|ツアー|イベント|グッズ|展示|体験|記念|利回り|物件|不動産|分譲|賃貸|投資|徒歩/;
 function renderLinear(){
-  const show = current === "lprog";
+  const show = current === "lprog" && !SAVEDVIEW;
   $("#lpanel").hidden = !show;
   if (!show){ LFILTER = null; return; }
   const btn = o => { const n = linearNews(o.kw).length; if (!n) return "";
@@ -278,6 +409,8 @@ function renderLinear(){
   $("#lpanel").innerHTML = `
     <h3 id="lp-title">リニア工事の進捗<small>説明は${LINEAR.asof}・状況と最新ニュースは自動更新${LINEAR.checked?`（${hm(LINEAR.checked)}確認）`:""}</small></h3>
     <dl class="lsum">${LINEAR.summary.map(x=>`<div><dt>${x.k}</dt><dd>${x.v}<span>${x.sub}</span></dd></div>`).join("")}</dl>
+    <h4 class="lsec">工事マップ</h4>
+    ${linearMap()}
     <h4 class="lsec">駅の工事（品川 → 名古屋）</h4>
     <ol class="route">${LINEAR.stations.map(x=>`<li class="st${x.term?" term":""}">
       <div class="st-head"><span class="st-name">${x.name}</span><span class="st-place">${x.place}</span><span class="pill ${x.status}">${x.label}</span></div>
@@ -304,43 +437,110 @@ function renderTabs(){
       <span class="code" aria-hidden="true">${c.code}</span>${c.name}</button>`;
   }).join("");
   $("#tabs").querySelectorAll(".tab").forEach(b => b.onclick = () => {
-    current = b.dataset.id; LFILTER = null; renderTabs(); renderLinear(); renderFin(); renderList();
+    current = b.dataset.id; LFILTER = null; SAVEDVIEW = false; ONLY_NEW = false; updateSavedCount(); renderTabs(); renderLinear(); renderFin(); renderList();
   });
 }
 const esc = s => String(s).replace(/[&<>"]/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
 function isNew(d){ return (Date.now()-new Date(d+"T00:00:00+09:00"))/864e5 < 3; }
 function fmt(d){ const [y,m,day]=d.split("-"); return `${y}.${m}.${day}`; }
 
+/* ===== スマホの中だけに保存するもの（前回見た時刻・★保存） ===== */
+const store = {
+  get(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+};
+let SEEN_PREV = null;          // 前回サイトを開いたときの時刻（この時刻より後に入った記事が「新着」）
+let ONLY_NEW = false;          // 新着だけ表示
+let SAVEDVIEW = false;         // 保存した記事を表示
+let SAVED = store.get("saved", {});   // url → 記事
+let DIGEST = null;             // 今日のJR東海（AIまとめ）
+const isUnseen = x => !!(SEEN_PREV && x.added && x.added > SEEN_PREV);
+
+/* 同じ話題（g が同じ記事）を1つにまとめる。代表は公式発表、なければいちばん短い見出し */
+function toTopics(items){
+  const m = new Map();
+  for (const x of items){ const k = SAVEDVIEW ? x.url : (x.g || x.url); if (!m.has(k)) m.set(k, []); m.get(k).push(x); }
+  return [...m.values()].map(xs => {
+    xs.sort((a,b) => b.date.localeCompare(a.date));
+    const main = xs.find(x => x.src === "JR東海") || xs.reduce((a,b) => (b.title.length < a.title.length ? b : a));
+    return { main, others: xs.filter(x => x !== main), date: xs[0].date, unseen: xs.some(isUnseen) };
+  }).sort((a,b) => b.date.localeCompare(a.date) || (b.others.length - a.others.length));
+}
+
 function renderList(){
   const q = $("#q").value.trim().toLowerCase();
-  const items = NEWS
-    .filter(x => current==="all" || (current==="lprog" ? x.cat==="linear" : x.cat===current))
+  const base = SAVEDVIEW ? Object.values(SAVED) : NEWS;
+  const items = base
+    .filter(x => SAVEDVIEW || current==="all" || (current==="lprog" ? x.cat==="linear" : x.cat===current))
     .filter(x => !q || (x.title+(x.summary||"")).toLowerCase().includes(q))
-    .filter(x => !LFILTER || (!NOISE.test(x.title) && LFILTER.kw.some(k => x.title.includes(k))))
-    .sort((a,b) => b.date.localeCompare(a.date));
-  $("#heading").textContent = (current==="all" ? "すべてのニュース" : current==="lprog" ? "リニア工事進捗" : catOf(current).name + "のニュース")
-    + (current==="lprog" || LOADING ? "" : `（${items.length}件）`);
+    .filter(x => !LFILTER || (!NOISE.test(x.title) && LFILTER.kw.some(k => x.title.includes(k))));
+  let topics = toTopics(items);
+  if (ONLY_NEW && !SAVEDVIEW) topics = topics.filter(t => t.unseen);
+  const title = SAVEDVIEW ? "保存した記事" : current==="all" ? "すべてのニュース" : current==="lprog" ? "リニア工事進捗" : catOf(current).name + "のニュース";
+  $("#heading").textContent = title + ((current==="lprog" && !SAVEDVIEW) || LOADING ? "" : `（${topics.length}件）`);
   const fb = $("#filterbar");
-  fb.hidden = !LFILTER;
-  if (LFILTER){ fb.innerHTML = `<span>「${esc(LFILTER.name)}」のニュース ${items.length}件</span><button type="button" id="clearf">絞り込みを解除</button>`;
+  fb.hidden = !LFILTER || SAVEDVIEW;
+  if (LFILTER){ fb.innerHTML = `<span>「${esc(LFILTER.name)}」のニュース ${topics.length}件</span><button type="button" id="clearf">絞り込みを解除</button>`;
     $("#clearf").onclick = () => { LFILTER = null; renderLinear(); renderList(); }; }
+  renderNewbar(); renderDigest();
   const list = $("#list");
   // 工事進捗タブは進捗の欄だけ。「関連ニュース」ボタンを押したときだけ一覧を出す
-  const panelOnly = current === "lprog" && !LFILTER;
+  const panelOnly = current === "lprog" && !LFILTER && !SAVEDVIEW;
   list.hidden = panelOnly;
-  $("#q").hidden = current === "lprog";
-  document.querySelector(".note").hidden = current === "lprog";
+  $("#q").hidden = current === "lprog" && !SAVEDVIEW;
+  document.querySelector(".note").hidden = current === "lprog" || SAVEDVIEW;
   if (panelOnly) return;
   if (LOADING){ list.innerHTML = `<li>${LOADER}</li>`; return; }
-  list.innerHTML = items.length ? items.map(x => {
-    const c = catOf(x.cat);
-    return `<li class="item" style="--c:${c.color}"><span class="bar"></span><div class="body">
-      <div class="meta"><time datetime="${x.date}">${fmt(x.date)}</time><span class="cat">${c.name}</span><span class="srcname${x.src==="JR東海"?" official":""}">${x.src==="JR東海"?"公式発表":esc(x.src||"")}</span>${isNew(x.date)?'<span class="new">NEW</span>':''}</div>
+  const srcName = x => x.src==="JR東海" ? "公式発表" : esc(x.src||"");
+  list.innerHTML = topics.length ? topics.map(t => {
+    const x = t.main, c = catOf(x.cat), saved = !!SAVED[x.url];
+    const badge = t.unseen ? '<span class="unseen">新着</span>' : (!SEEN_PREV && isNew(t.date) ? '<span class="new">NEW</span>' : '');
+    return `<li class="item${t.unseen?" is-unseen":""}" style="--c:${c.color}"><span class="bar"></span><div class="body">
+      <div class="meta"><time datetime="${t.date}">${fmt(t.date)}</time><span class="cat">${c.name}</span><span class="srcname${x.src==="JR東海"?" official":""}">${srcName(x)}</span>${badge}
+        <button type="button" class="star" data-url="${esc(x.url)}" aria-pressed="${saved}" aria-label="${saved?"保存を取り消す":"あとで読むに保存"}">${saved?"★":"☆"}</button></div>
       <h3>${esc(x.title)}</h3>${x.summary?`<p>${esc(x.summary)}</p>`:''}
       <a class="src" href="${esc(x.url)}" target="_blank" rel="noopener">出典を見る →</a>
+      ${t.others.length ? `<details class="others"><summary>同じ話題の記事 ほか${t.others.length}件</summary><ul>${t.others.map(o =>
+        `<li><a href="${esc(o.url)}" target="_blank" rel="noopener"><span class="os">${srcName(o)}</span>${esc(o.title)}</a></li>`).join("")}</ul></details>` : ""}
     </div></li>`;
-  }).join("") : `<li class="empty">${NEWS.length?"該当するニュースはありません":"読み込み中…"}</li>`;
+  }).join("") : `<li class="empty">${SAVEDVIEW ? "保存した記事はまだありません。記事の右上の☆を押すと、ここに残ります。" : ONLY_NEW ? "新着の記事はありません" : NEWS.length ? "該当するニュースはありません" : "読み込み中…"}</li>`;
 }
+
+/* ★ボタン：押すとスマホの中に記事を保存 */
+$("#list").addEventListener("click", e => {
+  const b = e.target.closest(".star"); if (!b) return;
+  const url = b.dataset.url;
+  if (SAVED[url]) delete SAVED[url];
+  else { const x = NEWS.find(n => n.url === url) || Object.values(SAVED).find(n => n.url === url); if (x) SAVED[url] = {...x, g: undefined, saved_at: new Date().toISOString()}; }
+  store.set("saved", SAVED);
+  updateSavedCount(); renderList();
+});
+function updateSavedCount(){ $("#savedn").textContent = Object.keys(SAVED).length; $("#savedbtn").setAttribute("aria-pressed", SAVEDVIEW); }
+$("#savedbtn").addEventListener("click", () => { SAVEDVIEW = !SAVEDVIEW; ONLY_NEW = false; updateSavedCount(); renderLinear(); renderFin(); renderList(); });
+
+/* 「前回から○件の新着」 */
+function renderNewbar(){
+  const bar = $("#newbar");
+  const n = SEEN_PREV ? toTopics(NEWS.filter(isUnseen)).length : 0;
+  bar.hidden = LOADING || SAVEDVIEW || !n;
+  if (bar.hidden) return;
+  bar.innerHTML = `<span>前回（${hm(SEEN_PREV)}）から <b>${n}</b> 件の新着</span>
+    <button type="button" id="onlynew">${ONLY_NEW ? "すべて表示" : "新着だけ表示"}</button>`;
+  $("#onlynew").onclick = () => { ONLY_NEW = !ONLY_NEW; renderList(); };
+}
+
+/* 今日のJR東海（AIまとめ）：「すべて」タブの上に出す */
+function renderDigest(){
+  const box = $("#digest");
+  const fresh = DIGEST && DIGEST.items && DIGEST.items.length && (Date.now() - new Date(DIGEST.generated)) / 36e5 < 36;
+  box.hidden = LOADING || SAVEDVIEW || ONLY_NEW || current !== "all" || !fresh;
+  if (box.hidden) return;
+  const link = it => { const x = NEWS.find(n => n.g === it.g && n.src === "JR東海") || NEWS.find(n => n.g === it.g) || NEWS.find(n => n.url === it.g); return x ? x.url : it.g; };
+  box.innerHTML = `<h3 id="dg-title">今日のJR東海<small>AI要約</small><time>${hm(DIGEST.generated)}</time></h3>
+    <ul>${DIGEST.items.map(it => `<li><a href="${esc(link(it))}" target="_blank" rel="noopener">${esc(it.text)}</a></li>`).join("")}</ul>
+    <p class="dnote">ニュースの見出しだけをもとにAIがまとめたものです。間違いがある場合もあるので、詳しくは各記事で確認してください。</p>`;
+}
+
 function renderTicker(){
   $("#ticker").hidden = !NEWS.length;
   const top = [...NEWS].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,6);
@@ -370,6 +570,11 @@ async function load(){
     if(!r.ok) throw new Error(r.status);
     const data = await r.json();
     NEWS = data.items || [];
+    try { DIGEST = await get("digest.json"); } catch(e){ DIGEST = null; }
+    if (SEEN_PREV === null){                       // このページを開いたときに1回だけ
+      SEEN_PREV = store.get("seenAt", "");
+      store.set("seenAt", data.checked || data.updated || "");
+    }
     UPDATED = data.updated || "";
     const checked = data.checked || UPDATED;
     const st = $("#status");
@@ -388,6 +593,7 @@ async function load(){
   renderTabs(); renderLinear(); renderFin(); renderList(); renderTicker();
 }
 $("#reload").addEventListener("click", load);
+updateSavedCount();
 // 電波が戻ったら自動で読み直す
 window.addEventListener("online", load);
 // ホーム画面に追加したときに、電波がなくても前回の内容を出せるようにする

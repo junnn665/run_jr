@@ -153,6 +153,52 @@ def fetch_feed(name, url):
 def norm(title):
     return re.sub(r"[\s「」『』【】（）()、。・!！?？]", "", title)
 
+# ニュースとして扱わないもの（鉄道写真の投稿など）
+BLOCK = re.compile(r"鉄道フォト・写真|フォト・写真 by")
+
+# ---- 同じ話題をまとめる ----------------------------------------------------
+COMMON = ("ＪＲ東海", "JR東海", "東海道・山陽新幹線", "東海道･山陽新幹線", "東海道新幹線", "リニア中央新幹線")
+
+def topic_text(t):
+    t = re.sub(r"^(画像ギャラリー|画像|【[^】]*】)\s*[|｜]?\s*", "", t)
+    t = re.sub(r"[（(]\d{4}年[^）)]*[）)]", "", t)                       # （2026年10月7日～）など
+    t = re.sub(r"\s*[(（]\d+ペー.*$", "", t)                              # (2ページ目)
+    t = re.sub(r"[（(][^）)]*(新聞|ニュース|NEWS|News|通信|テレビ|TV|Powered|Watch)[^）)]*[）)]\s*$", "", t)
+    t = re.sub(r"\s*[|｜]\s*.{1,30}$", "", t)                             # 「| 静岡のニュース」など
+    for w in COMMON:
+        t = t.replace(w, "")
+    return re.sub(r"[\s「」『』【】（）()、。・!！?？：:“”\"'’‘…〜~,，.．/／=＝]", "", t)
+
+def bigrams(t):
+    t = topic_text(t)
+    return {t[i:i + 2] for i in range(len(t) - 1)}
+
+def similarity(a, b):
+    if not a or not b:
+        return 0
+    inter = len(a & b)
+    return max(inter / len(a | b), inter / min(len(a), len(b)) * 0.75)
+
+def assign_groups(items, threshold=0.42, days=2):
+    """似た見出しに同じ g（代表記事のURL）を付ける。代表とだけ比べるので、話題が連鎖して膨らまない"""
+    from datetime import date as _d
+    gs = [bigrams(x["title"]) for x in items]
+    ds = [_d.fromisoformat(x["date"]) for x in items]
+    reps = []
+    for i in sorted(range(len(items)), key=lambda i: (ds[i], i)):
+        best, score = None, threshold
+        for r, rg, rd in reversed(reps):
+            if (ds[i] - rd).days > days:
+                break
+            s = similarity(gs[i], rg)
+            if s >= score:
+                best, score = r, s
+        if best is None:
+            reps.append((i, gs[i], ds[i]))
+            items[i]["g"] = items[i]["url"]
+        else:
+            items[i]["g"] = items[best]["url"]
+
 def main():
     try:
         with open(JSON_PATH, encoding="utf-8") as f:
@@ -192,9 +238,12 @@ def main():
         key = norm(x["title"])
         if x["url"] in known or key in titles:
             continue
+        if BLOCK.search(x["title"]):
+            continue
         known.add(x["url"]); titles.add(key)
         added.append({"date": x["date"], "cat": categorize(x["title"]),
-                      "title": x["title"], "summary": "", "url": x["url"], "src": x["src"], "auto": True})
+                      "title": x["title"], "summary": "", "url": x["url"], "src": x["src"], "auto": True,
+                      "added": datetime.now(JST).isoformat(timespec="minutes")})   # 取り込んだ時刻（新着表示に使う）
 
     # 自動で入れた記事は、ルールを変えたときに分類し直す
     recat = 0
@@ -211,6 +260,8 @@ def main():
     manual = [x for x in allitems if not x.get("auto")]
     auto = [x for x in allitems if x.get("auto")][:MAX_ITEMS]
     items = sorted(manual + auto, key=lambda x: x["date"], reverse=True)
+    items = [x for x in items if not BLOCK.search(x["title"])]
+    assign_groups(items)
     data = {
         "updated": now if (added or recat) else data.get("updated", ""),  # 最後に記事が増えた時刻
         "checked": now,                                                    # 最後に見に行った時刻
