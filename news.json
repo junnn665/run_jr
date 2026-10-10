@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-10T22:08+09:00",
- "checked": "2026-10-10T23:35+09:00",
+ "updated": "2026-10-11T00:36+09:00",
+ "checked": "2026-10-11T00:36+09:00",
  "items": [
   {
    "date": "2026-10-10",
@@ -252,6 +252,28 @@
    "auto": true,
    "added": "2026-10-10T22:08+09:00",
    "g": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1RNVF2dXhuVHlyOWp3aERieF8zblRZSkdHXzlQQ2RyLUkzck1LYUZhUUlJUUM2SzlQUXVaWGE5SjBFM1RRVk55YkJiOXZQOHJSN3RMOQ?oc=5"
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "shinkansen",
+   "title": "N700S背面テーブルやモタレカバー、お台場で限定販売 10/11まで",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBrSTAxWWNQOFZ4Z1owVldyeWFVdXJVSXVSZF9heEF3blpUN21IYzZoZkRkU0JfaWRhUmJkNGNqRDJRRzBUTVh4bnJpT0QzRkN4STFnOXVB?oc=5",
+   "src": "Aviation Wire",
+   "auto": true,
+   "added": "2026-10-11T00:36+09:00",
+   "g": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBrSTAxWWNQOFZ4Z1owVldyeWFVdXJVSXVSZF9heEF3blpUN21IYzZoZkRkU0JfaWRhUmJkNGNqRDJRRzBUTVh4bnJpT0QzRkN4STFnOXVB?oc=5"
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "eki",
+   "title": "名古屋駅・JRゲートタワーで「煙が上がっている」通報…約２時間後に鎮火 現場は一時騒然もけが人なし",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1SdEhtQ2Via3JBRl9KbFg3Z2NQRnVJVndSQzhaUi15V0F6RnZUUHVGSFJZRFVGdnVLTVQ2RUJLc0doeTJ0NDhReExJVXlDMGk2Z3VobVlZcjU0cFNzTW9tcTZOUVJ5My1mOXhmcXZRMTMxSzZlN0x2eWdmb3ZBRjA?oc=5",
+   "src": "Yahoo!ニュース",
+   "auto": true,
+   "added": "2026-10-11T00:36+09:00",
+   "g": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1SdEhtQ2Via3JBRl9KbFg3Z2NQRnVJVndSQzhaUi15V0F6RnZUUHVGSFJZRFVGdnVLTVQ2RUJLc0doeTJ0NDhReExJVXlDMGk2Z3VobVlZcjU0cFNzTW9tcTZOUVJ5My1mOXhmcXZRMTMxSzZlN0x2eWdmb3ZBRjA?oc=5"
   },
   {
    "date": "2026-10-09",
