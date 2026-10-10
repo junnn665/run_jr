@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-10T08:35+09:00",
- "checked": "2026-10-10T08:35+09:00",
+ "updated": "2026-10-10T09:48+09:00",
+ "checked": "2026-10-10T09:48+09:00",
  "items": [
   {
    "date": "2026-10-10",
@@ -1713,6 +1713,15 @@
    "auto": true
   },
   {
+   "date": "2026-10-06",
+   "cat": "kaisha",
+   "title": "中経連会長にJR東海・柘植氏 中部電・勝野氏は辞任（時事通信）",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9TV25TOU80NzZ5OW50UmUzRE1vaWpkMG5aWk00OHlVS3k2T0RHTnhOQ2F3eWtYTmpLN3pLZE4zY21wckxoMEhsczI2dThTbXVicjR4cTltSFR0Q2NUV2h3UlJFODB4eEFyX1dpOGg5X3BMNldFd2dPUmNzV2t2S0k?oc=5",
+   "src": "Yahoo!ニュース",
+   "auto": true
+  },
+  {
    "date": "2026-10-05",
    "cat": "zairai",
    "title": "JR東海の引退車両が富山へ 稲荷町工場へでの改造経て地鉄線で今年度中の運行開始へ",
@@ -2208,6 +2217,15 @@
    "auto": true
   },
   {
+   "date": "2026-10-05",
+   "cat": "kaisha",
+   "title": "◎中経連会長にＪＲ東海・柘植氏",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9td0V2ekZZZndtb18wcGtGRUJnWWNqWjVHcFVtV3pLN2c2RUJrMXdJSGpDRVg2dGR3ZjN5N3JhUW03UDJTUE5sblNoaGtqeEdkdUF3SQ?oc=5",
+   "src": "時事通信ニュース",
+   "auto": true
+  },
+  {
    "date": "2026-10-04",
    "cat": "event",
    "title": "JR東海×TrySail 「コワイセイルのTrip or Treat！お菓子くれなきゃ旅させるぞ」開催決定！",
@@ -2667,22 +2685,6 @@
    "title": "2026年秋の踏切事故防止キャンペーン",
    "summary": "踏切での事故を防ぐための秋の啓発キャンペーンを実施。",
    "url": "https://jr-central.co.jp/news/release/nws000001_00599.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-11",
-   "cat": "zairai",
-   "title": "富士山・袋井・浜名湖へ「秋のサイクルトレイン2026」",
-   "summary": "自転車ごと乗れるサイクルトレインを秋に3方面で運行。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00598.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-07",
-   "cat": "unko",
-   "title": "「Japan Travel by NAVITIME」で新幹線のリアルタイム運行情報を提供開始",
-   "summary": "訪日客向け旅行アプリで、東海道新幹線の運行状況がリアルタイムで見られるようになった。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00597.html",
    "src": "JR東海"
   }
  ]
