@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-10T14:36+09:00",
- "checked": "2026-10-10T14:36+09:00",
+ "updated": "2026-10-10T15:44+09:00",
+ "checked": "2026-10-10T15:44+09:00",
  "items": [
   {
    "date": "2026-10-10",
@@ -126,6 +126,33 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBEaHR1RV80ay1pbGgzdEZQcVVVdXY3TEZXSnFsd05RSmVUYVlLMEYxUUFubHhEMThCVV9CM2tzVGs1cmdSc2EzdHl0WQ?oc=5",
    "src": "Tetsudo.com（鉄道コム）",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "event",
+   "title": "小田原市とJR東海ら 駅西口構内に臨時案内所 荷物預かり併設で外国人旅行者などに回遊促進〈小田原市・箱根町・湯河原町・真鶴町〉",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5KYVJGODViOW5RcmlTaC02b28wd3dOWVF2ejl2ZUZWQlZQbTBqRmhueW1PMjdGdGlrZUV5NHZaOHRYQmxGd3ZnLVRNcXVrRUIzajNxYlV4UGd4XzVPUnYzelo0M1I4SmswR2R3UzhXdWVpY2wxUXVxcWhoWdIBgAFBVV95cUxNNW9lN2ZBRVdGeWNOVWNaekRYS1ZsNEczYTRhbUJWQUNLWURFY0h4UUdYTEkwTS13dnh2NmR3U1hKM2lQT1BiUTh5ekVPTExvRTZhR1FhZWV2Q1lhZ050OERCamJTUmZxdThyNVlaZExDa19DUHJjUk5zSVRYVHN0WA?oc=5",
+   "src": "ｄメニューニュース",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "shinkansen",
+   "title": "「地球の歩き方」×「JR-PLUS」初コラボ！ 東海道新幹線の駅ナカで「東海道フェア」開催。非公開の研修センター見学も当たるかも!?",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE1yXzlfWlJMUUhjai1XbXpXSkxvcWNRbjNOeERhdHc2LVN2ajhHTG9ZMGFqLXgyemp0OW96X3dXZkc3YnVzbjJtQUFIOHI?oc=5",
+   "src": "旅とおでかけ 鉄道チャンネル",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "kaisha",
+   "title": "「地球の歩き方」×「JR-PLUS」初コラボ！",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBLbjJjUkdhekllMC1BcG1LNkItYldELUM1OW0yUDlGUklsVDFqNU9oYnNrYkdJZ0RwMmc0MWh5UzJEcXQta0VuMGdMUjJSdXRkWW5oWEtwalNRb1VZMlJXRkZyRHFyajRxd2xub0x3UHlrTnhySE1ta2JkNA?oc=5",
+   "src": "ニコニコニュース",
    "auto": true
   },
   {
@@ -2672,30 +2699,6 @@
    "summary": "グリーン車より上の新しい座席クラス。10月1日から「のぞみ」で個室タイプのキャビン（7号車は2人用、10号車は1人用）がスタートし、無料の飲食サービスや電子錠付きの扉がある。半個室タイプのシートは2027年度中に導入予定。東京〜新大阪の通常期は1人用で4万円台から。",
    "url": "https://trafficnews.jp/post/678708",
    "src": "乗りものニュース"
-  },
-  {
-   "date": "2026-10-01",
-   "cat": "kaisha",
-   "title": "JR発足40周年の記念ロゴマークが決定",
-   "summary": "国鉄分割民営化によるJR発足から40周年を迎えるにあたり、記念ロゴマークが決まった。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00613.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-10-01",
-   "cat": "zairai",
-   "title": "「フクロイサイクルトレイン」「ハマイチサイクルトレイン」の詳細決定",
-   "summary": "自転車をそのまま持ち込めるサイクルトレインのうち、袋井方面と浜名湖一周の2企画の運行内容が固まった。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00612.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-30",
-   "cat": "shinkansen",
-   "title": "貸切車両パッケージ「新幹線スナック JR」を運行",
-   "summary": "東海道新幹線の車両を貸し切り、車内をスナックに見立てて楽しむ企画型パッケージが登場。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00610.html",
-   "src": "JR東海"
   }
  ]
 }
