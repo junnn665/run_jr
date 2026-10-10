@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-10T16:37+09:00",
- "checked": "2026-10-10T16:37+09:00",
+ "updated": "2026-10-10T17:37+09:00",
+ "checked": "2026-10-10T17:37+09:00",
  "items": [
   {
    "date": "2026-10-10",
@@ -162,6 +162,24 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1ZVXE0cFItZnBhQXN1WjBuUWJqZHRZX2wxeU9VTkNHMGhQaGdpcTZDV1Y5Z1N2VndYek9fM2ZXTDBtQ2k2OVE1ZFd6NC0xQVdqY0ZxcW5nbnJjLVNqSC1jdTRyeFpyeGJkdm1r?oc=5",
    "src": "Unisba Media",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "shinkansen",
+   "title": "JR九州新幹線の全線運転再開に「新幹線の各駅長」から温かいエール 遠く離れた場所から繋がる絆に感動",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE44eDE3VjYtY2tZcjlvMUNhXzJoRWpDSF9MTmp2QnpianhoZjVTdTFiS1Bfald6WjRISzZnbnhqeTFJMHhzUkVDdHkydGk?oc=5",
+   "src": "LIMO | くらしとお金の経済メディア",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "kaisha",
+   "title": "江田島の「鍛え牡蠣」やドクターイエローなどPR 大阪で中四国9県の物産展盛況",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE13bkdTOWNyYUF2V0twZU1zMmVObWNzZ2tjWGctUG5pdWpKT0JYOGt3SjdzVjFveS1WM0RockJodk1VSEhrUjd3ZlRRQQ?oc=5",
+   "src": "47NEWS",
    "auto": true
   },
   {
@@ -2681,24 +2699,6 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA3QkwzWU5mM014SXJhMHB6SzVtQTBWVld6VXRpZVJYTVhVendaQy1LVWxVaTYzX2VNS0xMaE0xSFE0Mlk4MlFXcmkxcUpVallPTWtWWHNSdm00WjJZUy1hRzczbXhIOWhuNzJxNHRpLU1tczgxWUZaWFFpY0V4Y0E?oc=5",
    "src": "Yahoo!ニュース",
-   "auto": true
-  },
-  {
-   "date": "2026-10-02",
-   "cat": "zairai",
-   "title": "静岡県内東海道線で4両と3両運転に再編で平日夕ラッシュ時に増発か！ JR東海静岡支社ダイヤ改正予測(2027年以降予定)",
-   "summary": "",
-   "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE0xY2hPblhlT0dyZE9VNkluS1hBbnpxUUdvZ2lGQTNLaEJpV2VMaHByLWxMTWowUV9DSEszRXVoQmxsQUR6Zy1jWVpZVUhFUG9fS2RsREtYelE0RzJpS1JPcENKLXh1SW8?oc=5",
-   "src": "鉄道時刻表ニュース",
-   "auto": true
-  },
-  {
-   "date": "2026-10-02",
-   "cat": "zairai",
-   "title": "【JR東海】315系 C18編成 普通 神領 広角前面展望",
-   "summary": "",
-   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE90NEU3RW15R1h2aEYwMGhfOUg4b01rTnBybWVSUDNFN2x4M2ZBSEFZTEdvRTRqeUlJZWc3NmtYb242WkV3bkZuTnI2WkZGdnJpWVlOUE9XRlV6d0dP?oc=5",
-   "src": "YouTube",
    "auto": true
   }
  ]
