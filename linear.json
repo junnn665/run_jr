@@ -69,11 +69,7 @@
    "note": "2026年3月に起工式を行い、駅舎の工事が始まった。在来線の甲府駅から離れているため、アクセス手段が地元の課題になっている。",
    "src": "https://hirogoro.com/linear-chuo-shinkansen-opening-route-fare/3717/",
    "status_date": "2026-03-31",
-   "latest": {
-    "date": "2026-10-05",
-    "title": "リニア山梨県駅予定地徒歩8分 甲府RC 利回り10.75％",
-    "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOM2xVQ0FmR2pPU0JHX3NjOTRDSmU4WUlMSzdsLWdLZUlNODBpclZGQXZGUlRUclI3bzlTck5XSDJ0WlNfa3pSSnNWNE5YeHlXWXNxYW1TYmQzWXRfaC02RlhaWHB6Y0FsY1Rfa1hoLVZHZVAwOGI4LWE3N1dON1FVaXhnazFKcFl6ejNSRld3?oc=5"
-   }
+   "latest": null
   },
   {
    "name": "長野県駅（仮称）",
@@ -126,8 +122,8 @@
  "works": [
   {
    "name": "第一首都圏トンネル（品川〜神奈川）",
-   "status": "build",
-   "label": "掘削中",
+   "status": "wait",
+   "label": "工事停止（10/9報道）",
    "kw": [
     "第一首都圏トンネル",
     "北品川",
@@ -138,8 +134,13 @@
    ],
    "note": "品川駅から神奈川県駅へ向かう約37kmの大深度トンネル。大型シールドマシンで掘り進めている。",
    "src": "https://linear-chuo-shinkansen.jr-central.co.jp/plan/",
-   "status_date": "2026-10-01",
-   "latest": null
+   "status_date": "2026-10-09",
+   "latest": {
+    "date": "2026-10-09",
+    "title": "品川区地下のリニアトンネル掘削工事で大型掘削機の部品に損傷確認 点検完了に半年以上 工事再開はさらに先の見通し JR東海",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9nZk9aa0dMbUxhdG9PWGllak5DUlN3My1FLWtHM24xTnhCaFhicGZseFZ1N1pKN29vNC1OTVVYZV9EUURXdUdiSUw5S0w4LXBiVHRrZWhiNXdhb2h2dHpVUjByVnp3WEk5RE5NalhHVdIBdEFVX3lxTE1xb0czR0VOaFNWemJxZEtta3JlVXpFN1dGcTlseEloZUN0REpzMFFISjdvbEtmVF9xOVVHM01OM080M1RIUG8xX1pMaUdoOUhudl9YaDJHbHdBRllVbFZrX0pLTU9USkxTWHpmWjAteFFidm1m?oc=5"
+   },
+   "status_src": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9nZk9aa0dMbUxhdG9PWGllak5DUlN3My1FLWtHM24xTnhCaFhicGZseFZ1N1pKN29vNC1OTVVYZV9EUURXdUdiSUw5S0w4LXBiVHRrZWhiNXdhb2h2dHpVUjByVnp3WEk5RE5NalhHVdIBdEFVX3lxTE1xb0czR0VOaFNWemJxZEtta3JlVXpFN1dGcTlseEloZUN0REpzMFFISjdvbEtmVF9xOVVHM01OM080M1RIUG8xX1pMaUdoOUhudl9YaDJHbHdBRllVbFZrX0pLTU9USkxTWHpmWjAteFFidm1m?oc=5"
   },
   {
    "name": "南アルプストンネル 静岡工区",
@@ -173,8 +174,8 @@
   },
   {
    "name": "伊那山地トンネル（長野）",
-   "status": "build",
-   "label": "掘削中",
+   "status": "wait",
+   "label": "工事停止（10/10報道）",
    "kw": [
     "伊那山地",
     "青木川工区",
@@ -182,8 +183,13 @@
    ],
    "note": "南アルプストンネルと長野県駅の間、大鹿村などを通る約15kmのトンネル。2026年9月に可燃性ガスが検知され、青木川工区の掘削が止まっている。",
    "src": "https://linear-chuo-shinkansen.jr-central.co.jp/plan/",
-   "status_date": "2026-09-01",
-   "latest": null
+   "status_date": "2026-10-10",
+   "latest": {
+    "date": "2026-10-10",
+    "title": "掘削再開は年明けに リニア中央新幹線青木川工区 換気設備の部品調達に遅れ【長野県大鹿村】（南信州新聞）",
+    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE82RXZvRm53WWlHYnA4bkJETGlmWmtHU0wyRVh3bi1McHVWWGhCbzBRa3NZdVQ5R2VzTF9wLUZ2clhJOGh0cE5vTHR2UnhmNjBwaURKakswT2xhUXRMOUFmcWJTQmZnd0VrMXg5ZFluVFNzVnd2U2tGZVR0clhXcDQ?oc=5"
+   },
+   "status_src": "https://news.google.com/rss/articles/CBMif0FVX3lxTE82RXZvRm53WWlHYnA4bkJETGlmWmtHU0wyRVh3bi1McHVWWGhCbzBRa3NZdVQ5R2VzTF9wLUZ2clhJOGh0cE5vTHR2UnhmNjBwaURKakswT2xhUXRMOUFmcWJTQmZnd0VrMXg5ZFluVFNzVnd2U2tGZVR0clhXcDQ?oc=5"
   },
   {
    "name": "中央アルプストンネル",
@@ -217,5 +223,5 @@
    }
   }
  ],
- "checked": "2026-10-10T19:36+09:00"
+ "checked": "2026-10-10T19:58+09:00"
 }

@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-10T19:36+09:00",
- "checked": "2026-10-10T19:36+09:00",
+ "updated": "2026-10-10T19:58+09:00",
+ "checked": "2026-10-10T19:58+09:00",
  "items": [
   {
    "date": "2026-10-10",
@@ -49,7 +49,7 @@
   },
   {
    "date": "2026-10-10",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "今秋の「そうだ",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9Ta3NLckRzQ1dHRUhPYl84UFJGTi1zcmJQeUVWcS1mTGdBU1pQLUZCbzFhbG15dDVORmJnQW53NzlxQVFGWXJOSDMxWlhjQ05QbzFrOUhCcFViU2Y5cDYxbXU4NFhiN3IwcTJjd1hmNmNlckRhS21ZY3lzRQ?oc=5",
@@ -76,7 +76,7 @@
   },
   {
    "date": "2026-10-10",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "JR西日本，新形レール輸送用気動車「キヤ145系」を導入へ 〜2028年2月ごろから運用開始〜",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9oNFBaT2N3dzN1Z1NraFJ2b1dxajJ6c2s3eVBYRFhvd3dLdXUzNXJtbEZHaHJSVjNLWFlobzVWVGdaOVVyWWhhWDE4VlZDNXEwZXotM2xHbw?oc=5",
@@ -139,7 +139,7 @@
   },
   {
    "date": "2026-10-10",
-   "cat": "shinkansen",
+   "cat": "event",
    "title": "「地球の歩き方」×「JR-PLUS」初コラボ！ 東海道新幹線の駅ナカで「東海道フェア」開催。非公開の研修センター見学も当たるかも!?",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE1yXzlfWlJMUUhjai1XbXpXSkxvcWNRbjNOeERhdHc2LVN2ajhHTG9ZMGFqLXgyemp0OW96X3dXZkc3YnVzbjJtQUFIOHI?oc=5",
@@ -148,7 +148,7 @@
   },
   {
    "date": "2026-10-10",
-   "cat": "kaisha",
+   "cat": "event",
    "title": "「地球の歩き方」×「JR-PLUS」初コラボ！",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBLbjJjUkdhekllMC1BcG1LNkItYldELUM1OW0yUDlGUklsVDFqNU9oYnNrYkdJZ0RwMmc0MWh5UzJEcXQta0VuMGdMUjJSdXRkWW5oWEtwalNRb1VZMlJXRkZyRHFyajRxd2xub0x3UHlrTnhySE1ta2JkNA?oc=5",
@@ -175,7 +175,7 @@
   },
   {
    "date": "2026-10-10",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "江田島の「鍛え牡蠣」やドクターイエローなどPR 大阪で中四国9県の物産展盛況",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE13bkdTOWNyYUF2V0twZU1zMmVObWNzZ2tjWGctUG5pdWpKT0JYOGt3SjdzVjFveS1WM0RockJodk1VSEhrUjd3ZlRRQQ?oc=5",
@@ -198,6 +198,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQWmFlYk9UZVE0MFAzQURuYWhsQzE3Y0tZMS12Y2F2VVUwWWphR0NVLUZMM2lwemZaLVNjUjhvcXlXZDZ2MnVscUJpeW1EdmFMeGFFQno0VnA2UnNVMFctLUk4cVA4NV9uOENTZnNDRjBJd2hnZUk5NnBDb0FiWlN0ZmFRRTBEYzE2MnRReWZzLXZJUGVDczBMWFVCWkFJQm01WE1ZaVVQQUJvUnVLZi1oTG1JREN1Ym9EVzdBQWZWMjRIV0VfRGV1aVM2cGRpU3FOVE9uMGZMVdIBhwFBVV95cUxQUS15eWoyRC1MRnNTUnAwZFZ4Q3ZReXIxdWlxTXVFa24tZlhvMHBtakh0TFk2MmUtMlNFc3F5SDN1OHBvRlVnZ2tDS3pYdml6X3dnRXN6S1d6TWxtWWUzanMwSElNdUNJUzd5UklrUDljN2h6Zm84NW1nQ3N0djNYSFplTmdKSWM?oc=5",
    "src": "ｄメニューニュース",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "shinkansen",
+   "title": "深夜時間帯に〝停車〟するメリットとは？夜行新幹線「東海道ルミエールエクスプレス」が人気の理由",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE1NNG5xdEtJc0FTTE5ma1I5RHVfR055SEF3QmhYUnRqU05vVUtTTHQtV2hPZHpwMkF4N0k3RjFtR3Qtcmh6?oc=5",
+   "src": "@DIME アットダイム",
    "auto": true
   },
   {
@@ -310,7 +319,7 @@
   },
   {
    "date": "2026-10-09",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "静岡県知事、国交相と意見交換 空港振興など 「お祝い伝えた」",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1xUjdWdW90bGlEaDAzV3R4X3R4d1hBRDl3LWlIU3lnYjdxSEF4MDYyVVpaVEJ4TUlfc0FXN0pVajlrNlExWThFdXdCcWRwZw?oc=5",
@@ -355,7 +364,7 @@
   },
   {
    "date": "2026-10-09",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "新型「事業用の気動車」JR西日本が導入へ JR東海の車両をもとに新造 国鉄時代の“機関車＋貨車”を置き換え",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5ZQnY1NFNHN1N4LWVmcWNXQnlOaXlFVGQxeGRkQTQ5Q1diRFY0M29NRHM1dVJ0REMyU2I0OTdpczhtQklMVDh6Nlc4UTlQVjFvbVgzNWF2bmtaMmcxbjFWTEJRTFdLN2xwa0loZmJtTDR1YmxkdDNvRy16Q1o4ZmM?oc=5",
@@ -382,7 +391,7 @@
   },
   {
    "date": "2026-10-09",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "御殿場市内で開催されるゴルフトーナメントに合わせ、臨時列車を運転します！ 196.2KB",
    "summary": "",
    "url": "https://jr-central.co.jp/news/release/nws000001_00618.html",
@@ -391,7 +400,7 @@
   },
   {
    "date": "2026-10-09",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "画像ギャラリー | 新型「事業用の気動車」JR西日本が導入へ JR東海の車両をもとに新造 国鉄時代の“機関車＋貨車”を置き換え",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE5aOGpoNGJZN2ZlSjNVU3hYcXpNRzljVU1ONmJtcUhIOUhOR0dVUFl0RlFrOS12ZEJDaU9fZ1BjQ1RKY2pTVWtvVjVlcw?oc=5",
@@ -400,7 +409,7 @@
   },
   {
    "date": "2026-10-09",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "JR西日本、2028年に新型「レール輸送用気動車」導入 JR東海「キヤ97系」がベース",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNczVLblBIS2twWVZPME01Y0w3YzVjNmZjNGtRdjN1R3h5MDlGUkZnZ1hWbVdWYkhtM1ZYMkllNUdBaVdGbzE4QTZLbnpmT200MS1yckFGYXRJMlh2bWhHZ1BURi0zcFJ5eTd1ZmFPaEh1SmdwaG85a2VQNHJIZXMzQlE3bFZJdGVGdHFvMm9n0gGAAUFVX3lxTE5PQ1htenJicWpibUVFR3IwTV9MckprLVJMc2diQjdsQUFJUkluNEVmdlA3R2dZajVHcEU3TXpaX3FwUGhpRHRYSFRURDN5MmtVSHFIdXNPSEw3UFRkT2p3WmdQMVFNUUxnMndfZWh0eEh0Y1dleHN4OGFlUWZYV3hv?oc=5",
@@ -409,7 +418,7 @@
   },
   {
    "date": "2026-10-09",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "JR西日本「新型レール輸送車」導入 形式や編成構成など発表、機関車・貨車方式は終了へ",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE05OUZKc1NBQlZSaUxLbjZraE1qY0xIbENFTWt6MFVWV096WHhZWkphWjRKMGt4UVU3aDNPQUl6RHJqMjNmejY1VTVvU3pTN29HNVlXT1ppZ3BxNXhr?oc=5",
@@ -472,7 +481,7 @@
   },
   {
    "date": "2026-10-09",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "371系「あさぎり」やALFA-Xも！伊藤園×OJICO 恒例の鉄道ペットボトルカバー全6種登場 10月13日から",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE55MmZaamhlbUM0cjNaQWplWFRzaFdhb2hrLUc0VVM4d1RzZElRanlxWHV5cUJKdTN0QVdOcktkUWFuQjIwNkczbHo2aWZCQQ?oc=5",
@@ -481,7 +490,7 @@
   },
   {
    "date": "2026-10-09",
-   "cat": "kaisha",
+   "cat": "event",
    "title": "「JR東海MARKET」×「WESTERモール」，鉄道の日コラボ企画を実施",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9ydlVEXzhBc1J3VmlhTmVCZmtfS2ZrSlJnSkdsTnZxNFBQTU53ZzhRX2U5QnJHUE5EX0pqcGR3a3hudU9tNWZudmM3R09XTXlEVWtfWFNKUQ?oc=5",
@@ -616,7 +625,7 @@
   },
   {
    "date": "2026-10-09",
-   "cat": "zairai",
+   "cat": "event",
    "title": "特急しらさぎ・ひだ JR東海・西コラボグッズ 販売（2026年10月7日～）",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBaTWdqZmhOdGlpWUNINWxpa2VpbXlIZ043ek94M2Y5U05KUzV0akY4dlgzcGh4cXpRcEh1SVZMd19MeVY1YndKNEU5UDI?oc=5",
@@ -625,7 +634,7 @@
   },
   {
    "date": "2026-10-09",
-   "cat": "zairai",
+   "cat": "event",
    "title": "特急しらさぎ・ひだ JR東海・西コラボグッズ 販売",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9rbHZoNTZfRmFFeWFWUkoyWFJmanJ5N0VscTRXcTdSMkE1dE5wTnpaWHR4Z2xJV1BTNVdiNmJHQ0pnc2JwOXZ5UzhlN3RyQnFJbGxyX3lfRWdOb3FvX1ZxV1h3aDFBN1BCUng5VENrWEZ3THJzMFJreGNaUHNlUdIBgwFBVV95cUxOS25ReVZqOGZSRUVDZFJFWkZSSWtqcWdDNmdfN2lHYW5CcXlrZU0yWmpfdmN1Wksxcm1RYzZ2NkN5UTVvbHg3bUhYZDVBcTIxZDFrbmxuSy1lTXZ3RmUtSTJkWkhEdEliakxubDNvZjRWM0YwWWQ3XzE5MEw0dENBaHRPQQ?oc=5",
@@ -634,7 +643,7 @@
   },
   {
    "date": "2026-10-09",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "前場コメント No.5 ＪＲ東海、乃村工、アルバイトタイ、ファンデリー、ブックオフＧＨ、トーセ(トレーダーズ・ウェブ)",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPWUd2eFpwNWF3aFM2YVFleXpnUWpsYi1JSUpYcVhwaFdWV2dBd0ZId2FqMDVSS3lXbGY3NnVKLXJQMUZZZ00yNS1ydkU3WHNjUnhQTTJMMFRPOHJ2cFRWTU1VemFhaG5ZelhJUDREZWFaM1A4dkEyR0dlWldoSTB0RWtfeUsyU0U?oc=5",
@@ -697,7 +706,7 @@
   },
   {
    "date": "2026-10-08",
-   "cat": "shinkansen",
+   "cat": "linear",
    "title": "中央新幹線第一首都圏トンネル新設（北品川工区）におけるシールドマシン一部設備の変状について 638.5KB",
    "summary": "",
    "url": "https://jr-central.co.jp/news/release/nws000001_00617.html",
@@ -742,7 +751,7 @@
   },
   {
    "date": "2026-10-08",
-   "cat": "zairai",
+   "cat": "event",
    "title": "JR東海×JR西日本、特急「しらさぎ」「ひだ」コラボグッズ発売！683系・485系、HC85系・キハ85系をデザイン",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5aMG9LamFvSGVqaVJWZDc4M1Q0Q3ZPdFp6UHJtcE1nME1XZTZ0YWZ2WEZMYUpHUnpFQ3hXdFM4bFQxbTgyZ1JkdkYyMWhmQQ?oc=5",
@@ -760,7 +769,7 @@
   },
   {
    "date": "2026-10-08",
-   "cat": "kaisha",
+   "cat": "event",
    "title": "「アンジュルム」が伊勢初公演 JR東海コラボ曲「おいないさ、伊勢」で熱気（みんなの経済新聞ネットワーク）",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE0tdDV3cU1aTGZ1NFZtZWxCTEhaRlVsRHZ5SGpuV2NHcW1DalNJZE5UR2Y5czhWWHdKRnJjU3ZZR0RrandUdk13M1ZjejBwNkJoOUlYRVhhR2J2OTZBcTg2UUdWeEI1Z05MQ2ZENExhREw3MjZtaU9IWXVtQWtvYU0?oc=5",
@@ -778,7 +787,7 @@
   },
   {
    "date": "2026-10-08",
-   "cat": "shinkansen",
+   "cat": "event",
    "title": "東海道新幹線 歴代車両モチーフグッズ 販売（2026年10月7日～）",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE1GeU5XVlJleG5hMzZfWmNaVXBWallneE5WYWdtM0VHZXRhZ0J0RkpaR3k1RW14eDJqM0JjaUpyeDI2YUNKbVZkZjBYX0s?oc=5",
@@ -787,7 +796,7 @@
   },
   {
    "date": "2026-10-08",
-   "cat": "shinkansen",
+   "cat": "event",
    "title": "東海道新幹線 歴代車両モチーフグッズ 販売",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE51T0ZybmJvR0VSS1ZLeXExb1Z3TWVQbW9fM1JEenFKaTFIRklsYVpmbHVVT1NWXzdSNnEwcFlFb2pVWmxwNzhPbVpwdnRiQi1mZ1o3MHgtWV9DaTlIdEFyMlZnTnZLN0pSZEZEaFJQYzdCblkxZ3dKSUg2Z2c5d9IBgwFBVV95cUxPc0Ftb1RtTFlwTXlhc1NmWjhzUmxDa29ubzRNQkZNclNNclRCdFhNc21PX19CYXMtakZSUFpLWjVJaHdIb1A1T2dKclVwZng1WEpSaDVaYm8tZHdqRGtWTHZjSVNEOGJoWFZreWhMSTN6NURub1gzZl9IT0lvMkhLQUdtcw?oc=5",
@@ -913,7 +922,7 @@
   },
   {
    "date": "2026-10-08",
-   "cat": "kaisha",
+   "cat": "event",
    "title": "「アンジュルム」が伊勢初公演 JR東海コラボ曲「おいないさ、伊勢」で熱気",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9OY3BrV1M5V0p6MzVmcGdVZ05feU5Wd19VRkNpZllVV0kyeGMxdDFqcEgwVnhqanhrUjFzd2E5RVkzdlQzTWNkZUlER0RJQklpNTFTNUtBZUxBeVM4SktTZ1hOY0txWXNvblRsVkNmTmNIRE9pb0JMUDd4NlhMd9IBgwFBVV95cUxPeGxFOGtSREJnQUNrT05RVHIyQ3ZnWWlFQVNjR2g2MW84VWFmcmEwLXJjZmIxY0dSaTVLU1VkblJoemNoNG45SjVHNFliWnp4LUNDSEdVbjRNYkh1cGtMTTVaakFManA3VUJCenRfLTlSQ0cwQTN1U1Zuc01QUElneHZsNA?oc=5",
@@ -940,7 +949,7 @@
   },
   {
    "date": "2026-10-08",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "もびりだ〜で (@mobilidade9230) on X",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE9YajZIWjNneGpKQ3VUZUVWSGZUUWJrYUdTQWhPeWQ3aUpHY0tBZzFmU3EzdzYtRkxsOWdR?oc=5",
@@ -958,7 +967,7 @@
   },
   {
    "date": "2026-10-08",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "JRエキナカ小売業6社の〈電車版ボンドロシール〉が1日で売り切れの大反響も「四国は取り扱いナシ」、担当者が語った「苦渋の決断」（3ページ目）",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFB5M1NNeHBNTGRfdmp2OWNUM1RhWnRhS2lNX1FjUllTb1pvQjZNdk1MNkF2dkx6bUd3V3YyVEcycnJKd0lCNExpSXl5ZXp5VzU1Tnl6MzZNRFI?oc=5",
@@ -967,11 +976,20 @@
   },
   {
    "date": "2026-10-08",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "JR東海から富山地方鉄道へ 213系甲種輸送",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5Bd2M5a0UxeXg1SzRNUEdLZW5POGZ1R3c2RWtYUi0xUUFPdlRCNzhFcnhUcnpxMFZfV1REWktYQW1YQnF5eURCUEk5a2F2Mk1oTTRoMVNxRzVxUnpm?oc=5",
    "src": "YouTube",
+   "auto": true
+  },
+  {
+   "date": "2026-10-08",
+   "cat": "linear",
+   "title": "JR東海、品川リニアトンネル掘削停止で北品川工区の工程に遅れリスク",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQdUU2MU9PMklYZl8xbGw4NER5WlRSZ3A5Q1RHa1h4dVl2d0lUSTRYVTJiWVRYMmN1Z2szLVR4VmktdE5Ba1FCNlBIMHpvVGhGb3NTMjczMzRXX1B1bk80eDJtdjBtTEVXLXRrWjhVZEczQVRkZVV1cW5yRDhIQ19qTG1INHBJQ3hZaGdYd0ZzS3NKSko4cE9NdzhlamI1SGdKdGc?oc=5",
+   "src": "Traders Union",
    "auto": true
   },
   {
@@ -1030,7 +1048,7 @@
   },
   {
    "date": "2026-10-07",
-   "cat": "kaisha",
+   "cat": "event",
    "title": "運転士用時刻表をレプリカや923形塗装片グッズまで！JR東海、過去最大の「鉄道の日」企画",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9VXzdxMGhYU2VDT3ZURXdwUnY4Y0NqckNFcmo0aWoxdHRyWlN0cEIzTGhmT2FMckQxUlBTM1M3RHRpNjZFbVlqM3ptV0JTdw?oc=5",
@@ -1102,7 +1120,7 @@
   },
   {
    "date": "2026-10-07",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "三遠南信を駆けた213系が富山で復活 富山地方鉄道がJRから譲り受け、本年度から順次運用",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBrOWRfTF9XdGQ4WlZ6OVhvUDM2ay1ndmFXblpxTm83VUN1UVpRZDlheHJSRHRzNm9yVFlmYWt4R2RCcnlPb2VsMzQzT29OTjJhbERFNw?oc=5",
@@ -1201,7 +1219,7 @@
   },
   {
    "date": "2026-10-07",
-   "cat": "shinkansen",
+   "cat": "event",
    "title": "歴代の東海道新幹線が大集合！シークレット2種入りアクリルマグネットなど、子どもから大人まで楽しめる新グッズ3種が登場！",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiQ0FVX3lxTFBrMlNiaEVkZk9lLUFva3lDWDh1NmpVOWc3aTIxZDRMUVdZVXlRRWIwNDNtZ3NaMVhSZVcyWGZQZzdEcHc?oc=5",
@@ -1489,7 +1507,7 @@
   },
   {
    "date": "2026-10-07",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "「不安はないはず」と思っていたが…JR東海課長が手放した「正解探し」",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNV254ZHNkOWc2OWpONS14aGFyWW4talJhbGltb1pXR3F1U0Y2SzhnQlZObXhRcDJQTGV1TXhHYW1MNFRFdjZESzZ3QVdDVkpCRGNNV082MWR2Qzh6RlZwME9nNVBCT2FURmkxLThwQnMyNzNkTC03ZGFnVzd2REJLeE5LTEgydGFlR2VXNw?oc=5",
@@ -1498,7 +1516,7 @@
   },
   {
    "date": "2026-10-07",
-   "cat": "zairai",
+   "cat": "event",
    "title": "JR東海×JR西日本のコラボレーション企画、両社エリアを結ぶ直通特急「しらさぎ」「ひだ」をデザインしたアイテムが登場",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBqTmQzMHVHNlRqcGdudzd2Y1N1SGhkbVoxX2N6ZzV0dzlDMDVWTkV6UG1sR1Z6akdNdURzeTlrakJxYktVYVpsc0tuMVhIbnpLS25wZE5RZHBpSG9JcXJJ?oc=5",
@@ -1507,7 +1525,7 @@
   },
   {
    "date": "2026-10-07",
-   "cat": "shinkansen",
+   "cat": "event",
    "title": "500系とドクターイエロー 引退新幹線グッズを販売 広島の縫製会社とコラボ、バッグや雑貨",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE8xQlAxeXFqRDA3cm9CWGV1M0ZsZ3ptZm5ObThBSDVJQ0RiSGg4VTBIUlJlYUZ0MGUxekM1ZTNJOWw1OEVYMmpacE5fcml5UlhROHI2WnJKYlA5dw?oc=5",
@@ -1516,7 +1534,7 @@
   },
   {
    "date": "2026-10-07",
-   "cat": "kaisha",
+   "cat": "event",
    "title": "「ドクターイエロー（T4編成）」×「ぴよりん」コラボグッズがぴよりんMARKETに登場！",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBaeDlBbjNuYjdUUkJmdTVGdWNaN25ta1BISjV2UWJmWVdpTFEzTnJlUi05Yy1LQ3lVc21abXVfRTl2anYwYTF3LVZkMzdKN1BQMEZGRmdjQW9xbGt2cHk2ckgxWmxsNUFpcDlVbVhHelEtaDV1R0E?oc=5",
@@ -1534,7 +1552,7 @@
   },
   {
    "date": "2026-10-07",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "【引退間近】水曜スペシャル！ドクターイエローを名古屋スパイラルタワーズの前で撮れ！の巻 2026.10.7",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFA3WUFrVVk5V1AybFB4MXZWZm9rY2Rranc3cGQ0QVNlQ09XU3BJSWNJX1A2aWJidDhGOGZVSTZIQ0w1TjlMQ1g0TlEwYnJqNWJKRGhfZFJqUXdRbGdF?oc=5",
@@ -1543,7 +1561,7 @@
   },
   {
    "date": "2026-10-07",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "今日の ＃ドクターイエロー ＃Shinkansen ＃JapanRailway",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1XR0tUTEhGb05aOUVxd1ZmNUg4RlY0QXNRNnZpZWQ4T3ZlUjBya1VCM1NoYktZV0NfZ0c2Q3ZIbTc2cmUyc1RUNXZBbjlrQlhTZFhNdHM3UzRoUE9Z?oc=5",
@@ -1669,7 +1687,7 @@
   },
   {
    "date": "2026-10-06",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "富山地鉄はなぜJR東海213系を選んだのか？ 京阪・西武・東急を渡り歩く「機会調達型」の車両更新",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBBLXMydWE0cjBqUVhsYXdhc3V0b3VUU0hxZU82UVlSc19QUGFFeVR0X3hPejVwb01rb3hJZm5ZUjhVUWZSa0VOcTFuSDBnck84Z3hrSG9aVkFhY3k0SHc?oc=5",
@@ -1678,7 +1696,7 @@
   },
   {
    "date": "2026-10-06",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "富山地鉄４年ぶり新車両 ＪＲ東海から「２１３系」 オレンジと緑のライン、ファン注目",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFAxbGxTdml4aDNQaURwbVNNV2JsNGEzN2l1Z0F5ejJvMXYxZ3JvclZISU1LTHVQVENZZlNCb1VrSEFtZ2d1MHBIc1QzM1ZPNi1ZLTVIcERqNA?oc=5",
@@ -1687,7 +1705,7 @@
   },
   {
    "date": "2026-10-06",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "東海から北陸へ活躍の舞台移す 213系5000番台が富山に到着 富山地方鉄道で今年度中に１編成運行へ（北日本放送）",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE4xVjZBMlN4MEpUUi1iRUtMeXgxSE1iU1NyUG5RTS1vX0I3UW9wQmlaUTJSb2M3WDJvMFdHb210QWFTRjVHNzlRa0FkTmhUSlVZY0VtTlQ3QnRVWFkwejFHQW93VUp4MmszVjJDOVVOR0g3LU1xNy1PbFFZS3lwMFU?oc=5",
@@ -1696,7 +1714,7 @@
   },
   {
    "date": "2026-10-06",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "富山地鉄４年ぶり新車両 ＪＲ東海から購入の２１３系、２６年度内に運行開始（北日本新聞）",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1IbFg1R0FORGtlQ2ZrR3VTelVGaFlJcjlPTXVEYk8xTFBpR2xjQVZOSnBXM2Y3cDQ1SUEtQlVxZGtFV1JHaW5CYnZ0eG9POHIycmtKV1RPaGEtald0aDZBVUJqc0t2LTRWanhhSmFJWWhHb3ZxT0t0cDEwd0xURkE?oc=5",
@@ -1723,7 +1741,7 @@
   },
   {
    "date": "2026-10-06",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "富山地鉄４年ぶり新車両 ＪＲ東海から購入の２１３系、２６年度内に運行開始",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE54Y3pMOGhKTDhCcFVOaDNrUzRqS0tzXzJPLThUcnE2dkMxUkJiUXJLMkVpeEhTN01Qbm1VYkZuZmpPZklXRVpOQjhLUQ?oc=5",
@@ -1732,7 +1750,7 @@
   },
   {
    "date": "2026-10-06",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "富山地鉄４年ぶり新車両 ＪＲ東海から「２１３系」 オレンジと緑のライン、ファン注目（北國新聞社）",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE51T0NkRXJHYWM0SmkwTXBnUkNDUjhrVVRlUVNzZ3g1Sm9OM0ttWUl3M19iZzZ5Z2thWmY2MHNXamRKbGNoWjVyZFdmbklyNTdXRlhGb1ZBU3ZuRUs3aUZadWhLaGVKU2h4bEVXSTdsQjNRT2xhNmtPUDRwY3NkeE0?oc=5",
@@ -1777,7 +1795,7 @@
   },
   {
    "date": "2026-10-06",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "富山地鉄４年ぶり新車両 ＪＲ東海から「２１３系」 オレンジと緑のライン、ファン注目｜社会｜石川のニュース",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFA2X0VYQVVSRmFPdm5FUzBZbEFaUXlKWkdYa2p4eW1kV09xMmxBRHV3XzhaWjllT01uQUt0MjRKZ3dlbXpYMDAzaEhmRUdoTjcwX25jTnUzMA?oc=5",
@@ -2083,7 +2101,7 @@
   },
   {
    "date": "2026-10-05",
-   "cat": "kaisha",
+   "cat": "event",
    "title": "JRグループ6社の鉄道車両がグッズに！「BONBON DROPシール」「JR GROUP TRAIN SERIES」10月6日発売",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5nQTdINlJlS1ExYXpzZ2d1ZUk3bUcyS0s2MUkwclBLUExzZWZIQWV1NmlFY0lqV2xZeVNMRS1LNEhfdFhOd05wQTNFR09Jdw?oc=5",
@@ -2326,7 +2344,7 @@
   },
   {
    "date": "2026-10-05",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "電車で出勤途中にまさかのドクターイエローと遭遇 東京モノレールの粋な計らいに「すごく嬉しい！」 (LIMO)",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNYlRvWmRwQ0tZZFVvZHV3RWNtNXM3Zi1wcFF3aXRNTU8zSUdrb1c1WWlHM2RvSVpPdG5HNS14SmVGQ3Z0Q0tIc19sQm0ydXFBaXRvWEJDZ1dVQ3d4ZUpyRHFrRVE0STZNRDBrbHdnbzN0a1pKLVR0aHdjMzZ0cUFEUHFZSnZwWnBDTG5OeWFR?oc=5",
@@ -2335,7 +2353,7 @@
   },
   {
    "date": "2026-10-05",
-   "cat": "kaisha",
+   "cat": "event",
    "title": "500系・ドクターイエロー MIKASAコラボグッズ 販売",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE9Tc0ctR1BfYlNLRjFiaGFVeDJRU3pKMWdNNHVQd0ZHTTFEbnNTMDdsendZb1lkSHVseER6VEFla0RZT3g4VWtUdlFRWHhscTk0MGcxWjBjNU1ZM2hpMmlXb1NQTjJaeWN3UHJYQ0luNUtFanlBUkZjaTlZMEtFUdIBgwFBVV95cUxOSy00ckZVaXV1bkN0QWdSbUFQRkdOdFQyNWhVbW9DQzBiUUU1ODhub0JZWE1xUWJrX0hKNEhtSFM2UFpJcEdyVnpQY2FwRmY3dXY0dnVEWk9weEphTzc1VXZRazQ1a25JaFBzcUtGMGNhNWpER3JnU04tanBSbTd0VVYxcw?oc=5",
@@ -2488,7 +2506,7 @@
   },
   {
    "date": "2026-10-04",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "電車で出勤途中にドクターイエローと遭遇！車内放送で知らせてくれた「粋な計らい」に思わず感動",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE00S2Z3aUo1YXF0NGdEYzBvM0FsVmdRa19pWndqUmN3TjRUOVFqS0l3dTVuVE9CSWVBckpjSEdLOW5wZzlseXQ0dWc0MTR0Q2lNVnc?oc=5",
@@ -2605,7 +2623,7 @@
   },
   {
    "date": "2026-10-03",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "阪神高速版「ドクターイエロー」は夜に働く 路面点検に密着",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBLWlhNNDktZ3VGcWdtVjNtNjAtdFdSLWlrc1ltOTJnSFpCQ3MySm5ucm9FSEczVHBObEZwbUdUM0RGNmM0S2dJMHBJMnRvalkzQlVMTVdPQ0JjZDgyUnNYMmJJSGtmSWdiVkJPdQ?oc=5",
@@ -2614,7 +2632,7 @@
   },
   {
    "date": "2026-10-03",
-   "cat": "kaisha",
+   "cat": "other",
    "title": "フォトサークルはづ作品発表 ドクターイエローや青森ねぶた祭 四日市",
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMi3gJBVV95cUxQT3FEczZDakR0R2lpblJqZGZuSE00ckllSEkxSVQ1SnExTUl5Qk9SMHBENGhGTEpIQ2o5cVVjZkxBMElMTUxBOURnenp5bHRHd0hMcGtHMFdKNU94eHFZUVg4ZWVRU0lfUzRvc1Z5Rl9pNnVzOE1TMXRkU1BaMDNnd2wwdDFnSVJwWGhHVnR0WFdPczZrY1IyVG5TazBpSUZVTEltWGNhNjdad0ZueGJibW1WbHp2b2FYRlFSY3F3Slh1eUZ0Slpfcjc5UkNfemszV2w4UVhqUG9RTU9ncDduQWJlMmhJUkxIWjFNWXpjOHNYcVUzUmhSVTloaEZERFFhVUZCOTdPaUwwZUtIT05EeXlIRWw4TmNILWFnX1RVMHJKUnF1SDloS1RNYl9BUFpWWGNwM2V5U0ctVk5xMGVSSFNfUDNmd3hlYl9rMWl2aXgtMVQyR3BlNk9tWThBZw?oc=5",
