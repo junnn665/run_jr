@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-10T19:58+09:00",
- "checked": "2026-10-10T19:58+09:00",
+ "updated": "2026-10-10T20:36+09:00",
+ "checked": "2026-10-10T20:36+09:00",
  "items": [
   {
    "date": "2026-10-10",
@@ -702,6 +702,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE0zN3lmcDR6ZGQ5WXJDaVB3anNSQzRJcHRmSUE3RzRxZHVSVGxDeEt4RlZPUmk1d1ZXaUFFc3pVQ1hlOXl2blZPNTlxYklVRklLa2V2dEFEZ2ZSYjRUVEFIWHJTeklXUQ?oc=5",
    "src": "Unisba Media",
+   "auto": true
+  },
+  {
+   "date": "2026-10-09",
+   "cat": "other",
+   "title": "JR西日本、2028年に新型「レール輸送用気動車」導入 JR東海「キヤ97系」がベース（鉄道コム）",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1LSmxmX1c5RXBLNjdCbXUwOFhJa21YRUlON016S0pDSnNfQkFpNUtUWExNeFEyN0tGUGJwTjB5ZElWeHpTU251eDRTQ2VGdGFEeUNyeUJpRkk2c0g5X05hbDlLSWpYUEVVWlBqaGxCVVBqSjE1elR3c2lndlRSeUE?oc=5",
+   "src": "Yahoo!ニュース",
    "auto": true
   },
   {
@@ -1638,6 +1647,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE0xemd5c0YycXZTTXptOUJrMU9sMmptdGY0Y0VjYktRWC15bDNLcnhITUNVR2cwVG9ibFJURGhxNWFRMlFKWWk0MzRrNlB0YUVLd3VSMDh6XzQ3Z0F4WmM0?oc=5",
    "src": "野村證券",
+   "auto": true
+  },
+  {
+   "date": "2026-10-07",
+   "cat": "zairai",
+   "title": "JR東海383系電車 しなの クロ383-102 定光寺駅 鉄道フォト・写真 by かんきゅーなごやさん",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE9Rb21IamVyUFF3VEVfYjFuTWtIMkhOTkJEdms0djZmN3dCOXEtZzQ4ckg3T1JRR3pRS0RINUlQMmVCVE96MkE?oc=5",
+   "src": "レイルラボ",
    "auto": true
   },
   {
