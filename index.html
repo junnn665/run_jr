@@ -46,7 +46,7 @@ header.board .wrap{padding-block:20px 18px;display:flex;flex-wrap:wrap;align-ite
 .brand small{display:block;font-weight:500;font-size:13px;letter-spacing:.12em;color:var(--accent);margin-bottom:4px}
 .clock{font-family:var(--f-mono);font-size:13px;opacity:.8;font-variant-numeric:tabular-nums}
 nav.tabs{background:var(--bg);border-bottom:1px solid var(--line)}
-nav.tabs .wrap{display:flex;flex-wrap:wrap;gap:5px 4px;padding-block:8px}
+nav.tabs .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:5px 4px;padding-block:8px}
 /* タブ：駅ナンバリング風（路線カラーの枠に記号、選ぶとその色で塗りつぶし） */
 .tab{flex:none;font:inherit;font-size:12px;font-weight:700;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:6px;padding:2px 8px 2px 3px;cursor:pointer;display:flex;align-items:center;gap:5px;line-height:1.5}
 .tab .code{display:grid;place-items:center;min-width:20px;height:20px;padding:0 2px;border:2.5px solid var(--c);border-radius:4px;background:var(--surface);color:var(--fg);font-family:var(--f-display);font-weight:900;font-size:9.5px;letter-spacing:-.03em;line-height:1}
@@ -301,7 +301,7 @@ function renderTabs(){
   $("#tabs").innerHTML = CATS.map(c => {
     const n = c.id==="all" ? NEWS.length : c.id==="lprog" ? "" : NEWS.filter(x=>x.cat===c.id).length;
     return `<button class="tab" style="--c:${c.color}" data-id="${c.id}" aria-pressed="${c.id===current}">
-      <span class="code" aria-hidden="true">${c.code}</span>${c.name}<span class="n">${n}</span></button>`;
+      <span class="code" aria-hidden="true">${c.code}</span>${c.name}</button>`;
   }).join("");
   $("#tabs").querySelectorAll(".tab").forEach(b => b.onclick = () => {
     current = b.dataset.id; LFILTER = null; renderTabs(); renderLinear(); renderFin(); renderList();
@@ -318,7 +318,8 @@ function renderList(){
     .filter(x => !q || (x.title+(x.summary||"")).toLowerCase().includes(q))
     .filter(x => !LFILTER || (!NOISE.test(x.title) && LFILTER.kw.some(k => x.title.includes(k))))
     .sort((a,b) => b.date.localeCompare(a.date));
-  $("#heading").textContent = current==="all" ? "すべてのニュース" : current==="lprog" ? "リニア工事進捗" : catOf(current).name + "のニュース";
+  $("#heading").textContent = (current==="all" ? "すべてのニュース" : current==="lprog" ? "リニア工事進捗" : catOf(current).name + "のニュース")
+    + (current==="lprog" || LOADING ? "" : `（${items.length}件）`);
   const fb = $("#filterbar");
   fb.hidden = !LFILTER;
   if (LFILTER){ fb.innerHTML = `<span>「${esc(LFILTER.name)}」のニュース ${items.length}件</span><button type="button" id="clearf">絞り込みを解除</button>`;
