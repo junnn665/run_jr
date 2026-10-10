@@ -197,6 +197,7 @@ ol.route::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;widt
 .digest li::before{content:"";width:8px;height:8px;margin-top:8px;border-radius:2px;background:var(--accent)}
 .digest a{color:var(--fg);text-decoration:none}
 .digest a:hover{text-decoration:underline}
+.digest .dn{color:var(--muted);font-size:12px;margin-left:4px}
 .digest .dnote{margin:0;font-size:11.5px;color:var(--muted)}
 /* ===== リニア工事マップ ===== */
 .lmap{display:flex;flex-direction:column;gap:8px}
@@ -536,9 +537,10 @@ function renderDigest(){
   box.hidden = LOADING || SAVEDVIEW || ONLY_NEW || current !== "all" || !fresh;
   if (box.hidden) return;
   const link = it => { const x = NEWS.find(n => n.g === it.g && n.src === "JR東海") || NEWS.find(n => n.g === it.g) || NEWS.find(n => n.url === it.g); return x ? x.url : it.g; };
-  box.innerHTML = `<h3 id="dg-title">今日のJR東海<small>AI要約</small><time>${hm(DIGEST.generated)}</time></h3>
-    <ul>${DIGEST.items.map(it => `<li><a href="${esc(link(it))}" target="_blank" rel="noopener">${esc(it.text)}</a></li>`).join("")}</ul>
-    <p class="dnote">ニュースの見出しだけをもとにAIがまとめたものです。間違いがある場合もあるので、詳しくは各記事で確認してください。</p>`;
+  const ai = DIGEST.ai !== false;
+  box.innerHTML = `<h3 id="dg-title">今日のJR東海<small>${ai ? "AI要約" : "注目の話題"}</small><time>${hm(DIGEST.generated)}</time></h3>
+    <ul>${DIGEST.items.map(it => `<li><a href="${esc(link(it))}" target="_blank" rel="noopener">${esc(it.text)}${!ai && it.n > 1 ? `<span class="dn">（${it.n}件の記事）</span>` : ""}</a></li>`).join("")}</ul>
+    <p class="dnote">${ai ? "ニュースの見出しだけをもとにAIがまとめたものです。間違いがある場合もあるので、詳しくは各記事で確認してください。" : "この24時間で、多くの記事が出た話題の順に並べています。"}</p>`;
 }
 
 function renderTicker(){

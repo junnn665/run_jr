@@ -77,7 +77,7 @@ def prepare():
     if len(topics) < 2:
         return note(prev, f"今日の話題が少ないので作りません（{len(topics)}件）")
     key = "|".join(t["g"] for t in topics[:8])
-    if prev.get("date") == NOW.date().isoformat() and prev.get("items"):
+    if prev.get("date") == NOW.date().isoformat() and prev.get("items") and prev.get("ai", True):
         last = datetime.fromisoformat(prev.get("generated", "2000-01-01T00:00+09:00"))
         if prev.get("key") == key or NOW - last < timedelta(hours=MIN_INTERVAL_HOURS):
             print("AIまとめ：変化がないか、前回から時間がたっていないので据え置き"); return 0
@@ -87,6 +87,24 @@ def prepare():
         json.dump({"key": key, "topics": topics}, f, ensure_ascii=False)
     set_output("run", "true")
     print(f"AIまとめ：{len(topics)}件の話題をAIに渡します")
+    return 0
+
+def clean_title(t):
+    t = re.sub(r"^(【[^】]*】|画像ギャラリー\s*[|｜]?|画像\s*[|｜])\s*", "", t)
+    t = re.sub(r"\s*[（(][^）)]*(新聞|ニュース|NEWS|News|通信|テレビ|TV|Powered|Watch|オンライン)[^）)]*[）)]\s*$", "", t)
+    t = re.sub(r"\s*[|｜]\s*[^|｜]{1,30}$", "", t)
+    t = re.sub(r"[：:]ニュース$", "", t)
+    return t.strip()
+
+def fallback(meta, prev, reason):
+    """AIが使えないときは、記事の多い話題を上から5つ並べる（見出しそのままなので内容は正確）"""
+    items = [{"text": clean_title(t["title"])[:80], "g": t["g"], "title": t["title"], "n": t["n"]}
+             for t in meta["topics"][:5]]
+    with open(OUT, "w", encoding="utf-8") as f:
+        json.dump({"date": NOW.date().isoformat(), "generated": NOW.isoformat(timespec="minutes"),
+                   "ai": False, "key": meta["key"], "items": items, "ai_error": reason[:200]},
+                  f, ensure_ascii=False, indent=1)
+    print("AIまとめ：AIが使えないので記事の多い話題を並べました（" + reason + "）")
     return 0
 
 def finish():
@@ -102,16 +120,16 @@ def finish():
         text = open(rf, encoding="utf-8").read()
     text = text or os.environ.get("AI_RESPONSE", "")
     if not text:
-        return note(prev, f"AIから返事がありませんでした（{os.environ.get('AI_OUTCOME', '')}）")
+        return fallback(meta, prev, f"AIから返事がありませんでした（{os.environ.get('AI_OUTCOME', '')}）")
     try:
         items = parse_reply(text, meta["topics"])
     except Exception as e:
-        return note(prev, f"AIの返事を読み取れませんでした: {e} {text[:120]}")
+        return fallback(meta, prev, f"AIの返事を読み取れませんでした: {e} {text[:80]}")
     if not items:
-        return note(prev, "うまくまとめられませんでした")
+        return fallback(meta, prev, "うまくまとめられませんでした")
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump({"date": NOW.date().isoformat(), "generated": NOW.isoformat(timespec="minutes"),
-                   "model": MODEL, "key": meta["key"], "items": items}, f, ensure_ascii=False, indent=1)
+                   "ai": True, "model": MODEL, "key": meta["key"], "items": items}, f, ensure_ascii=False, indent=1)
     print("AIまとめ：", *[i["text"] for i in items], sep="\n  ")
     return 0
 
