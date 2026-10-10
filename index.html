@@ -20,7 +20,7 @@
 :root{
   --bg:#f6f5f2; --surface:#ffffff; --fg:#1d2126; --muted:#626a73; --line:#dcdcd6;
   --accent:#e8780c; --accent-ink:#ffffff; --board:#1f2a33; --board-fg:#f3f1ea;
-  --c-shinkansen:#1f63b8; --c-zairai:#e8780c; --c-linear:#7a4bc4; --c-eki:#2e8b57; --c-unko:#c8372d; --c-kaisha:#55606b; --c-event:#c2468a;
+  --c-shinkansen:#1f63b8; --c-zairai:#e8780c; --c-linear:#7a4bc4; --c-eki:#2e8b57; --c-unko:#c8372d; --c-kaisha:#55606b; --c-event:#c2468a;--on-c:#ffffff;
   --f-display:"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif;
   --f-body:"Noto Sans JP","Hiragino Sans","Yu Gothic",sans-serif;
   --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
@@ -28,12 +28,12 @@
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#14181c; --surface:#1c2228; --fg:#e9e7e1; --muted:#9aa3ad; --line:#2e363e;
   --accent:#f39a3d; --accent-ink:#1a1206; --board:#0c1014; --board-fg:#f3f1ea;
-  --c-shinkansen:#5c9be6; --c-zairai:#f39a3d; --c-linear:#a684e0; --c-eki:#5bbd85; --c-unko:#ea6a5f; --c-kaisha:#9aa6b2; --c-event:#e07ab3;
+  --c-shinkansen:#5c9be6; --c-zairai:#f39a3d; --c-linear:#a684e0; --c-eki:#5bbd85; --c-unko:#ea6a5f; --c-kaisha:#9aa6b2; --c-event:#e07ab3;--on-c:#10151a;
   color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#14181c; --surface:#1c2228; --fg:#e9e7e1; --muted:#9aa3ad; --line:#2e363e;
   --accent:#f39a3d; --accent-ink:#1a1206; --board:#0c1014; --board-fg:#f3f1ea;
-  --c-shinkansen:#5c9be6; --c-zairai:#f39a3d; --c-linear:#a684e0; --c-eki:#5bbd85; --c-unko:#ea6a5f; --c-kaisha:#9aa6b2; --c-event:#e07ab3;
+  --c-shinkansen:#5c9be6; --c-zairai:#f39a3d; --c-linear:#a684e0; --c-eki:#5bbd85; --c-unko:#ea6a5f; --c-kaisha:#9aa6b2; --c-event:#e07ab3;--on-c:#10151a;
   color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0}
@@ -47,11 +47,12 @@ header.board .wrap{padding-block:20px 18px;display:flex;flex-wrap:wrap;align-ite
 .clock{font-family:var(--f-mono);font-size:13px;opacity:.8;font-variant-numeric:tabular-nums}
 nav.tabs{background:var(--bg);border-bottom:1px solid var(--line)}
 nav.tabs .wrap{display:flex;flex-wrap:wrap;gap:6px;padding-block:10px}
-.tab{flex:none;font:inherit;font-size:13px;font-weight:700;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:5px 13px;cursor:pointer;display:flex;align-items:center;gap:6px}
-.tab .dot{width:8px;height:8px;border-radius:50%;background:var(--c)}
+/* タブ：駅ナンバリング風（路線カラーの枠に記号、選ぶとその色で塗りつぶし） */
+.tab{flex:none;font:inherit;font-size:13px;font-weight:700;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;padding:4px 12px 4px 5px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.tab .code{display:grid;place-items:center;min-width:26px;height:26px;padding:0 3px;border:3px solid var(--c);border-radius:5px;background:var(--surface);color:var(--fg);font-family:var(--f-display);font-weight:900;font-size:11px;letter-spacing:-.02em;line-height:1}
 .tab .n{font-family:var(--f-mono);font-size:11px;color:var(--muted)}
-.tab[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.tab[aria-pressed="true"] .n{color:var(--bg);opacity:.7}
+.tab[aria-pressed="true"]{background:var(--c);border-color:var(--c);color:var(--on-c)}
+.tab[aria-pressed="true"] .n{color:var(--on-c);opacity:.8}
 .tab:focus-visible,.search:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 main .wrap{padding-block:20px 48px;display:flex;flex-direction:column;gap:16px}
 .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
@@ -205,16 +206,16 @@ ol.route::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;widt
 <script>
 /* ===== カテゴリ設定 ===== */
 const CATS = [
-  {id:"all",        name:"すべて",          color:"var(--fg)"},
-  {id:"shinkansen", name:"新幹線",          color:"var(--c-shinkansen)"},
-  {id:"zairai",     name:"在来線",          color:"var(--c-zairai)"},
-  {id:"linear",     name:"リニア",          color:"var(--c-linear)"},
-  {id:"lprog",      name:"リニア工事進捗",   color:"var(--c-linear)"},
-  {id:"eki",        name:"駅・施設",        color:"var(--c-eki)"},
-  {id:"unko",       name:"安全・運行",        color:"var(--c-unko)"},
-  {id:"kaisha",     name:"会社・決算",      color:"var(--c-kaisha)"},
-  {id:"event",      name:"イベント・きっぷ", color:"var(--c-event)"},
-  {id:"other",      name:"その他",          color:"var(--muted)"}
+  {id:"all",        name:"すべて",          color:"var(--fg)", code:"★"},
+  {id:"shinkansen", name:"新幹線",          color:"var(--c-shinkansen)", code:"S"},
+  {id:"zairai",     name:"在来線",          color:"var(--c-zairai)", code:"C"},
+  {id:"linear",     name:"リニア",          color:"var(--c-linear)", code:"L"},
+  {id:"lprog",      name:"リニア工事進捗",   color:"var(--c-linear)", code:"LC"},
+  {id:"eki",        name:"駅・施設",        color:"var(--c-eki)", code:"ST"},
+  {id:"unko",       name:"安全・運行",        color:"var(--c-unko)", code:"OP"},
+  {id:"kaisha",     name:"会社・決算",      color:"var(--c-kaisha)", code:"IR"},
+  {id:"event",      name:"イベント・きっぷ", color:"var(--c-event)", code:"EV"},
+  {id:"other",      name:"その他",          color:"var(--muted)", code:"…"}
 ];
 
 /* ニュースは news.json から読み込みます（GitHubが1時間ごとに自動更新） */
@@ -300,7 +301,7 @@ function renderTabs(){
   $("#tabs").innerHTML = CATS.map(c => {
     const n = c.id==="all" ? NEWS.length : c.id==="lprog" ? "" : NEWS.filter(x=>x.cat===c.id).length;
     return `<button class="tab" style="--c:${c.color}" data-id="${c.id}" aria-pressed="${c.id===current}">
-      ${c.id==="all"?"":'<span class="dot"></span>'}${c.name}<span class="n">${n}</span></button>`;
+      <span class="code" aria-hidden="true">${c.code}</span>${c.name}<span class="n">${n}</span></button>`;
   }).join("");
   $("#tabs").querySelectorAll(".tab").forEach(b => b.onclick = () => {
     current = b.dataset.id; LFILTER = null; renderTabs(); renderLinear(); renderFin(); renderList();
