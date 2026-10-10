@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-10T21:14+09:00",
- "checked": "2026-10-10T21:14+09:00",
+ "updated": "2026-10-10T21:17+09:00",
+ "checked": "2026-10-10T21:17+09:00",
  "items": [
   {
    "date": "2026-10-10",
@@ -207,6 +207,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE1NNG5xdEtJc0FTTE5ma1I5RHVfR055SEF3QmhYUnRqU05vVUtTTHQtV2hPZHpwMkF4N0k3RjFtR3Qtcmh6?oc=5",
    "src": "@DIME アットダイム",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "eki",
+   "title": "ＪＲ名古屋駅隣のゲートタワーでぼや 地下１階「ごみ処理室から煙」",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE5OSVpUcjNTNDBLZkNaSFRRdlQ2UjBObkZ3cmU5RE84czc4Y3BuSllyM2FQQTFLQm02ZG1aN2poM1VYNWl2Rno2djdHVTJRX1YzX1d5OU1UZzlubjRQRE40X2ln?oc=5",
+   "src": "中日新聞Web",
    "auto": true
   },
   {
