@@ -61,26 +61,40 @@ def ask_ai(topics, token):
             out.append({"text": line[:80], "g": topics[n - 1]["g"], "title": topics[n - 1]["title"]})
     return out
 
+def note(prev, msg):
+    """うまくいかなかった理由を digest.json に残す（前回のまとめはそのまま）"""
+    print("AIまとめ：", msg)
+    prev = dict(prev)
+    prev["last_try"] = NOW.isoformat(timespec="minutes")
+    prev["last_error"] = str(msg)[:300]
+    with open(OUT, "w", encoding="utf-8") as f:
+        json.dump(prev, f, ensure_ascii=False, indent=1)
+    return 0
+
 def main():
     token = os.environ.get("GITHUB_TOKEN", "")
     news = load("news.json", {"items": []})["items"]
     prev = load(OUT, {})
     topics = topics_for_today(news)
     if len(topics) < 2:
-        print("AIまとめ：今日の話題が少ないので作りません"); return 0
+        return note(prev, f"今日の話題が少ないので作りません（{len(topics)}件）")
     key = "|".join(t["g"] for t in topics[:8])
     if prev.get("date") == NOW.date().isoformat():
         last = datetime.fromisoformat(prev.get("generated", "2000-01-01T00:00+09:00"))
         if prev.get("key") == key or NOW - last < timedelta(hours=MIN_INTERVAL_HOURS):
             print("AIまとめ：変化がないか、前回から時間がたっていないので据え置き"); return 0
     if not token:
-        print("AIまとめ：GITHUB_TOKEN がないので作りません"); return 0
+        return note(prev, "GITHUB_TOKEN がないので作りません")
     try:
         items = ask_ai(topics, token)
     except Exception as e:
-        print("AIまとめ：AIに接続できませんでした（前回のまとめを残します）:", e); return 0
+        detail = ""
+        if hasattr(e, "read"):
+            try: detail = e.read().decode()[:200]
+            except Exception: pass
+        return note(prev, f"AIに接続できませんでした: {e} {detail}")
     if not items:
-        print("AIまとめ：うまくまとめられませんでした"); return 0
+        return note(prev, "うまくまとめられませんでした")
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump({"date": NOW.date().isoformat(), "generated": NOW.isoformat(timespec="minutes"),
                    "model": MODEL, "key": key, "items": items}, f, ensure_ascii=False, indent=1)
