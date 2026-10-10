@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-10T11:37+09:00",
- "checked": "2026-10-10T11:37+09:00",
+ "updated": "2026-10-10T12:38+09:00",
+ "checked": "2026-10-10T12:38+09:00",
  "items": [
   {
    "date": "2026-10-10",
@@ -576,6 +576,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE1Jb0hhQW1kc2YxYUR5UEJOOWxuRTlYTG1VQnRNLUlMTWthSmRvLURKUW55RVNDcVBiRXo2NUhlWXVic2RXck9wc3U0V1c?oc=5",
    "src": "Tetsudo.com（鉄道コム）",
+   "auto": true
+  },
+  {
+   "date": "2026-10-09",
+   "cat": "linear",
+   "title": "JR東海、北品川工区リニア工事の再開見通し立たず 掘削機損傷で：ニュース",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE82V1NZSnp5WmE2Z0tsUy0zdE5DN0RtR21Mc3FlVVlzbEFCUzJ4MDNsVGRUU1Y5Q0NsZkhaYkpTSDdQeUwzUE15UlYzQ2ZWS1Q2QlhDY3UxMS10U3F2UUk0?oc=5",
+   "src": "中日BIZナビ",
    "auto": true
   },
   {
@@ -2682,14 +2691,6 @@
    "title": "【社長会見】EXサービスのサービス向上",
    "summary": "東海道・山陽新幹線のネット予約「EXサービス」の使い勝手を高める取り組みを社長会見で発表。",
    "url": "https://jr-central.co.jp/news/release/nws000001_00606.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-25",
-   "cat": "event",
-   "title": "【社長会見】「そうだ 京都、行こう。」2026年秋キャンペーン",
-   "summary": "おなじみの京都キャンペーンの秋版の展開内容を発表。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00607.html",
    "src": "JR東海"
   }
  ]
