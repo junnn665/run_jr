@@ -9,8 +9,12 @@ from urllib.request import Request, urlopen
 JST = timezone(timedelta(hours=9))
 NOW = datetime.now(JST)
 OUT = "digest.json"
-MODEL = "openai/gpt-4.1-mini"
-ENDPOINT = "https://models.github.ai/inference/chat/completions"
+# 使うAIの窓口。1つ目がだめなら2つ目を試す（どちらも GitHub の無料のAI）
+ENDPOINTS = [
+    ("https://models.github.ai/inference/chat/completions", "openai/gpt-4.1-mini"),
+    ("https://models.inference.ai.azure.com/chat/completions", "gpt-4o-mini"),
+]
+MODEL = ENDPOINTS[0][1]
 MIN_INTERVAL_HOURS = 3      # 同じ日のまとめを作り直す間隔（AIの利用回数を節約）
 MAX_TOPICS = 15
 
@@ -43,14 +47,30 @@ def ask_ai(topics, token):
               "記事の多い話題や、運行・安全・リニア・決算に関わる話題を優先します。")
     user = ("今日の見出し一覧:\n" + lines +
             '\n\n次の形のJSONだけを返してください: {"items":[{"n":見出し番号,"text":"まとめの1行"}]}')
-    body = json.dumps({"model": MODEL, "temperature": 0.2,
-                       "messages": [{"role": "system", "content": system},
-                                    {"role": "user", "content": user}]}).encode()
-    req = Request(ENDPOINT, data=body, method="POST", headers={
-        "Authorization": f"Bearer {token}", "Content-Type": "application/json",
-        "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28"})
-    res = json.loads(urlopen(req, timeout=60).read().decode())
-    text = res["choices"][0]["message"]["content"]
+    global MODEL
+    errors = []
+    text = None
+    for endpoint, model in ENDPOINTS:
+        body = json.dumps({"model": model, "temperature": 0.2,
+                           "messages": [{"role": "system", "content": system},
+                                        {"role": "user", "content": user}]}).encode()
+        req = Request(endpoint, data=body, method="POST", headers={
+            "Authorization": f"Bearer {token}", "Content-Type": "application/json",
+            "Accept": "application/json", "User-Agent": "tokai-news-digest"})
+        raw = ""
+        try:
+            raw = urlopen(req, timeout=60).read().decode("utf-8", "replace")
+            text = json.loads(raw)["choices"][0]["message"]["content"]
+            MODEL = model
+            break
+        except Exception as e:
+            detail = raw[:160]
+            if hasattr(e, "read"):
+                try: detail = e.read().decode("utf-8", "replace")[:160]
+                except Exception: pass
+            errors.append(f"{endpoint.split('/')[2]}: {e} {detail}".strip())
+    if text is None:
+        raise RuntimeError(" / ".join(errors))
     m = re.search(r"\{.*\}", text, re.S)
     data = json.loads(m.group(0))
     out = []
