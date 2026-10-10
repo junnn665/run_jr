@@ -1,4 +1,4 @@
 {
- "last_try": "2026-10-10T22:01+09:00",
- "last_error": "AIに接続できませんでした: openai/gpt-4.1-mini: Expecting value: line 1 column 1 (char 0) OK / openai/gpt-4o-mini: Expecting value: line 1 column 1 (char 0) OK "
+ "last_try": "2026-10-10T22:05+09:00",
+ "last_error": "AIから返事がありませんでした（failure）"
 }
