@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-10T17:37+09:00",
- "checked": "2026-10-10T17:37+09:00",
+ "updated": "2026-10-10T18:37+09:00",
+ "checked": "2026-10-10T18:37+09:00",
  "items": [
   {
    "date": "2026-10-10",
@@ -180,6 +180,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE13bkdTOWNyYUF2V0twZU1zMmVObWNzZ2tjWGctUG5pdWpKT0JYOGt3SjdzVjFveS1WM0RockJodk1VSEhrUjd3ZlRRQQ?oc=5",
    "src": "47NEWS",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "zairai",
+   "title": "画像8 / 50＞飛騨牛や白川郷、温泉からの絶景も！大阪から「特急ひだ」に乗って飛騨高山を満喫してみた",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBEdGc5UWc4SktIT3l1d0I4cVFFSVZYb19GbWFzR3pmSTAtSHU5MlNoZDNsWVQ5bVJBSjA3NF95YTY3QlJfQTdCM0FENTJkREtvd1g1V19mdTFWMHFfcDYyZVBES2MxOTlveUt0dGFB?oc=5",
+   "src": "ウォーカープラス",
    "auto": true
   },
   {
@@ -2690,15 +2699,6 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFAtVnRaR2lWVmtMUl9DY1lHeVRTV2J1VmNmSDhCOUVQR21hZG1JVFphaGtnQWZnQ251Vy11UjdpbGpMcE5vZE9waEZIVW80clpZc0ZCV3JiWU1WNnZBUHBQVEt0YWdCUQ?oc=5",
    "src": "Unisba Media",
-   "auto": true
-  },
-  {
-   "date": "2026-10-02",
-   "cat": "kaisha",
-   "title": "中経連会長にJR東海柘植氏 勝野氏は辞任へ（時事通信）",
-   "summary": "",
-   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA3QkwzWU5mM014SXJhMHB6SzVtQTBWVld6VXRpZVJYTVhVendaQy1LVWxVaTYzX2VNS0xMaE0xSFE0Mlk4MlFXcmkxcUpVallPTWtWWHNSdm00WjJZUy1hRzczbXhIOWhuNzJxNHRpLU1tczgxWUZaWFFpY0V4Y0E?oc=5",
-   "src": "Yahoo!ニュース",
    "auto": true
   }
  ]
