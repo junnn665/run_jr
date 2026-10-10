@@ -11,7 +11,6 @@ permissions:
   contents: write
   pages: write
   id-token: write
-  models: read        # 「今日のJR東海」のAIまとめに使う
 
 concurrency:
   group: pages
@@ -39,27 +38,8 @@ jobs:
       - name: リニア進捗と業績を更新
         run: python update_panels.py
 
-      - name: 今日のJR東海（AIまとめの準備）
-        id: prep
-        run: python ai_digest.py prepare
-
-      - name: 今日のJR東海（AIに聞く）
-        id: ai
-        if: steps.prep.outputs.run == 'true'
-        continue-on-error: true
-        uses: actions/ai-inference@v1
-        with:
-          model: openai/gpt-4.1-mini
-          prompt-file: ${{ runner.temp }}/digest_prompt.txt
-          max-tokens: 600
-
-      - name: 今日のJR東海（まとめを保存）
-        if: steps.prep.outputs.run == 'true'
-        run: python ai_digest.py finish
-        env:
-          AI_RESPONSE_FILE: ${{ steps.ai.outputs.response-file }}
-          AI_RESPONSE: ${{ steps.ai.outputs.response }}
-          AI_OUTCOME: ${{ steps.ai.outcome }}
+      - name: 今日のJR東海（注目の話題）
+        run: python ai_digest.py topics
 
       - name: 保存
         run: |

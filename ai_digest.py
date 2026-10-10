@@ -1,4 +1,4 @@
-# 「今日のJR東海」：その日の主な話題を、AIが見出しだけをもとに3〜5行にまとめる
+# 「今日のJR東海」：この24時間で記事の多い話題を並べる（topics）。AIでまとめる仕組み（prepare/finish）も残してあるが、今は使っていない
 # GitHub Actions から実行。prepare で聞く内容を作り、公式の actions/ai-inference でAIに聞き、finish で保存する。
 # AIが使えないとき（混雑・上限・設定なし）は何もせず、前回のまとめをそのまま残す。
 import json, os, re, sys
@@ -133,8 +133,23 @@ def finish():
     print("AIまとめ：", *[i["text"] for i in items], sep="\n  ")
     return 0
 
+def topics_only():
+    """AIを使わず、この24時間で記事の多い話題を上から5つ並べる"""
+    news = load("news.json", {"items": []})["items"]
+    topics = topics_for_today(news)
+    if not topics:
+        print("注目の話題：この24時間の記事がありません"); return 0
+    items = [{"text": clean_title(t["title"])[:80], "g": t["g"], "title": t["title"], "n": t["n"]} for t in topics[:5]]
+    with open(OUT, "w", encoding="utf-8") as f:
+        json.dump({"date": NOW.date().isoformat(), "generated": NOW.isoformat(timespec="minutes"),
+                   "ai": False, "items": items}, f, ensure_ascii=False, indent=1)
+    print("注目の話題：", *[i["text"] for i in items], sep="\n  ")
+    return 0
+
 def main():
     mode = sys.argv[1] if len(sys.argv) > 1 else ""
+    if mode == "topics":
+        return topics_only()
     if mode == "prepare":
         return prepare()
     if mode == "finish":
