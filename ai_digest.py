@@ -1,40 +1,14 @@
 # 「今日のJR東海」：その日の主な話題を、AIが見出しだけをもとに3〜5行にまとめる
-# GitHub Actions から実行。GitHub Models（GitHubの無料のAI）を使い、GITHUB_TOKEN で認証する。
+# GitHub Actions から実行。prepare で聞く内容を作り、公式の actions/ai-inference でAIに聞き、finish で保存する。
 # AIが使えないとき（混雑・上限・設定なし）は何もせず、前回のまとめをそのまま残す。
 import json, os, re, sys
 from collections import defaultdict
 from datetime import datetime, timezone, timedelta
-from urllib.request import Request, urlopen, build_opener, HTTPRedirectHandler
-from urllib.error import HTTPError
-
-class _NoRedirect(HTTPRedirectHandler):
-    """転送（リダイレクト）を自動で追わない。追うとPOSTの中身が落ちてしまうため、自分で送り直す"""
-    def redirect_request(self, *a, **k):
-        return None
-
-def post_json(url, payload, headers, hops=3):
-    opener = build_opener(_NoRedirect)
-    for _ in range(hops):
-        req = Request(url, data=payload, method="POST", headers=headers)
-        try:
-            return opener.open(req, timeout=60).read().decode("utf-8", "replace")
-        except HTTPError as e:
-            if e.code in (301, 302, 303, 307, 308) and e.headers.get("Location"):
-                from urllib.parse import urljoin
-                url = urljoin(url, e.headers["Location"])
-                continue
-            raise
-    raise RuntimeError("転送が多すぎます")
 
 JST = timezone(timedelta(hours=9))
 NOW = datetime.now(JST)
 OUT = "digest.json"
-# 使うAIの窓口。1つ目がだめなら2つ目を試す（どちらも GitHub の無料のAI）
-ENDPOINTS = [
-    ("https://models.github.ai/inference/chat/completions", "openai/gpt-4.1-mini"),
-    ("https://models.github.ai/inference/chat/completions", "openai/gpt-4o-mini"),
-]
-MODEL = ENDPOINTS[0][1]
+MODEL = "openai/gpt-4.1-mini"   # GitHub の無料のAI（actions/ai-inference で呼ぶ）
 MIN_INTERVAL_HOURS = 3      # 同じ日のまとめを作り直す間隔（AIの利用回数を節約）
 MAX_TOPICS = 15
 
@@ -59,48 +33,6 @@ def topics_for_today(items):
         topics.append({"g": g, "title": main["title"], "n": len(xs), "cat": main.get("cat", "")})
     return topics
 
-def ask_ai(topics, token):
-    lines = "\n".join(f"{i+1}. {t['title']}（{t['n']}件の記事）" for i, t in enumerate(topics))
-    system = ("あなたはJR東海関連ニュースの編集者です。渡された見出しだけを材料に、"
-              "今日の主な出来事を日本語で3〜5行にまとめます。見出しに書かれていない事実、数字、理由、"
-              "予想は絶対に足さないでください。1行は60文字以内の、です・ます調ではない短い文にします。"
-              "記事の多い話題や、運行・安全・リニア・決算に関わる話題を優先します。")
-    user = ("今日の見出し一覧:\n" + lines +
-            '\n\n次の形のJSONだけを返してください: {"items":[{"n":見出し番号,"text":"まとめの1行"}]}')
-    global MODEL
-    errors = []
-    text = None
-    for endpoint, model in ENDPOINTS:
-        body = json.dumps({"model": model, "temperature": 0.2,
-                           "messages": [{"role": "system", "content": system},
-                                        {"role": "user", "content": user}]}).encode()
-        headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json",
-                   "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28",
-                   "User-Agent": "tokai-news-digest"}
-        raw = ""
-        try:
-            raw = post_json(endpoint, body, headers)
-            text = json.loads(raw)["choices"][0]["message"]["content"]
-            MODEL = model
-            break
-        except Exception as e:
-            detail = raw[:160]
-            if hasattr(e, "read"):
-                try: detail = e.read().decode("utf-8", "replace")[:160]
-                except Exception: pass
-            errors.append(f"{model}: {e} {detail}".strip())
-    if text is None:
-        raise RuntimeError(" / ".join(errors))
-    m = re.search(r"\{.*\}", text, re.S)
-    data = json.loads(m.group(0))
-    out = []
-    for it in data.get("items", [])[:5]:
-        n = int(it.get("n", 0))
-        line = str(it.get("text", "")).strip()
-        if 1 <= n <= len(topics) and line:
-            out.append({"text": line[:80], "g": topics[n - 1]["g"], "title": topics[n - 1]["title"]})
-    return out
-
 def note(prev, msg):
     """うまくいかなかった理由を digest.json に残す（前回のまとめはそのまま）"""
     print("AIまとめ：", msg)
@@ -111,34 +43,85 @@ def note(prev, msg):
         json.dump(prev, f, ensure_ascii=False, indent=1)
     return 0
 
-def main():
-    token = os.environ.get("GITHUB_TOKEN", "")
+def build_prompt(topics):
+    lines = "\n".join(f"{i+1}. {t['title']}（{t['n']}件の記事）" for i, t in enumerate(topics))
+    return ("あなたはJR東海関連ニュースの編集者です。下の見出しだけを材料に、今日の主な出来事を日本語で3〜5行にまとめます。"
+            "見出しに書かれていない事実、数字、理由、予想は絶対に足さないでください。1行は60文字以内の、"
+            "です・ます調ではない短い文にします。記事の多い話題や、運行・安全・リニア・決算に関わる話題を優先します。\n\n"
+            "今日の見出し一覧:\n" + lines +
+            '\n\n次の形のJSONだけを返してください（説明文やコードブロックは不要）: {"items":[{"n":見出し番号,"text":"まとめの1行"}]}')
+
+def parse_reply(text, topics):
+    m = re.search(r"\{.*\}", text or "", re.S)
+    data = json.loads(m.group(0))
+    out = []
+    for it in data.get("items", [])[:5]:
+        n = int(it.get("n", 0))
+        line = str(it.get("text", "")).strip()
+        if 1 <= n <= len(topics) and line:
+            out.append({"text": line[:80], "g": topics[n - 1]["g"], "title": topics[n - 1]["title"]})
+    return out
+
+def set_output(k, v):
+    path = os.environ.get("GITHUB_OUTPUT")
+    if path:
+        with open(path, "a", encoding="utf-8") as f:
+            f.write(f"{k}={v}\n")
+
+def prepare():
+    """AIに聞くかどうかを決めて、聞く内容（プロンプト）をファイルに書く"""
     news = load("news.json", {"items": []})["items"]
     prev = load(OUT, {})
     topics = topics_for_today(news)
+    tmp = os.environ.get("RUNNER_TEMP", ".")
     if len(topics) < 2:
         return note(prev, f"今日の話題が少ないので作りません（{len(topics)}件）")
     key = "|".join(t["g"] for t in topics[:8])
-    if prev.get("date") == NOW.date().isoformat():
+    if prev.get("date") == NOW.date().isoformat() and prev.get("items"):
         last = datetime.fromisoformat(prev.get("generated", "2000-01-01T00:00+09:00"))
         if prev.get("key") == key or NOW - last < timedelta(hours=MIN_INTERVAL_HOURS):
             print("AIまとめ：変化がないか、前回から時間がたっていないので据え置き"); return 0
-    if not token:
-        return note(prev, "GITHUB_TOKEN がないので作りません")
+    with open(os.path.join(tmp, "digest_prompt.txt"), "w", encoding="utf-8") as f:
+        f.write(build_prompt(topics))
+    with open(os.path.join(tmp, "digest_topics.json"), "w", encoding="utf-8") as f:
+        json.dump({"key": key, "topics": topics}, f, ensure_ascii=False)
+    set_output("run", "true")
+    print(f"AIまとめ：{len(topics)}件の話題をAIに渡します")
+    return 0
+
+def finish():
+    """AIの返事を読み取って digest.json に保存する"""
+    prev = load(OUT, {})
+    tmp = os.environ.get("RUNNER_TEMP", ".")
+    meta = load(os.path.join(tmp, "digest_topics.json"), None)
+    if not meta:
+        return note(prev, "準備したファイルが見つかりません")
+    text = ""
+    rf = os.environ.get("AI_RESPONSE_FILE", "")
+    if rf and os.path.exists(rf):
+        text = open(rf, encoding="utf-8").read()
+    text = text or os.environ.get("AI_RESPONSE", "")
+    if not text:
+        return note(prev, f"AIから返事がありませんでした（{os.environ.get('AI_OUTCOME', '')}）")
     try:
-        items = ask_ai(topics, token)
+        items = parse_reply(text, meta["topics"])
     except Exception as e:
-        detail = ""
-        if hasattr(e, "read"):
-            try: detail = e.read().decode()[:200]
-            except Exception: pass
-        return note(prev, f"AIに接続できませんでした: {e} {detail}")
+        return note(prev, f"AIの返事を読み取れませんでした: {e} {text[:120]}")
     if not items:
         return note(prev, "うまくまとめられませんでした")
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump({"date": NOW.date().isoformat(), "generated": NOW.isoformat(timespec="minutes"),
-                   "model": MODEL, "key": key, "items": items}, f, ensure_ascii=False, indent=1)
+                   "model": MODEL, "key": meta["key"], "items": items}, f, ensure_ascii=False, indent=1)
     print("AIまとめ：", *[i["text"] for i in items], sep="\n  ")
+    return 0
+
+def main():
+    mode = sys.argv[1] if len(sys.argv) > 1 else ""
+    if mode == "prepare":
+        return prepare()
+    if mode == "finish":
+        return finish()
+    print("使い方: python ai_digest.py prepare | finish")
     return 0
 
 if __name__ == "__main__":
