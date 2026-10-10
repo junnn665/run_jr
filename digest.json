@@ -1,4 +1,4 @@
 {
- "last_try": "2026-10-10T21:55+09:00",
- "last_error": "AIに接続できませんでした: Expecting value: line 1 column 1 (char 0) "
+ "last_try": "2026-10-10T21:58+09:00",
+ "last_error": "AIに接続できませんでした: models.github.ai: Expecting value: line 1 column 1 (char 0) OK / models.inference.ai.azure.com: <urlopen error [Errno -2] Name or service not known> "
 }
