@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-10T15:44+09:00",
- "checked": "2026-10-10T15:44+09:00",
+ "updated": "2026-10-10T16:37+09:00",
+ "checked": "2026-10-10T16:37+09:00",
  "items": [
   {
    "date": "2026-10-10",
@@ -153,6 +153,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBLbjJjUkdhekllMC1BcG1LNkItYldELUM1OW0yUDlGUklsVDFqNU9oYnNrYkdJZ0RwMmc0MWh5UzJEcXQta0VuMGdMUjJSdXRkWW5oWEtwalNRb1VZMlJXRkZyRHFyajRxd2xub0x3UHlrTnhySE1ta2JkNA?oc=5",
    "src": "ニコニコニュース",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "zairai",
+   "title": "【駅に行って来た】JR東海飯田線船町駅で電車を待っていたら、名鉄電車が来た!? Conor Mcgregor (HvwDjnIuO6)",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1ZVXE0cFItZnBhQXN1WjBuUWJqZHRZX2wxeU9VTkNHMGhQaGdpcTZDV1Y5Z1N2VndYek9fM2ZXTDBtQ2k2OVE1ZFd6NC0xQVdqY0ZxcW5nbnJjLVNqSC1jdTRyeFpyeGJkdm1r?oc=5",
+   "src": "Unisba Media",
    "auto": true
   },
   {
@@ -2343,6 +2352,15 @@
    "auto": true
   },
   {
+   "date": "2026-10-05",
+   "cat": "kaisha",
+   "title": "中経連会長にＪＲ東海・柘植氏（時事通信）",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9vQmpQei11UFg2V2ZPQjBLbklSendoakg5VXNRT0R4d1BJZXlNVVFkY2ppVHhlRktNa2NvcDRhendTWi0ta3FVT0tHOVFGbzlNcVZyY0xURzktWUI4T3dtNGNvZXpuY1FPc1EyLVFKcFlUWThDLXdLNDhsb3A0VGc?oc=5",
+   "src": "Yahoo!ニュース",
+   "auto": true
+  },
+  {
    "date": "2026-10-04",
    "cat": "event",
    "title": "JR東海×TrySail 「コワイセイルのTrip or Treat！お菓子くれなきゃ旅させるぞ」開催決定！",
@@ -2682,23 +2700,6 @@
    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE90NEU3RW15R1h2aEYwMGhfOUg4b01rTnBybWVSUDNFN2x4M2ZBSEFZTEdvRTRqeUlJZWc3NmtYb242WkV3bkZuTnI2WkZGdnJpWVlOUE9XRlV6d0dP?oc=5",
    "src": "YouTube",
    "auto": true
-  },
-  {
-   "date": "2026-10-02",
-   "cat": "shinkansen",
-   "title": "東海道新幹線に23年ぶり個室復活 「Supreme Class」、東京～新大阪6万円超の価値は？",
-   "summary": "",
-   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE9TaUQ5SGx4ZmtrTGNIaFJRaDgxWV91Yk1RMV9JYUMyRWxyYjNnNGJIV3NpVHhScGwzX1R0S21mR2hSVmJMMzVHRjVQMWZjRm1rZmFHeU9RUDNmZnRwQmlR?oc=5",
-   "src": "ライブドアニュース",
-   "auto": true
-  },
-  {
-   "date": "2026-10-01",
-   "cat": "shinkansen",
-   "title": "東海道新幹線「スプリームクラス」個室キャビンの営業開始",
-   "summary": "グリーン車より上の新しい座席クラス。10月1日から「のぞみ」で個室タイプのキャビン（7号車は2人用、10号車は1人用）がスタートし、無料の飲食サービスや電子錠付きの扉がある。半個室タイプのシートは2027年度中に導入予定。東京〜新大阪の通常期は1人用で4万円台から。",
-   "url": "https://trafficnews.jp/post/678708",
-   "src": "乗りものニュース"
   }
  ]
 }
