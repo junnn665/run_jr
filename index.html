@@ -4,6 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="JR東海の最新ニュースを新幹線・在来線・リニアなど項目別にまとめる非公式サイト">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<meta name="theme-color" content="#1f2a33">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="東海にゅ〜す">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>東海にゅ〜す</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@500&family=DotGothic16&display=swap">
@@ -32,7 +40,7 @@ body{margin:0}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.7}
 .wrap{max-width:880px;margin:0 auto;padding-inline:16px}
-header.board{background:var(--board);color:var(--board-fg);border-bottom:4px solid var(--accent)}
+header.board{padding-top:env(safe-area-inset-top,0px);background:var(--board);color:var(--board-fg);border-bottom:4px solid var(--accent)}
 header.board .wrap{padding-block:20px 18px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:8px 16px}
 .brand{font-family:var(--f-display);font-weight:900;font-size:clamp(26px,6vw,36px);letter-spacing:.02em;line-height:1.1;margin:0}
 .brand small{display:block;font-weight:500;font-size:13px;letter-spacing:.12em;color:var(--accent);margin-bottom:4px}
@@ -259,7 +267,7 @@ function latestLine(x){ return x.latest ? `<p class="latest"><span>最新</span>
 let LFILTER = null;
 function linearNews(kw){ return NEWS.filter(x => x.cat==="linear" && !NOISE.test(x.title) && kw.some(k => x.title.includes(k))); }
 /* イベントや見学会など、工事の進み具合と関係ない記事は「関連ニュース」に入れない */
-const NOISE = /フェス|見学|寄せ書き|ツアー|イベント|グッズ|展示|体験|記念/;
+const NOISE = /フェス|見学|寄せ書き|ツアー|イベント|グッズ|展示|体験|記念|利回り|物件|不動産|分譲|賃貸|投資|徒歩/;
 function renderLinear(){
   const show = current === "lprog";
   $("#lpanel").hidden = !show;
@@ -367,7 +375,8 @@ async function load(){
     st.classList.toggle("stale", hours > 3);
     st.textContent = (checked ? `最終チェック：${hm(checked)}` : "") +
       (UPDATED ? `・最新記事の追加：${hm(UPDATED)}` : "") + `・${NEWS.length}件` +
-      (hours > 3 ? "　※自動更新が止まっている可能性があります" : "");
+      (hours > 3 && navigator.onLine ? "　※自動更新が止まっている可能性があります" : "");
+    if (!navigator.onLine){ st.classList.remove("stale"); st.textContent = "オフライン：前回読み込んだ内容を表示しています（" + st.textContent + "）"; }
   }catch(e){
     $("#status").textContent = "ニュースを読み込めませんでした。時間をおいて再読み込みしてください。";
   }
@@ -377,6 +386,12 @@ async function load(){
   renderTabs(); renderLinear(); renderFin(); renderList(); renderTicker();
 }
 $("#reload").addEventListener("click", load);
+// 電波が戻ったら自動で読み直す
+window.addEventListener("online", load);
+// ホーム画面に追加したときに、電波がなくても前回の内容を出せるようにする
+if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost") && !/claude/.test(location.hostname)) {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}
 renderLinear();
 renderFin();
 renderTicker();

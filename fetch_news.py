@@ -16,7 +16,7 @@ GOOGLE_QUERIES = [
     # リニアの駅・工区
     "リニア 品川駅 工事", "リニア 神奈川県駅", "リニア 山梨県駅", "リニア 長野県駅",
     "リニア 岐阜県駅", "リニア 名古屋駅 工事", "リニア 静岡工区", "南アルプストンネル",
-    "中央アルプストンネル", "リニア 瑞浪",
+    "中央アルプストンネル", "リニア 瑞浪", "第一首都圏トンネル", "リニア 北品川",
     # 会社・決算
     "JR東海 決算", "JR東海 業績", "東海旅客鉄道 決算", "JR東海 純利益", "JR東海 運輸収入",
     "JR東海 業績予想", "JR東海 株価", "JR東海 配当", "JR東海 社長", "JR東海 人事",
@@ -37,7 +37,7 @@ KEYWORDS = [
 ]
 GOOGLE_DAYS = 7   # 何日前までの記事を取り込むか
 JSON_PATH = "news.json"
-MAX_ITEMS = 300
+MAX_ITEMS = 1500   # 自動で集めた記事はこの件数まで残す（手で入れた記事は消さない）
 JST = timezone(timedelta(hours=9))
 
 # 見出しの言葉からカテゴリを決める（上から順に判定）
@@ -46,9 +46,10 @@ RULES = [
                     "最高益", "売上", "運輸収入", "株価", "配当", "株主", "自社株", "社長", "会長",
                     "役員", "人事", "中期経営", "設備投資", "格付", "社債", "黒字", "赤字",
                     "上方修正", "下方修正", "有価証券", "工事費", "インバウンド収入", "春闘", "賃上げ"]),
-    ("linear",     ["リニア", "南アルプストンネル", "中央アルプストンネル", "静岡工区"]),
+    ("linear",     ["リニア", "中央新幹線", "南アルプストンネル", "中央アルプストンネル", "静岡工区",
+                    "第一首都圏トンネル", "北品川工区", "シールドマシン"]),
     ("unko",       ["運休", "運転見合わせ", "運行情報", "踏切", "防犯", "安全", "台風", "大雨", "地震", "遅れ", "事故"]),
-    ("event",      ["キャンペーン", "きっぷ", "切符", "セール", "ツアー", "フェス", "イベント", "記念", "プレゼント", "旅"]),
+    ("event",      ["キャンペーン", "きっぷ", "切符", "セール", "ツアー", "フェス", "イベント", "記念", "プレゼント", "旅", "コラボ", "グッズ", "公演", "ライブ"]),
     ("shinkansen", ["新幹線", "のぞみ", "ひかり", "こだま", "ＥＸ", "EX", "予約状況", "N700", "スプリーム", "グリーン車", "S Work", "個室"]),
     ("zairai",     ["在来線", "特急", "ワイドビュー", "しなの", "ひだ", "サイクルトレイン", "315系", "線"]),
     ("eki",        ["駅"]),
@@ -58,7 +59,7 @@ def categorize(title):
     for cat, words in RULES:
         if any(w in title for w in words):
             return cat
-    return "kaisha"
+    return "other"   # どれにも当てはまらないものは「その他」
 
 DATE_RE = re.compile(r"(\d{4})\s*[.\-/年]\s*(\d{1,2})\s*[.\-/月]\s*(\d{1,2})")
 # 決算短信などはPDFで公開されるので .pdf も拾う
@@ -206,7 +207,10 @@ def main():
         print(f"{recat}件のカテゴリを分類し直しました")
 
     now = datetime.now(JST).isoformat(timespec="minutes")
-    items = sorted(data["items"] + added, key=lambda x: x["date"], reverse=True)[:MAX_ITEMS]
+    allitems = sorted(data["items"] + added, key=lambda x: x["date"], reverse=True)
+    manual = [x for x in allitems if not x.get("auto")]
+    auto = [x for x in allitems if x.get("auto")][:MAX_ITEMS]
+    items = sorted(manual + auto, key=lambda x: x["date"], reverse=True)
     data = {
         "updated": now if (added or recat) else data.get("updated", ""),  # 最後に記事が増えた時刻
         "checked": now,                                                    # 最後に見に行った時刻
