@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-10T10:38+09:00",
- "checked": "2026-10-10T10:38+09:00",
+ "updated": "2026-10-10T11:37+09:00",
+ "checked": "2026-10-10T11:37+09:00",
  "items": [
   {
    "date": "2026-10-10",
@@ -81,6 +81,24 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9oNFBaT2N3dzN1Z1NraFJ2b1dxajJ6c2s3eVBYRFhvd3dLdXUzNXJtbEZHaHJSVjNLWFlobzVWVGdaOVVyWWhhWDE4VlZDNXEwZXotM2xHbw?oc=5",
    "src": "鉄道ファン・railf.jp",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "linear",
+   "title": "「鉄道の日」だからこそ、振り返りたい“鉄道の栄枯盛衰” 東海道新幹線誕生秘話からリニア中央新幹線へ",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9fLTYwLTd5X0JGeE92MW4xcjlQT3ltcXlTNUVZMDlraFE0VlhRM0hqN3VEQUJLQzAtcU5kZDJvU3kwWktTZlJpb0tUTzRzMWdNZlFV?oc=5",
+   "src": "Wedge ONLINE",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "linear",
+   "title": "リニア「時速500キロ」の大迫力走行が見学できる場所とは？ 本物の車両も展示「リニア見学センター」（鉄道コム）",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9PYldRbDlsSk12WGlSaTJ0MHBUYVh2MTROTC1Xc1JpWjdVSTJlRkFCUDUxaVhtT0ZwLVlld2VURHRXUlRxZ2dWU05maXhFMTFyNDNFVS1kQW9zRUx4RlFROHhnRDd0ajZ3a1Z2emFyZzg5Q2NYYTc2RHZNN1VubEU?oc=5",
+   "src": "Yahoo!ニュース",
    "auto": true
   },
   {
@@ -1461,6 +1479,24 @@
    "auto": true
   },
   {
+   "date": "2026-10-07",
+   "cat": "linear",
+   "title": "画像 | 時速500kmのリニアは｢明日にも走らせられる｣…JR東海が11兆円の大金と社運を賭けた｢技術の結晶｣の到達点",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9aUlZMMF9DOVRqNGpIR0tsTFVEZXdUaVR2bWVTVTM3YzdUTWNpbUhfQ3RjTWtpUUdRdUl0Ri1XaGdjWE1OQWdsemoyTnNFdGljNTdTeQ?oc=5",
+   "src": "PRESIDENT Online（プレジデントオンライン）",
+   "auto": true
+  },
+  {
+   "date": "2026-10-07",
+   "cat": "kaisha",
+   "title": "中間決算を先読み コンセンサス上方修正企業に注目 野村證券ストラテジストが解説",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE0xemd5c0YycXZTTXptOUJrMU9sMmptdGY0Y0VjYktRWC15bDNLcnhITUNVR2cwVG9ibFJURGhxNWFRMlFKWWk0MzRrNlB0YUVLd3VSMDh6XzQ3Z0F4WmM0?oc=5",
+   "src": "野村證券",
+   "auto": true
+  },
+  {
    "date": "2026-10-06",
    "cat": "linear",
    "title": "時速500kmのリニアは｢明日にも走らせられる｣…JR東海が11兆円の大金と社運を賭けた｢技術の結晶｣の到達点",
@@ -2654,38 +2690,6 @@
    "title": "【社長会見】「そうだ 京都、行こう。」2026年秋キャンペーン",
    "summary": "おなじみの京都キャンペーンの秋版の展開内容を発表。",
    "url": "https://jr-central.co.jp/news/release/nws000001_00607.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-17",
-   "cat": "event",
-   "title": "【社長会見】EXサービス25周年記念キャンペーン",
-   "summary": "EXサービスの25周年を記念したキャンペーンを実施。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00604.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-15",
-   "cat": "event",
-   "title": "「いざいざ奈良」キャンペーン 東大寺編",
-   "summary": "奈良への旅行キャンペーンで、東大寺を取り上げた企画を展開。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00601.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-14",
-   "cat": "zairai",
-   "title": "在来線の駅・車内で多言語放送を試行",
-   "summary": "訪日客などに向けて、在来線の駅や車内で複数の言語による案内放送を試験的に始める。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00602.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-14",
-   "cat": "kaisha",
-   "title": "焼津市と連携し「ふるさと住民登録制度モデル事業」を実施",
-   "summary": "焼津市とJR東海が組み、地域との関わりを持つ人を増やすモデル事業に取り組む。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00600.html",
    "src": "JR東海"
   }
  ]
