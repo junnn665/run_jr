@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-10T09:48+09:00",
- "checked": "2026-10-10T09:48+09:00",
+ "updated": "2026-10-10T10:38+09:00",
+ "checked": "2026-10-10T10:38+09:00",
  "items": [
   {
    "date": "2026-10-10",
@@ -72,6 +72,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9HbzlGaUpaMkVWSGp5RFpGalI1QlI5cnhuUFlaODZIS1lIOWRfQnRkUlA5R3diSmRfdnpXTjczVWFQZ0p1eFkySE9NUWIxMTZraEJLTWVVZ25UTXd6QW5NX2h1SXk2Y1dwakhvdENn?oc=5",
    "src": "ウォーカープラス",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "kaisha",
+   "title": "JR西日本，新形レール輸送用気動車「キヤ145系」を導入へ 〜2028年2月ごろから運用開始〜",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9oNFBaT2N3dzN1Z1NraFJ2b1dxajJ6c2s3eVBYRFhvd3dLdXUzNXJtbEZHaHJSVjNLWFlobzVWVGdaOVVyWWhhWDE4VlZDNXEwZXotM2xHbw?oc=5",
+   "src": "鉄道ファン・railf.jp",
    "auto": true
   },
   {
@@ -2677,14 +2686,6 @@
    "title": "焼津市と連携し「ふるさと住民登録制度モデル事業」を実施",
    "summary": "焼津市とJR東海が組み、地域との関わりを持つ人を増やすモデル事業に取り組む。",
    "url": "https://jr-central.co.jp/news/release/nws000001_00600.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-11",
-   "cat": "unko",
-   "title": "2026年秋の踏切事故防止キャンペーン",
-   "summary": "踏切での事故を防ぐための秋の啓発キャンペーンを実施。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00599.html",
    "src": "JR東海"
   }
  ]
