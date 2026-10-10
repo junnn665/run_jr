@@ -1,6 +1,6 @@
 {
- "updated": "2026-10-10T13:39+09:00",
- "checked": "2026-10-10T13:39+09:00",
+ "updated": "2026-10-10T14:36+09:00",
+ "checked": "2026-10-10T14:36+09:00",
  "items": [
   {
    "date": "2026-10-10",
@@ -99,6 +99,33 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9PYldRbDlsSk12WGlSaTJ0MHBUYVh2MTROTC1Xc1JpWjdVSTJlRkFCUDUxaVhtT0ZwLVlld2VURHRXUlRxZ2dWU05maXhFMTFyNDNFVS1kQW9zRUx4RlFROHhnRDd0ajZ3a1Z2emFyZzg5Q2NYYTc2RHZNN1VubEU?oc=5",
    "src": "Yahoo!ニュース",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "eki",
+   "title": "小田原市 駅西口に臨時案内所 荷物預かり併設で回遊促進 小田原市・箱根町・湯河原町・真鶴町",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE15UmVzVkdnQy1Zd2FIaUpFY2x4M1pDcDBtV09rRkQtUjZOeUgxN2FiNWNsa0Q0MjRMMGZQZkRGS2dYbDdBMkh1TUl2XzF0MDJRWTFwV1ZlM1ZDT1FScDBuXzNnWnZQek9aSUx5cDh3?oc=5",
+   "src": "au Webポータル",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "shinkansen",
+   "title": "3連休初日 新幹線や高速道路で混雑",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE8tcmVwWHdPUkZXVy0zeHM4Mk02UXpFajJ0cExpXzZlYndHTkZpaGgyaUNqRk5yMFJ0djNaand5c0xfZHpfYnVxWm5IUlhIdXlKRXFPQw?oc=5",
+   "src": "ABEMA TIMES",
+   "auto": true
+  },
+  {
+   "date": "2026-10-10",
+   "cat": "linear",
+   "title": "リニア「時速500キロ」の大迫力走行が見学できる場所とは？ 本物の車両も展示「リニア見学センター」",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBEaHR1RV80ay1pbGgzdEZQcVVVdXY3TEZXSnFsd05RSmVUYVlLMEYxUUFubHhEMThCVV9CM2tzVGs1cmdSc2EzdHl0WQ?oc=5",
+   "src": "Tetsudo.com（鉄道コム）",
    "auto": true
   },
   {
@@ -855,6 +882,15 @@
    "summary": "",
    "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFB5M1NNeHBNTGRfdmp2OWNUM1RhWnRhS2lNX1FjUllTb1pvQjZNdk1MNkF2dkx6bUd3V3YyVEcycnJKd0lCNExpSXl5ZXp5VzU1Tnl6MzZNRFI?oc=5",
    "src": "週刊女性PRIME",
+   "auto": true
+  },
+  {
+   "date": "2026-10-08",
+   "cat": "kaisha",
+   "title": "JR東海から富山地方鉄道へ 213系甲種輸送",
+   "summary": "",
+   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5Bd2M5a0UxeXg1SzRNUEdLZW5POGZ1R3c2RWtYUi0xUUFPdlRCNzhFcnhUcnpxMFZfV1REWktYQW1YQnF5eURCUEk5a2F2Mk1oTTRoMVNxRzVxUnpm?oc=5",
+   "src": "YouTube",
    "auto": true
   },
   {
@@ -2659,38 +2695,6 @@
    "title": "貸切車両パッケージ「新幹線スナック JR」を運行",
    "summary": "東海道新幹線の車両を貸し切り、車内をスナックに見立てて楽しむ企画型パッケージが登場。",
    "url": "https://jr-central.co.jp/news/release/nws000001_00610.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-30",
-   "cat": "event",
-   "title": "「もれなく富士山」キャンペーン第4弾を展開",
-   "summary": "富士山エリアへの旅行を後押しするキャンペーンが第4弾に入る。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00611.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-28",
-   "cat": "eki",
-   "title": "小田原駅を拠点に観光の利便性向上策を実施",
-   "summary": "小田原駅を起点とした観光をしやすくするための施策が始まる。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00609.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-28",
-   "cat": "linear",
-   "title": "「さがみはらリニアフェスタ2026」事前申込スタート",
-   "summary": "相模原市で開かれるリニア関連イベントの参加申込の受付が始まった。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00608.html",
-   "src": "JR東海"
-  },
-  {
-   "date": "2026-09-25",
-   "cat": "shinkansen",
-   "title": "【社長会見】EXサービスのサービス向上",
-   "summary": "東海道・山陽新幹線のネット予約「EXサービス」の使い勝手を高める取り組みを社長会見で発表。",
-   "url": "https://jr-central.co.jp/news/release/nws000001_00606.html",
    "src": "JR東海"
   }
  ]
